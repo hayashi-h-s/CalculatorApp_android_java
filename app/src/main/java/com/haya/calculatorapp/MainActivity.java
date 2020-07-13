@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-//    test
+    private String screenContent;
 
     private boolean isOpPressed = false;
 
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private char currentOp;
 
+    private boolean isDot = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,34 +95,76 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.btDelete:
                         break;
                     case R.id.btDivide:
+                        screenContent = calculatorScreen.getText().toString();
+                        secondNumberIndex = screenContent.length() + 1;
+                        firstNumber = Double.parseDouble(screenContent);
+                        calculatorScreen.append("÷");
+                        isOpPressed = true;
+                        isDot = false;
+                        currentOp = '÷';
                         break;
                     case R.id.btMultiply:
+                        screenContent = calculatorScreen.getText().toString();
+                        secondNumberIndex = screenContent.length() + 1;
+                        firstNumber = Double.parseDouble(screenContent);
+                        calculatorScreen.append("×");
+                        isOpPressed = true;
+                        isDot = false;
+                        currentOp = '×';
                         break;
                     case R.id.btSubtract:
+                        screenContent = calculatorScreen.getText().toString();
+                        secondNumberIndex = screenContent.length() + 1;
+                        firstNumber = Double.parseDouble(screenContent);
+                        calculatorScreen.append("-");
+                        isOpPressed = true;
+                        isDot = false;
+                        currentOp = '-';
                         break;
                     case R.id.btAdd:
-                        String screenContent = calculatorScreen.getText().toString();
+                        screenContent = calculatorScreen.getText().toString();
                         secondNumberIndex = screenContent.length() + 1;
                         firstNumber = Double.parseDouble(screenContent);
                         calculatorScreen.append("+");
                         isOpPressed = true;
+                        isDot = false;
                         currentOp = '+';
                         break;
                     case R.id.btPoint:
+                        if (!isDot) {
+                            calculatorScreen.append(".");
+                            isDot = true;
+                        }
+
                         break;
                     case R.id.btEqual:
                         if (isOpPressed){
+                            isOpPressed = false;
+                            screenContent = calculatorScreen.getText().toString();
+                            String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                            double secondNumber = Double.parseDouble(secondNumberString);
+
                             if (currentOp == '+'){
-                                screenContent = calculatorScreen.getText().toString();
-                                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                                double secondNumber = Double.parseDouble(secondNumberString);
                                 secondNumber += firstNumber;
-                                String result = String.valueOf(secondNumber);
-                                if (result.endsWith(".0")) {
-                                    result = result.substring(0, result.length() - 2);
+
+                            } else if (currentOp == '-'){
+                                secondNumber = firstNumber - secondNumber;
+
+                            } else if (currentOp == '×') {
+                                secondNumber *= firstNumber;
+                            } else if (currentOp == '÷') {
+                                if (secondNumber == 0) {
+                                    return;
                                 }
-                                calculatorScreen.setText(String.valueOf(result));
+                                secondNumber = firstNumber / secondNumber;
                             }
+
+                            String result = String.valueOf(secondNumber);
+                            if (result.endsWith(".0")) {
+                                result = result.substring(0, result.length() - 2);
+                            }
+                            calculatorScreen.setText(String.valueOf(result));
+                            isOpPressed = false;
                         }
                         break;
                 }
@@ -163,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
         btClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isOpPressed = false;
+                isDot = false;
                 calculatorScreen.setText("");
             }
         });
