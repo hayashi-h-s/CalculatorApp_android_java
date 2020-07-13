@@ -34,10 +34,10 @@
                 android:layout_span="4"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:paddingEnd="8dp"
+                android:padding="10dp"
                 android:text="@string/formula_text"
                 android:textColor="@color/colorTextBlack"
-                android:textSize="36sp" />
+                android:textSize="40sp" />
         </TableRow>
         <TableRow
             style="?android:attr/buttonBarStyle"

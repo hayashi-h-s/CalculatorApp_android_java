@@ -22,12 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isDot = false;
 
+    private TextView calculatorScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
 
-        final TextView calculatorScreen = findViewById(R.id.tvFormula);
+        calculatorScreen = findViewById(R.id.tvFormula);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -95,58 +97,37 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.btDelete:
                         break;
                     case R.id.btDivide:
-                        screenContent = calculatorScreen.getText().toString();
-                        secondNumberIndex = screenContent.length() + 1;
-                        firstNumber = Double.parseDouble(screenContent);
-                        calculatorScreen.append("÷");
-                        isOpPressed = true;
-                        isDot = false;
-                        currentOp = '÷';
+                        OpPressed('÷');
                         break;
                     case R.id.btMultiply:
-                        screenContent = calculatorScreen.getText().toString();
-                        secondNumberIndex = screenContent.length() + 1;
-                        firstNumber = Double.parseDouble(screenContent);
-                        calculatorScreen.append("×");
-                        isOpPressed = true;
-                        isDot = false;
-                        currentOp = '×';
+                        OpPressed('×');
                         break;
                     case R.id.btSubtract:
-                        screenContent = calculatorScreen.getText().toString();
-                        secondNumberIndex = screenContent.length() + 1;
-                        firstNumber = Double.parseDouble(screenContent);
-                        calculatorScreen.append("-");
-                        isOpPressed = true;
-                        isDot = false;
-                        currentOp = '-';
+                        OpPressed('-');
                         break;
                     case R.id.btAdd:
-                        screenContent = calculatorScreen.getText().toString();
-                        secondNumberIndex = screenContent.length() + 1;
-                        firstNumber = Double.parseDouble(screenContent);
-                        calculatorScreen.append("+");
-                        isOpPressed = true;
-                        isDot = false;
-                        currentOp = '+';
+                        OpPressed('+');
                         break;
                     case R.id.btPoint:
+                        screenContent = calculatorScreen.getText().toString();
+                        if (screenContent.isEmpty() || isOpPressed ) {
+                            return;
+                        }
                         if (!isDot) {
                             calculatorScreen.append(".");
                             isDot = true;
                         }
-
                         break;
                     case R.id.btEqual:
                         if (isOpPressed){
-                            isOpPressed = false;
                             screenContent = calculatorScreen.getText().toString();
                             String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                            if (secondNumberString.isEmpty()) {
+                                return;
+                            }
                             double secondNumber = Double.parseDouble(secondNumberString);
-
                             if (currentOp == '+'){
                                 secondNumber += firstNumber;
-
                             } else if (currentOp == '-'){
                                 secondNumber = firstNumber - secondNumber;
 
@@ -211,7 +192,20 @@ public class MainActivity extends AppCompatActivity {
                 calculatorScreen.setText("");
             }
         });
-
-
+    }
+    private void OpPressed(char operation) {
+        if (isOpPressed) {
+            return;
+        }
+        screenContent = calculatorScreen.getText().toString();
+        if (screenContent.isEmpty()) {
+            return;
+        }
+        secondNumberIndex = screenContent.length() + 1;
+        firstNumber = Double.parseDouble(screenContent);
+        calculatorScreen.append(String.valueOf(operation));
+        isOpPressed = true;
+        isDot = false;
+        currentOp = operation;
     }
 }
