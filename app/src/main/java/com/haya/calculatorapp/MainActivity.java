@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isOpPressed = false;
 
-    private double firstNumber = 0;
+    private BigDecimal firstNumber = new BigDecimal(0);
 
     private int secondNumberIndex = 0;
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         if (secondNumberString.isEmpty()) {
                             return;
                         }
-                        double secondNumber = Double.parseDouble(secondNumberString);
+                        BigDecimal secondNumber = new BigDecimal(secondNumberString);
                         if (currentOp == '+'){
                             secondNumber += firstNumber;
                         } else if (currentOp == '-'){
@@ -206,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         secondNumberIndex = screenContent.length() + 1;
-        firstNumber = Double.parseDouble(screenContent);
+//        firstNumber = Double.parseDouble(screenContent);
+        firstNumber = new BigDecimal(screenContent);
         calculatorScreen.append(String.valueOf(operation));
         isOpPressed = true;
         isDot = false;
