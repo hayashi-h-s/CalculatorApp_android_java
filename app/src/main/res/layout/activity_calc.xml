@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="137dp" />
+        app:layout_constraintGuide_begin="52dp" />
 
     <TableLayout
         android:layout_width="0dp"
@@ -24,20 +24,22 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="400dp"
+            android:layout_weight="1"
+            >
 
             <TextView
                 android:id="@+id/tvFormula"
-                android:layout_width="wrap_content"
+                android:layout_width="261dp"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
                 android:layout_span="4"
                 android:layout_weight="1"
                 android:gravity="center|end"
-                android:padding="10dp"
-                android:text="@string/formula_text"
+                android:paddingRight="25dp"
+                android:text="66"
                 android:textColor="@color/colorTextBlack"
-                android:textSize="40sp" />
+                android:textSize="60sp" />
         </TableRow>
         <TableRow
             style="?android:attr/buttonBarStyle"
