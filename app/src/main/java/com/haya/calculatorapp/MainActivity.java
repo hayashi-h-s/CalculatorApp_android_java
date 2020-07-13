@@ -56,100 +56,98 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final int id = view.getId();
-                switch (id){
-                    case R.id.n0:
-                        calculatorScreen.append("0");
-                        break;
-                    case R.id.n1:
-                        calculatorScreen.append("1");
-                        break;
-                    case R.id.n2:
-                        calculatorScreen.append("2");
-                        break;
-                    case R.id.n3:
-                        calculatorScreen.append("3");
-                        break;
-                    case R.id.n4:
-                        calculatorScreen.append("4");
-                        break;
-                    case R.id.n5:
-                        calculatorScreen.append("5");
-                        break;
-                    case R.id.n6:
-                        calculatorScreen.append("6");
-                        break;
-                    case R.id.n7:
-                        calculatorScreen.append("7");
-                        break;
-                    case R.id.n8:
-                        calculatorScreen.append("8");
-                        break;
-                    case R.id.n9:
-                        calculatorScreen.append("9");
-                        break;
-                    case R.id.btClear:
-                        break;
-                    case R.id.btPercent:
-                        break;
-                    case R.id.btTax:
-                        break;
-                    case R.id.btDelete:
-                        break;
-                    case R.id.btDivide:
-                        OpPressed('÷');
-                        break;
-                    case R.id.btMultiply:
-                        OpPressed('×');
-                        break;
-                    case R.id.btSubtract:
-                        OpPressed('-');
-                        break;
-                    case R.id.btAdd:
-                        OpPressed('+');
-                        break;
-                    case R.id.btPoint:
+            final int id = view.getId();
+            switch (id){
+                case R.id.n0:
+                    calculatorScreen.append("0");
+                    break;
+                case R.id.n1:
+                    calculatorScreen.append("1");
+                    break;
+                case R.id.n2:
+                    calculatorScreen.append("2");
+                    break;
+                case R.id.n3:
+                    calculatorScreen.append("3");
+                    break;
+                case R.id.n4:
+                    calculatorScreen.append("4");
+                    break;
+                case R.id.n5:
+                    calculatorScreen.append("5");
+                    break;
+                case R.id.n6:
+                    calculatorScreen.append("6");
+                    break;
+                case R.id.n7:
+                    calculatorScreen.append("7");
+                    break;
+                case R.id.n8:
+                    calculatorScreen.append("8");
+                    break;
+                case R.id.n9:
+                    calculatorScreen.append("9");
+                    break;
+                case R.id.btClear:
+                    break;
+                case R.id.btPercent:
+                    break;
+                case R.id.btTax:
+                    break;
+                case R.id.btDelete:
+                    break;
+                case R.id.btDivide:
+                    OpPressed('÷');
+                    break;
+                case R.id.btMultiply:
+                    OpPressed('×');
+                    break;
+                case R.id.btSubtract:
+                    OpPressed('-');
+                    break;
+                case R.id.btAdd:
+                    OpPressed('+');
+                    break;
+                case R.id.btPoint:
+                    screenContent = calculatorScreen.getText().toString();
+                    secondNumberIndex = screenContent.length() + 1;
+                    if (screenContent.isEmpty() || isOpPressed ) {
+                        return;
+                    }
+                    if (!isDot) {
+                        calculatorScreen.append(".");
+                        isDot = true;
+                    }
+                    break;
+                case R.id.btEqual:
+                    if (isOpPressed){
                         screenContent = calculatorScreen.getText().toString();
-                        secondNumberIndex = screenContent.length() + 1;
-                        if (screenContent.isEmpty() || isOpPressed ) {
+                        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        if (secondNumberString.isEmpty()) {
                             return;
                         }
-                        if (!isDot) {
-                            calculatorScreen.append(".");
-                            isDot = true;
-                        }
-                        break;
-                    case R.id.btEqual:
-                        if (isOpPressed){
-                            screenContent = calculatorScreen.getText().toString();
-                            String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                            if (secondNumberString.isEmpty()) {
+                        double secondNumber = Double.parseDouble(secondNumberString);
+                        if (currentOp == '+'){
+                            secondNumber += firstNumber;
+                        } else if (currentOp == '-'){
+                            secondNumber = firstNumber - secondNumber;
+                        } else if (currentOp == '×') {
+                            secondNumber *= firstNumber;
+                        } else if (currentOp == '÷') {
+                            if (secondNumber == 0) {
                                 return;
                             }
-                            double secondNumber = Double.parseDouble(secondNumberString);
-                            if (currentOp == '+'){
-                                secondNumber += firstNumber;
-                            } else if (currentOp == '-'){
-                                secondNumber = firstNumber - secondNumber;
-
-                            } else if (currentOp == '×') {
-                                secondNumber *= firstNumber;
-                            } else if (currentOp == '÷') {
-                                if (secondNumber == 0) {
-                                    return;
-                                }
-                                secondNumber = firstNumber / secondNumber;
-                            }
-
-                            String result = String.valueOf(secondNumber);
-                            if (result.endsWith(".0")) {
-                                result = result.substring(0, result.length() - 2);
-                            }
-                            calculatorScreen.setText(String.valueOf(result));
-                            isOpPressed = false;
+                            secondNumber = firstNumber / secondNumber;
                         }
-                        break;
-                }
+                        String result = String.valueOf(secondNumber);
+                        if (result.endsWith(".0")) {
+                            result = result.substring(0, result.length() - 2);
+                        }
+                        calculatorScreen.setText(String.valueOf(result));
+                        isOpPressed = false;
+                    }
+                    break;
+            }
             }
         };
         n0.setOnClickListener(calculatorListener);
@@ -176,17 +174,17 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String displayElements = calculatorScreen.getText().toString();
-                int length = displayElements.length();
-                if (length > 0){
-                    String secondNumberString = displayElements.substring(secondNumberIndex,displayElements.length());
-                    if (secondNumberString.isEmpty()) {
-                        isOpPressed = false;
-                        isDot = false;
-                    }
-                    displayElements = displayElements.substring(0,length - 1);
-                    calculatorScreen.setText(displayElements);
+            String displayElements = calculatorScreen.getText().toString();
+            int length = displayElements.length();
+            if (length > 0){
+                String secondNumberString = displayElements.substring(secondNumberIndex,displayElements.length());
+                if (secondNumberString.isEmpty()) {
+                    isOpPressed = false;
+                    isDot = false;
                 }
+                displayElements = displayElements.substring(0,length - 1);
+                calculatorScreen.setText(displayElements);
+            }
             }
         });
 
@@ -213,5 +211,6 @@ public class MainActivity extends AppCompatActivity {
         isOpPressed = true;
         isDot = false;
         currentOp = operation;
+
     }
 }
