@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.btPoint:
                         screenContent = calculatorScreen.getText().toString();
+                        secondNumberIndex = screenContent.length() + 1;
                         if (screenContent.isEmpty() || isOpPressed ) {
                             return;
                         }
@@ -178,6 +179,11 @@ public class MainActivity extends AppCompatActivity {
                 String displayElements = calculatorScreen.getText().toString();
                 int length = displayElements.length();
                 if (length > 0){
+                    String secondNumberString = displayElements.substring(secondNumberIndex,displayElements.length());
+                    if (secondNumberString.isEmpty()) {
+                        isOpPressed = false;
+                        isDot = false;
+                    }
                     displayElements = displayElements.substring(0,length - 1);
                     calculatorScreen.setText(displayElements);
                 }
