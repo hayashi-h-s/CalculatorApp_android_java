@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calc_fix);
+        setContentView(R.layout.activity_calc);
 
         calculatorScreen = findViewById(R.id.tvFormula);
 
@@ -121,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btEqual:
-//                    if (isOpPressed){
                         screenContent = calculatorScreen.getText().toString();
                         String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         if (secondNumberString.isEmpty()) {
@@ -145,8 +144,7 @@ public class MainActivity extends AppCompatActivity {
                             result = result.substring(0, result.length() - 2);
                         }
                         calculatorScreen.setText(String.valueOf(result));
-                        isOpPressed = false;
-//                    }
+                        isOpPressed = false;g
                     break;
                 }
             }
@@ -173,16 +171,16 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            String displayElements = calculatorScreen.getText().toString();
-            int length = displayElements.length();
+            String screenContent = calculatorScreen.getText().toString();
+            int length = screenContent.length();
             if (length > 0){
-                String secondNumberString = displayElements.substring(secondNumberIndex,displayElements.length());
+                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                 if (secondNumberString.isEmpty()) {
                     isOpPressed = false;
                     isDot = false;
                 }
-                displayElements = displayElements.substring(0,length - 1);
-                calculatorScreen.setText(displayElements);
+                screenContent = screenContent.substring(0,length - 1);
+                calculatorScreen.setText(screenContent);
             }
             }
         });
