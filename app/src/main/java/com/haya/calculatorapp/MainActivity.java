@@ -128,16 +128,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                         BigDecimal secondNumber = new BigDecimal(secondNumberString);
                         if (currentOp == '+'){
-                            secondNumber += firstNumber;
+                            secondNumber = secondNumber.add(firstNumber);
                         } else if (currentOp == '-'){
-                            secondNumber = firstNumber - secondNumber;
+                            secondNumber = firstNumber.subtract(secondNumber);
                         } else if (currentOp == '×') {
-                            secondNumber *= firstNumber;
+                            secondNumber = firstNumber.multiply(secondNumber);
                         } else if (currentOp == '÷') {
-                            if (secondNumber == 0) {
+                            if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
                                 return;
                             }
-                            secondNumber = firstNumber / secondNumber;
+                            secondNumber = firstNumber.divide(secondNumber);
                         }
                         String result = String.valueOf(secondNumber);
                         if (result.endsWith(".0")) {
