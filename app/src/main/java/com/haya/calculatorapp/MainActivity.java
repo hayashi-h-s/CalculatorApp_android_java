@@ -207,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         secondNumberIndex = screenContent.length() + 1;
-//        firstNumber = Double.parseDouble(screenContent);
         firstNumber = new BigDecimal(screenContent);
         calculatorScreen.append(String.valueOf(operation));
         isOpPressed = true;
