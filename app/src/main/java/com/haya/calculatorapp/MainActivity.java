@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("8");
                     break;
                 case R.id.n9:
+                    isOpPressed = false;
                     calculatorScreen.append("9");
                     break;
                 case R.id.btClear:
@@ -203,15 +204,22 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         screenContent = calculatorScreen.getText().toString();
-        if (screenContent.isEmpty()) {
+        if ( screenContent.isEmpty() && operation == '-' ) {
+//            secondNumberIndex = screenContent.length() + 1;
+//            firstNumber = new BigDecimal(screenContent);
+            calculatorScreen.append(String.valueOf(operation));
+            isOpPressed = true;
+            isDot = false;
+            currentOp = operation;
+        } else if ( screenContent.isEmpty()) {
             return;
+        } else {
+            secondNumberIndex = screenContent.length() + 1;
+            firstNumber = new BigDecimal(screenContent);
+            calculatorScreen.append(String.valueOf(operation));
+            isOpPressed = true;
+            isDot = false;
+            currentOp = operation;
         }
-        secondNumberIndex = screenContent.length() + 1;
-        firstNumber = new BigDecimal(screenContent);
-        calculatorScreen.append(String.valueOf(operation));
-        isOpPressed = true;
-        isDot = false;
-        currentOp = operation;
-
     }
 }
