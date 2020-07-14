@@ -10,46 +10,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="52dp" />
+        app:layout_constraintGuide_begin="60dp" />
 
-    <TableLayout
+    <TextView
+        android:id="@+id/tvFormula"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="550dp"
+        android:gravity="center|end"
+        android:paddingRight="25dp"
+        android:text="@string/formula_text"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_weight="1" >
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvFormula"
-                android:layout_width="261dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
-                android:layout_span="4"
-                android:layout_weight="1"
-                android:gravity="center|end"
-                android:paddingRight="25dp"
-                android:text="@string/formula_text"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="60dp" />
-        </TableRow>
-        <TableRow
-            style="?android:attr/buttonBarStyle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btClear"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -58,49 +56,9 @@
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/btPercent"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="%"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btTax"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="TAX"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btDelete"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="DEL"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-        </TableRow>
-
-        <TableRow
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
                 android:id="@+id/n7"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -109,48 +67,9 @@
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/n8"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="8"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/n9"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="9"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btDivide"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="÷"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-        </TableRow>>
-        <TableRow
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
                 android:id="@+id/n4"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -159,50 +78,9 @@
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/n5"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="5"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/n6"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="6"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btMultiply"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="×"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-
-        </TableRow>
-
-        <TableRow
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
                 android:id="@+id/n1"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -211,9 +89,52 @@
                 android:textSize="30sp" />
 
             <Button
+                android:id="@+id/n0"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="0"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/n8"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="8"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/n5"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="5"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+            <Button
                 android:id="@+id/n2"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -222,9 +143,52 @@
                 android:textSize="30sp" />
 
             <Button
+                android:id="@+id/btPoint"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="."
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/n9"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="9"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/n6"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="6"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="30sp" />
+
+            <Button
                 android:id="@+id/n3"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -233,50 +197,9 @@
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/btSubtract"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="-"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
-
-        </TableRow>
-
-        <TableRow
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/n0"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="0"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btPoint"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="."
-                android:textColor="@color/colorTextBlack"
-                android:textSize="30sp" />
-
-            <Button
                 android:id="@+id/btEqual"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -284,10 +207,64 @@
                 android:textColor="@color/colorTextBlack"
                 android:textSize="30sp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/btDelete"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="DEL"
+                android:textColor="@color/colorTextBlue"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btDivide"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="÷"
+                android:textColor="@color/colorTextBlue"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btMultiply"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="×"
+                android:textColor="@color/colorTextBlue"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btSubtract"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorBackGround"
+                android:text="-"
+                android:textColor="@color/colorTextBlue"
+                android:textSize="30sp" />
+
             <Button
                 android:id="@+id/btAdd"
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBackGround"
@@ -295,7 +272,6 @@
                 android:textColor="@color/colorTextBlue"
                 android:textSize="30sp" />
 
-
-        </TableRow>
-    </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
