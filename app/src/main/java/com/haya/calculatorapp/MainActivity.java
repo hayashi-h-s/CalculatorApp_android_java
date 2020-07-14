@@ -60,43 +60,44 @@ public class MainActivity extends AppCompatActivity {
             final int id = view.getId();
             switch (id){
                 case R.id.n0:
+                    isOpPressed = false;
                     calculatorScreen.append("0");
                     break;
                 case R.id.n1:
+                    isOpPressed = false;
                     calculatorScreen.append("1");
                     break;
                 case R.id.n2:
+                    isOpPressed = false;
                     calculatorScreen.append("2");
                     break;
                 case R.id.n3:
+                    isOpPressed = false;
                     calculatorScreen.append("3");
                     break;
                 case R.id.n4:
+                    isOpPressed = false;
                     calculatorScreen.append("4");
                     break;
                 case R.id.n5:
+                    isOpPressed = false;
                     calculatorScreen.append("5");
                     break;
                 case R.id.n6:
+                    isOpPressed = false;
                     calculatorScreen.append("6");
                     break;
                 case R.id.n7:
+                    isOpPressed = false;
                     calculatorScreen.append("7");
                     break;
                 case R.id.n8:
+                    isOpPressed = false;
                     calculatorScreen.append("8");
                     break;
                 case R.id.n9:
                     isOpPressed = false;
                     calculatorScreen.append("9");
-                    break;
-                case R.id.btClear:
-                    break;
-                case R.id.btPercent:
-                    break;
-                case R.id.btTax:
-                    break;
-                case R.id.btDelete:
                     break;
                 case R.id.btDivide:
                     OpPressed('÷');
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btEqual:
-                    if (isOpPressed){
+//                    if (isOpPressed){
                         screenContent = calculatorScreen.getText().toString();
                         String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         if (secondNumberString.isEmpty()) {
@@ -147,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                         calculatorScreen.setText(String.valueOf(result));
                         isOpPressed = false;
-                    }
+//                    }
                     break;
-            }
+                }
             }
         };
         n0.setOnClickListener(calculatorListener);
