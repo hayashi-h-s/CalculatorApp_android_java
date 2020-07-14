@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calc);
+        setContentView(R.layout.activity_calc_fix);
 
         calculatorScreen = findViewById(R.id.tvFormula);
 
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         final Button n8 = findViewById(R.id.n8);
         final Button n9 = findViewById(R.id.n9);
         final Button btClear = findViewById(R.id.btClear);
-        final Button btPercent = findViewById(R.id.btPercent);
-        final Button btTax = findViewById(R.id.btTax);
         final Button btDelete = findViewById(R.id.btDelete);
         final Button btDivide = findViewById(R.id.btDivide);
         final Button btMultiply = findViewById(R.id.btMultiply);
@@ -164,8 +162,6 @@ public class MainActivity extends AppCompatActivity {
         n8.setOnClickListener(calculatorListener);
         n9.setOnClickListener(calculatorListener);
         btClear.setOnClickListener(calculatorListener);
-        btPercent.setOnClickListener(calculatorListener);
-        btTax.setOnClickListener(calculatorListener);
         btDelete.setOnClickListener(calculatorListener);
         btDivide.setOnClickListener(calculatorListener);
         btMultiply.setOnClickListener(calculatorListener);

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,47 +12,36 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="60dp" />
 
-    <TableLayout
+    <TextView
+        android:id="@+id/tvFormula"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="550dp"
+        android:paddingRight="25dp"
+        android:text="@string/formula_text"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tvFormula"
-                android:layout_width="261dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
-                android:layout_span="4"
-                android:layout_weight="1"
-                android:gravity="center|end"
-                android:paddingRight="25dp"
-                android:text="@string/formula_text"
-                android:textColor="@color/colorTextBlack"
-                android:textSize="60dp" />
-
-        </TableRow>
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="200dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btClear"
@@ -111,6 +99,7 @@
                 android:textSize="30sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -164,6 +153,7 @@
                 android:textSize="30sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -217,6 +207,7 @@
                 android:textSize="30sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
