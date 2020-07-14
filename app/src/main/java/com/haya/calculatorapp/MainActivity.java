@@ -206,8 +206,6 @@ public class MainActivity extends AppCompatActivity {
         }
         screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
-//            secondNumberIndex = screenContent.length() + 1;
-//            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
