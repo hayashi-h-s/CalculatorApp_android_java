@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                             if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
                                 return;
                             }
-                            secondNumber = firstNumber.divide(secondNumber);
+                            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                         }
                         String result = String.valueOf(secondNumber);
                         if (result.endsWith(".0")) {
