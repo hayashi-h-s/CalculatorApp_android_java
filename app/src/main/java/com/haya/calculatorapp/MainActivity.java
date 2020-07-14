@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isOpPressed = false;
 
-    private BigDecimal firstNumber = new BigDecimal(0);
+    private BigDecimal firstNumber;
 
     private int secondNumberIndex = 0;
 
