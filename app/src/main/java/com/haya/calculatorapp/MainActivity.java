@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                btDelete.setText("DEL");
+
             final int id = view.getId();
             switch (id){
                 case R.id.n0:
@@ -144,7 +146,8 @@ public class MainActivity extends AppCompatActivity {
                             result = result.substring(0, result.length() - 2);
                         }
                         calculatorScreen.setText(String.valueOf(result));
-                        isOpPressed = false;g
+                        isOpPressed = false;
+                        btDelete.setText("C");
                     break;
                 }
             }
