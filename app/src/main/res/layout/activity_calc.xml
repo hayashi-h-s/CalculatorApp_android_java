@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:gravity="center|end"
                 android:paddingRight="25dp"
-                android:text="0"
+                android:text="@string/formula_text"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="60dp" />
         </TableRow>
