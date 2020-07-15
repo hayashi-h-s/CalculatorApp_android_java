@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         final Button n7 = findViewById(R.id.n7);
         final Button n8 = findViewById(R.id.n8);
         final Button n9 = findViewById(R.id.n9);
-        final Button btClear = findViewById(R.id.btClear);
+//        final Button btClear = findViewById(R.id.btClear);
         final Button btDelete = findViewById(R.id.btDelete);
         final Button btDivide = findViewById(R.id.btDivide);
         final Button btMultiply = findViewById(R.id.btMultiply);
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         n7.setOnClickListener(calculatorListener);
         n8.setOnClickListener(calculatorListener);
         n9.setOnClickListener(calculatorListener);
-        btClear.setOnClickListener(calculatorListener);
+//        btClear.setOnClickListener(calculatorListener);
         btDelete.setOnClickListener(calculatorListener);
         btDivide.setOnClickListener(calculatorListener);
         btMultiply.setOnClickListener(calculatorListener);
@@ -188,14 +188,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isOpPressed = false;
-                isDot = false;
-                calculatorScreen.setText("");
-            }
-        });
+//        btClear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                isOpPressed = false;
+//                isDot = false;
+//                calculatorScreen.setText("");
+//            }
+//        });
     }
     private void OpPressed(char operation) {
         if (isOpPressed) {

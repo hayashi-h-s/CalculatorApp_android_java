@@ -44,16 +44,13 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btClear"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorBackGround"
-                android:text="C"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
+<!--            <ImageButton-->
+<!--                android:id="@+id/btClear"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/colorBackGround"-->
+<!--                android:layout_weight="1"-->
+<!--                app:srcCompat="@drawable/ic_baseline_backspace_24"/>-->
 
             <Button
                 android:id="@+id/n7"
