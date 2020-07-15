@@ -15,13 +15,17 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isOpPressed = false;
 
+    private boolean isDot = false;
+
+    private boolean clearFunc = false;
+
     private BigDecimal firstNumber;
 
     private int secondNumberIndex = 0;
 
     private char currentOp;
 
-    private boolean isDot = false;
+
 
     private TextView calculatorScreen;
 
@@ -147,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         calculatorScreen.setText(String.valueOf(result));
                         isOpPressed = false;
+                        clearFunc = true;
                         btDelete.setText("C");
                     break;
                 }
@@ -174,17 +179,23 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            String screenContent = calculatorScreen.getText().toString();
-            int length = screenContent.length();
-            if (length > 0){
-                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                if (secondNumberString.isEmpty()) {
+                String screenContent = calculatorScreen.getText().toString();
+                if (!clearFunc) {
+                    int length = screenContent.length();
+                    if (length > 0 ){
+                        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        if (secondNumberString.isEmpty()) {
+                            isOpPressed = false;
+                            isDot = false;
+                        }
+                        screenContent = screenContent.substring(0,length - 1);
+                        calculatorScreen.setText(screenContent);
+                    }
+                } else {
                     isOpPressed = false;
                     isDot = false;
+                    calculatorScreen.setText("");
                 }
-                screenContent = screenContent.substring(0,length - 1);
-                calculatorScreen.setText(screenContent);
-            }
             }
         });
 
