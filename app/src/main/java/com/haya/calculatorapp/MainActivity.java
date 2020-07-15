@@ -62,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
                 btDelete.setText("DEL");
 
-            final int id = view.getId();
+                String screenContentFix = calculatorScreen.getText().toString();
+                screenContent = screenContentFix.replace(",", "");
+
+                final int id = view.getId();
             switch (id){
                 case R.id.n0:
                     isOpPressed = false;
@@ -117,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('+');
                     break;
                 case R.id.btPoint:
-                    screenContent = calculatorScreen.getText().toString();
+//                    screenContent = calculatorScreen.getText().toString();
                     secondNumberIndex = screenContent.length() + 1;
                     if (screenContent.isEmpty() || isOpPressed ) {
                         return;
@@ -128,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btEqual:
-                    screenContent = calculatorScreen.getText().toString();
+//                    screenContent = calculatorScreen.getText().toString();
                     String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
                     if (secondNumberString.isEmpty()) {
@@ -186,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String screenContent = calculatorScreen.getText().toString();
+//                String screenContent = calculatorScreen.getText().toString();
                 if (!clearFunc) {
                     int length = screenContent.length();
                     if (length > 0 ){
@@ -212,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
         if (isOpPressed) {
             return;
         }
-        screenContent = calculatorScreen.getText().toString();
+//        screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
