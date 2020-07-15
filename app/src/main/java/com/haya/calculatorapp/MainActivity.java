@@ -158,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                     if (result.endsWith(".0")) {
                         result = result.substring(0, result.length() - 2);
                     }
-
                     calculatorScreen.setText(String.valueOf(result));
                     btDelete.setText("C");
                     isOpPressed = false;
@@ -190,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                String screenContent = calculatorScreen.getText().toString();
+                String screenContentFix = calculatorScreen.getText().toString();
+                screenContent = screenContentFix.replace(",", "");
+
                 if (!clearFunc) {
                     int length = screenContent.length();
                     if (length > 0 ){
