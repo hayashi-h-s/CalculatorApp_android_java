@@ -156,11 +156,10 @@ public class MainActivity extends AppCompatActivity {
                         result = result.substring(0, result.length() - 2);
                     }
 
-                    calculatorScreen.setText(result);
+                    calculatorScreen.setText(String.valueOf(result));
                     btDelete.setText("C");
                     isOpPressed = false;
                     clearFunc = true;
-
                     break;
                 }
             }
