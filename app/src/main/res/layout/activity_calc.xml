@@ -270,7 +270,8 @@
                 android:background="@color/colorBackGround"
                 android:text="+"
                 android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                />
 
         </LinearLayout>
     </LinearLayout>
