@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calc_sumple);
+        setContentView(R.layout.activity_calc);
 
         calculatorScreen = findViewById(R.id.tvFormula);
 
@@ -207,21 +207,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        btClear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                isOpPressed = false;
-//                isDot = false;
-//                calculatorScreen.setText("");
-//            }
-//        });
     }
     private void OpPressed(char operation) {
         if (isOpPressed) {
             return;
         }
-        clearFunc = false;
         screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
@@ -238,5 +228,6 @@ public class MainActivity extends AppCompatActivity {
             isDot = false;
             currentOp = operation;
         }
+        clearFunc = false;
     }
 }
