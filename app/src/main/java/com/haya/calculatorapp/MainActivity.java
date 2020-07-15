@@ -128,32 +128,39 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btEqual:
-                        screenContent = calculatorScreen.getText().toString();
-                        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                        if (secondNumberString.isEmpty()) {
+                    screenContent = calculatorScreen.getText().toString();
+                    String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+
+                    if (secondNumberString.isEmpty()) {
+                        return;
+                    }
+
+                    BigDecimal secondNumber = new BigDecimal(secondNumberString);
+
+                    if (currentOp == '+'){
+                        secondNumber = secondNumber.add(firstNumber);
+                    } else if (currentOp == '-'){
+                        secondNumber = firstNumber.subtract(secondNumber);
+                    } else if (currentOp == '×') {
+                        secondNumber = firstNumber.multiply(secondNumber);
+                    } else if (currentOp == '÷') {
+                        if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
                             return;
                         }
-                        BigDecimal secondNumber = new BigDecimal(secondNumberString);
-                        if (currentOp == '+'){
-                            secondNumber = secondNumber.add(firstNumber);
-                        } else if (currentOp == '-'){
-                            secondNumber = firstNumber.subtract(secondNumber);
-                        } else if (currentOp == '×') {
-                            secondNumber = firstNumber.multiply(secondNumber);
-                        } else if (currentOp == '÷') {
-                            if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
-                                return;
-                            }
-                            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
-                        }
-                        String result = nf.format(secondNumber);
-                        if (result.endsWith(".0")) {
-                            result = result.substring(0, result.length() - 2);
-                        }
-                        calculatorScreen.setText(result);
-                        isOpPressed = false;
-                        clearFunc = true;
-                        btDelete.setText("C");
+                        secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+                    }
+
+                    String result = nf.format(secondNumber);
+
+                    if (result.endsWith(".0")) {
+                        result = result.substring(0, result.length() - 2);
+                    }
+
+                    calculatorScreen.setText(result);
+                    btDelete.setText("C");
+                    isOpPressed = false;
+                    clearFunc = true;
+
                     break;
                 }
             }
@@ -231,5 +238,6 @@ public class MainActivity extends AppCompatActivity {
             isDot = false;
             currentOp = operation;
         }
+        clearFunc = false;
     }
 }
