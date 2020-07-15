@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isDot = false;
 
     private TextView calculatorScreen;
+
+    NumberFormat nf = NumberFormat.getNumberInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
                         btDelete.setText("C");
                     break;
                 }
+                screenContent = calculatorScreen.getText().toString();
+                BigDecimal resultNumber = new BigDecimal(screenContent);
+                String result = nf.format(resultNumber);
+                calculatorScreen.setText(result);
+
             }
         };
         n0.setOnClickListener(calculatorListener);
