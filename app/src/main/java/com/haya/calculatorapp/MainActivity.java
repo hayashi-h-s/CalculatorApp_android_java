@@ -146,11 +146,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                             secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                         }
-                        String result = String.valueOf(secondNumber);
-                        if (result.endsWith(".0")) {
-                            result = result.substring(0, result.length() - 2);
-                        }
+                        long resultNumber = secondNumber.longValue();
+                        String result = String.format("%,d",resultNumber);
                         calculatorScreen.setText(result);
+
+//                        String result = String.format("%,d",resultNumber);
+//                        if (result.endsWith(".0")) {
+//                            result = result.substring(0, result.length() - 2);
+//                        }
+//                        calculatorScreen.setText(result);
                         isOpPressed = false;
                         clearFunc = true;
                         btDelete.setText("C");
