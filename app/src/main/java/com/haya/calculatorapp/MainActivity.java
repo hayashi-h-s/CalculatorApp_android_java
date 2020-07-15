@@ -222,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
         if (isOpPressed) {
             return;
         }
+        clearFunc = false;
         screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
@@ -238,6 +239,5 @@ public class MainActivity extends AppCompatActivity {
             isDot = false;
             currentOp = operation;
         }
-        clearFunc = false;
     }
 }
