@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
                 BigDecimal resultNumber = new BigDecimal(screenContent);
                 String result = nf.format(resultNumber);
                 calculatorScreen.setText(result);
-
             }
         };
         n0.setOnClickListener(calculatorListener);
