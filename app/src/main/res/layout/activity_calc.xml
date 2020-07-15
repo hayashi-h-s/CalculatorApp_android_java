@@ -108,7 +108,6 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-
             <Button
                 android:id="@+id/n8"
                 style="?android:attr/buttonBarButtonStyle"
@@ -214,7 +213,9 @@
             android:layout_height="match_parent"
             android:layout_marginTop="200dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            androiid:b="@drawable/border"
+            >
 
 
             <Button
