@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
     private char currentOp;
 
-
-
     private TextView calculatorScreen;
+
+    NumberFormat nf = NumberFormat.getNumberInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calc);
+        setContentView(R.layout.activity_calc_sumple);
 
         calculatorScreen = findViewById(R.id.tvFormula);
 
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         if (result.endsWith(".0")) {
                             result = result.substring(0, result.length() - 2);
                         }
-                        calculatorScreen.setText(String.valueOf(result));
+                        calculatorScreen.setText(result);
                         isOpPressed = false;
                         clearFunc = true;
                         btDelete.setText("C");
@@ -194,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     isOpPressed = false;
                     isDot = false;
+                    clearFunc = false;
                     calculatorScreen.setText("");
                 }
             }
