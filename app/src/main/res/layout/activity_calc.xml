@@ -213,17 +213,13 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-
-            <Button
+            <ImageButton
                 android:id="@+id/btDelete"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="@color/colorBackGround"
-                android:text="DEL"
-                android:textColor="@color/colorTextBlue"
-                android:textSize="30sp" />
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_backspace_24"/>
 
             <Button
                 android:id="@+id/btDivide"

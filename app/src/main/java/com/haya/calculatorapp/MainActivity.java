@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         final Button n8 = findViewById(R.id.n8);
         final Button n9 = findViewById(R.id.n9);
 //        final Button btClear = findViewById(R.id.btClear);
-        final Button btDelete = findViewById(R.id.btDelete);
+        final ImageButton btDelete = findViewById(R.id.btDelete);
         final Button btDivide = findViewById(R.id.btDivide);
         final Button btMultiply = findViewById(R.id.btMultiply);
         final Button btSubtract = findViewById(R.id.btSubtract);
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                btDelete.setText("DEL");
+//                btDelete.setText("DEL");
 
                 String screenContentFix = calculatorScreen.getText().toString();
                 screenContent = screenContentFix.replace(",", "");
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         result = result.substring(0, result.length() - 2);
                     }
                     calculatorScreen.setText(String.valueOf(result));
-                    btDelete.setText("C");
+//                    btDelete.setText("C");
                     isOpPressed = false;
                     clearFunc = true;
                     break;
@@ -208,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                     isDot = false;
                     clearFunc = false;
                     calculatorScreen.setText("");
-                    btDelete.setText("DEL");
+//                    btDelete.setText("DEL");
                 }
             }
         });
