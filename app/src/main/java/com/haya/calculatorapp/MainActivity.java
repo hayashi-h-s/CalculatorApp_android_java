@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
                 String screenContentFix = calculatorScreen.getText().toString();
                 screenContent = screenContentFix.replace(",", "");
-
                 final int id = view.getId();
+
             switch (id){
                 case R.id.n0:
                     isOpPressed = false;
@@ -163,7 +163,9 @@ public class MainActivity extends AppCompatActivity {
                     isOpPressed = false;
                     clearFunc = true;
                     break;
-                }
+            }
+            screenContent = calculatorScreen.getText().toString();
+            calculatorScreen.setText(screenContent);
             }
         };
         n0.setOnClickListener(calculatorListener);
