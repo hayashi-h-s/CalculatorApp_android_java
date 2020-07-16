@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView calculatorScreen;
 
+    private int BORDER_WEIGHT = 2;
+
     NumberFormat nf = NumberFormat.getNumberInstance();
 
     @Override

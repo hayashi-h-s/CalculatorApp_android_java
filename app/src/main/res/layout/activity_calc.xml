@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="60dp" />
+        app:layout_constraintGuide_begin="75dp" />
 
     <TextView
         android:id="@+id/tvFormula"
@@ -32,20 +32,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+    <TextView
+        android:id="@+id/topBorder"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/colorBorderLine"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -106,7 +116,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -160,7 +169,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -211,13 +219,18 @@
 
         </LinearLayout>
 
+
+        <TextView
+            android:id="@+id/ruledLine"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBorderLine" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
             android:layout_weight="1"
             android:orientation="vertical">
-
 
             <Button
                 android:id="@+id/btDelete"

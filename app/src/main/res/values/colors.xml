@@ -3,4 +3,6 @@
     <color name="colorTextBlue">#426fe3</color>
     <color name="colorTextBlack">#000000</color>
     <color name="colorBackGround">#edf2fc</color>
+    <color name="colorBorderLine">#e6e6e6</color>
+
 </resources>
