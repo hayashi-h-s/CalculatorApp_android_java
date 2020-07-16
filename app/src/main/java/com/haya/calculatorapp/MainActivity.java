@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isDot = false;
 
+    private boolean isEqual = false;
+
     private BigDecimal firstNumber;
 
     private int secondNumberIndex = 0;
@@ -127,8 +129,69 @@ public class MainActivity extends AppCompatActivity {
                         isDot = true;
                     }
                     break;
+                case R.id.btDelete:
+//                    String screenContentFix = calculatorScreen.getText().toString();
+//                    screenContent = screenContentFix.replace(",", "");
+                    int length = screenContent.length();
+                    if (length > 0 ){
+                        if (isOpPressed || isDot) {
+                            isOpPressed = false;
+                            isDot = false;
+                        }
+                        screenContent = screenContent.substring(0,length - 1);
+                        calculatorScreen.setText(screenContent);
+                    }
+                    break;
+                case R.id.btClear:
+                    isOpPressed = false;
+                    isDot = false;
+                    calculatorScreen.setText("");
+                    btDelete.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.btEqual:
+                    String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+
+                    if (secondNumberString.isEmpty()) {
+                        return;
+                    }
+
+                    BigDecimal secondNumber = new BigDecimal(secondNumberString);
+
+                    if (currentOp == '+'){
+                        secondNumber = secondNumber.add(firstNumber);
+                    } else if (currentOp == '-'){
+                        secondNumber = firstNumber.subtract(secondNumber);
+                    } else if (currentOp == '×') {
+                        secondNumber = firstNumber.multiply(secondNumber);
+                    } else if (currentOp == '÷') {
+                        if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
+                            return;
+                        }
+                        secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+                    }
+
+                    String resultNumber = secondNumber.toString();
+                    String result = String.format(resultNumber);
+
+                    if (result.endsWith(".0")) {
+                        result = result.substring(0, result.length() - 13);
+                    }
+
+                    calculatorScreen.setText(String.valueOf(result));
+
+                    isOpPressed = false;
+
+                    isEqual = true;
+
+                    break;
             }
-            btDelete.setVisibility(View.VISIBLE);
+            if (isEqual) {
+                btDelete.setVisibility(View.INVISIBLE);
+                isEqual = false;
+            } else {
+                btDelete.setVisibility(View.VISIBLE);
+            }
+//            文字の幅を自動で変える処理
             screenContent = calculatorScreen.getText().toString();
             calculatorScreen.setText(screenContent);
             }
@@ -152,76 +215,75 @@ public class MainActivity extends AppCompatActivity {
         btEqual.setOnClickListener(calculatorListener);
         btPoint.setOnClickListener(calculatorListener);
 
-        btDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            String screenContentFix = calculatorScreen.getText().toString();
-            screenContent = screenContentFix.replace(",", "");
+//        btDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            String screenContentFix = calculatorScreen.getText().toString();
+//            screenContent = screenContentFix.replace(",", "");
+//
+//            int length = screenContent.length();
+//            if (length > 0 ){
+//                if (isOpPressed || isDot) {
+//                    isOpPressed = false;
+//                    isDot = false;
+//                }
+//                screenContent = screenContent.substring(0,length - 1);
+//                calculatorScreen.setText(screenContent);
+//                }
+//            }
+//        });
 
-            int length = screenContent.length();
-            if (length > 0 ){
-                if (isOpPressed || isDot) {
-                    isOpPressed = false;
-                    isDot = false;
-                }
-                screenContent = screenContent.substring(0,length - 1);
-                screenContent = screenContent.substring(0,length - 1);
-                calculatorScreen.setText(screenContent);
-                }
-            }
-        });
+//        btClear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                isOpPressed = false;
+//                isDot = false;
+//                calculatorScreen.setText("");
+//                btDelete.setVisibility(View.VISIBLE);
+//            }
+//        });
 
-        btClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isOpPressed = false;
-                isDot = false;
-                calculatorScreen.setText("");
-                btDelete.setVisibility(View.VISIBLE);
-            }
-        });
-
-        btEqual.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String screenContentFix = calculatorScreen.getText().toString();
-                screenContent = screenContentFix.replace(",", "");
-                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-
-                if (secondNumberString.isEmpty()) {
-                    return;
-                }
-
-                BigDecimal secondNumber = new BigDecimal(secondNumberString);
-
-                if (currentOp == '+'){
-                    secondNumber = secondNumber.add(firstNumber);
-                } else if (currentOp == '-'){
-                    secondNumber = firstNumber.subtract(secondNumber);
-                } else if (currentOp == '×') {
-                    secondNumber = firstNumber.multiply(secondNumber);
-                } else if (currentOp == '÷') {
-                    if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
-                        return;
-                    }
-                    secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
-                }
-
-                String resultNumber = secondNumber.toString();
-                String result = String.format(resultNumber);
-
-                if (result.endsWith(".0")) {
-                    result = result.substring(0, result.length() - 2);
-                }
-
-                calculatorScreen.setText(String.valueOf(result));
-
-                isOpPressed = false;
-
-                btDelete.setVisibility(View.INVISIBLE);
-            }
-        });
+//        btEqual.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                String screenContentFix = calculatorScreen.getText().toString();
+//                screenContent = screenContentFix.replace(",", "");
+//                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+//
+//                if (secondNumberString.isEmpty()) {
+//                    return;
+//                }
+//
+//                BigDecimal secondNumber = new BigDecimal(secondNumberString);
+//
+//                if (currentOp == '+'){
+//                    secondNumber = secondNumber.add(firstNumber);
+//                } else if (currentOp == '-'){
+//                    secondNumber = firstNumber.subtract(secondNumber);
+//                } else if (currentOp == '×') {
+//                    secondNumber = firstNumber.multiply(secondNumber);
+//                } else if (currentOp == '÷') {
+//                    if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
+//                        return;
+//                    }
+//                    secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+//                }
+//
+//                String resultNumber = secondNumber.toString();
+//                String result = String.format(resultNumber);
+//
+//                if (result.endsWith(".0")) {
+//                    result = result.substring(0, result.length() - 2);
+//                }
+//
+//                calculatorScreen.setText(String.valueOf(result));
+//
+//                isOpPressed = false;
+//
+//                btDelete.setVisibility(View.INVISIBLE);
+//            }
+//        });
     }
     private void OpPressed(char operation) {
         if (isOpPressed) {
