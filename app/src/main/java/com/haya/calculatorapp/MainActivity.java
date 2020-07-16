@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BigDecimal firstNumber;
 
-    private int secondNumberIndex = 0;
+    private int secondNumberIndex;
 
     private char currentOp;
 
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (currentOp == '×') {
                         secondNumber = firstNumber.multiply(secondNumber);
                     } else if (currentOp == '÷') {
-                        if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
+                        if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
                             return;
                         }
                         secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
         if (isOpPressed) {
             return;
         }
-//        screenContent = calculatorScreen.getText().toString();
+        screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
