@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 screenContent = screenContent.substring(0,length - 1);
                 screenContent = screenContent.substring(0,length - 1);
                 calculatorScreen.setText(screenContent);
-            }
+                }
             }
         });
 
