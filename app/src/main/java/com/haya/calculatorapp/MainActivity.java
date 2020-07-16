@@ -59,10 +59,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                btDelete.setText("DEL");
-
                 String screenContentFix = calculatorScreen.getText().toString();
                 screenContent = screenContentFix.replace(",", "");
+
                 final int id = view.getId();
 
             switch (id){
@@ -119,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('+');
                     break;
                 case R.id.btPoint:
-//                    screenContent = calculatorScreen.getText().toString();
                     secondNumberIndex = screenContent.length() + 1;
                     if (screenContent.isEmpty() || isOpPressed ) {
                         return;
@@ -129,43 +127,8 @@ public class MainActivity extends AppCompatActivity {
                         isDot = true;
                     }
                     break;
-                case R.id.btEqual:
-//                    screenContent = calculatorScreen.getText().toString();
-                    String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-
-                    if (secondNumberString.isEmpty()) {
-                        return;
-                    }
-
-                    BigDecimal secondNumber = new BigDecimal(secondNumberString);
-
-                    if (currentOp == '+'){
-                        secondNumber = secondNumber.add(firstNumber);
-                    } else if (currentOp == '-'){
-                        secondNumber = firstNumber.subtract(secondNumber);
-                    } else if (currentOp == '×') {
-                        secondNumber = firstNumber.multiply(secondNumber);
-                    } else if (currentOp == '÷') {
-                        if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
-                            return;
-                        }
-                        secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
-                    }
-
-                    String result = nf.format(secondNumber);
-
-                    if (result.endsWith(".0")) {
-                        result = result.substring(0, result.length() - 2);
-                    }
-
-                    calculatorScreen.setText(String.valueOf(result));
-
-                    isOpPressed = false;
-
-                    btDelete.setVisibility(View.INVISIBLE);
-
-                    break;
             }
+            btDelete.setVisibility(View.VISIBLE);
             screenContent = calculatorScreen.getText().toString();
             calculatorScreen.setText(screenContent);
             }
@@ -192,17 +155,16 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String screenContent = calculatorScreen.getText().toString();
                 String screenContentFix = calculatorScreen.getText().toString();
                 screenContent = screenContentFix.replace(",", "");
 
                 int length = screenContent.length();
                 if (length > 0 ){
-                    String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    if (secondNumberString.isEmpty()) {
+                    if (isOpPressed || isDot) {
                         isOpPressed = false;
                         isDot = false;
                     }
+                    screenContent = screenContent.substring(0,length - 1);
                     screenContent = screenContent.substring(0,length - 1);
                     calculatorScreen.setText(screenContent);
                 }
@@ -216,6 +178,47 @@ public class MainActivity extends AppCompatActivity {
                 isDot = false;
                 calculatorScreen.setText("");
                 btDelete.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String screenContentFix = calculatorScreen.getText().toString();
+                screenContent = screenContentFix.replace(",", "");
+                String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+
+                if (secondNumberString.isEmpty()) {
+                    return;
+                }
+
+                BigDecimal secondNumber = new BigDecimal(secondNumberString);
+
+                if (currentOp == '+'){
+                    secondNumber = secondNumber.add(firstNumber);
+                } else if (currentOp == '-'){
+                    secondNumber = firstNumber.subtract(secondNumber);
+                } else if (currentOp == '×') {
+                    secondNumber = firstNumber.multiply(secondNumber);
+                } else if (currentOp == '÷') {
+                    if ( secondNumber.compareTo(BigDecimal.ZERO)==0 ) {
+                        return;
+                    }
+                    secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+                }
+
+                String result = nf.format(secondNumber);
+
+                if (result.endsWith(".0")) {
+                    result = result.substring(0, result.length() - 2);
+                }
+
+                calculatorScreen.setText(String.valueOf(result));
+
+                isOpPressed = false;
+
+                btDelete.setVisibility(View.INVISIBLE);
             }
         });
     }
