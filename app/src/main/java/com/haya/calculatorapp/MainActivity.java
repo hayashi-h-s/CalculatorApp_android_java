@@ -155,19 +155,19 @@ public class MainActivity extends AppCompatActivity {
         btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String screenContentFix = calculatorScreen.getText().toString();
-                screenContent = screenContentFix.replace(",", "");
+            String screenContentFix = calculatorScreen.getText().toString();
+            screenContent = screenContentFix.replace(",", "");
 
-                int length = screenContent.length();
-                if (length > 0 ){
-                    if (isOpPressed || isDot) {
-                        isOpPressed = false;
-                        isDot = false;
-                    }
-                    screenContent = screenContent.substring(0,length - 1);
-                    screenContent = screenContent.substring(0,length - 1);
-                    calculatorScreen.setText(screenContent);
+            int length = screenContent.length();
+            if (length > 0 ){
+                if (isOpPressed || isDot) {
+                    isOpPressed = false;
+                    isDot = false;
                 }
+                screenContent = screenContent.substring(0,length - 1);
+                screenContent = screenContent.substring(0,length - 1);
+                calculatorScreen.setText(screenContent);
+            }
             }
         });
 
