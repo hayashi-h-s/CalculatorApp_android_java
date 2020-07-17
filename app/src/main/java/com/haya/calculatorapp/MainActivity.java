@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isDot = false;
 
+    private boolean isZero = false;
+
     private boolean isEqual = false;
 
     private BigDecimal firstNumber;
@@ -68,8 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
             switch (id){
                 case R.id.n0:
-                    isOpPressed = false;
-                    calculatorScreen.append("0");
+                    if ( (isDot = false)  &&  (isZero = true) ) {
+                        return;
+                    } else {
+                        isZero = true;
+                        isOpPressed = false;
+                        calculatorScreen.append("0");
+                    }
                     break;
                 case R.id.n1:
                     isOpPressed = false;
