@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
     private String zero = "0";
 
+    private String firstNumberString;
+
+    private String secondNumberString;
+
     private boolean isOpPressed = false;
 
     private boolean isDot = false;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private BigDecimal resultNumber;
 
     private int secondNumberIndex;
+
+    private int firstNumberIndex;
 
     private char currentOp;
 
@@ -86,73 +92,73 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     } else if (isDot){
                         isZero = false;
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         calculatorScreen.append("0");
                     } else if (!isZero){
                         isZero = true;
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         calculatorScreen.append("0");
                     }
                     break;
                 case R.id.n1:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("1");
                     }
                     break;
                 case R.id.n2:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("2");
                     }
                     break;
                 case R.id.n3:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("3");
                     }
                     break;
                 case R.id.n4:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("4");
                     }
                     break;
                 case R.id.n5:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("5");
                     }
                     break;
                 case R.id.n6:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("6");
                     }
                     break;
                 case R.id.n7:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("7");
                     }
                     break;
                 case R.id.n8:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("8");
                     }
                     break;
                 case R.id.n9:
                     if (!isZero) {
-                        isOpPressed = false;
+//                        isOpPressed = false;
                         isZero = false;
                         calculatorScreen.append("9");
                     }
@@ -201,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     Equal();
                     break;
             }
+
             if (isEqual) {
                 btDelete.setVisibility(View.INVISIBLE);
                 isEqual = false;
@@ -208,8 +215,22 @@ public class MainActivity extends AppCompatActivity {
                 btDelete.setVisibility(View.VISIBLE);
             }
 //            文字の幅を自動で変える処理
+
             screenContent = calculatorScreen.getText().toString();
-            calculatorScreen.setText(screenContent);
+//
+//            secondNumberIndex = screenContent.length() + 1;
+//            secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+
+//            if (!(screenContent.isEmpty()) && !isOpPressed && secondNumberString.isEmpty()) {
+//                firstNumberIndex = screenContent.length();
+//                firstNumberString = screenContent.substring(0,firstNumberIndex);
+//                firstNumber = new BigDecimal(firstNumberString);
+//            }
+
+//            secondNumber = new BigDecimal(secondNumberString);
+
+
+                calculatorScreen.setText(screenContent);
 //            Toast.makeText(MainActivity.this, str,Toast.LENGTH_SHORT).show();
             }
         };
@@ -235,10 +256,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void OpPressed(char operation) {
 
+//        screenContent = calculatorScreen.getText().toString();
         if (isOpPressed) {
             return;
         }
-        screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
@@ -259,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Equal(){
-        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
         if (secondNumberString.isEmpty()) {
             return;
