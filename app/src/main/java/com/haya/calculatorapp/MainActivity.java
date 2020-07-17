@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private String screenContent;
@@ -30,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isEqual = false;
 
     private BigDecimal firstNumber;
+
+    private BigDecimal secondNumber;
 
     private int secondNumberIndex;
 
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
-                    BigDecimal secondNumber = new BigDecimal(secondNumberString);
+                    secondNumber = new BigDecimal(secondNumberString);
 
                     if (currentOp == '+'){
                         secondNumber = secondNumber.add(firstNumber);
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 //            文字の幅を自動で変える処理
             screenContent = calculatorScreen.getText().toString();
             calculatorScreen.setText(screenContent);
-            Toast.makeText(MainActivity.this, "A",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, str,Toast.LENGTH_SHORT).show();
             }
         };
         n0.setOnClickListener(calculatorListener);
