@@ -240,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
 //            文字の幅を自動で変える処理
             screenContent = calculatorScreen.getText().toString();
             calculatorScreen.setText(screenContent);
+            Toast.makeText(MainActivity.this, "A",Toast.LENGTH_SHORT).show();
             }
         };
         n0.setOnClickListener(calculatorListener);
