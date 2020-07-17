@@ -167,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                         secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                     }
 
-                    String resultNumber = secondNumber.toString();
-                    String result = String.format(resultNumber);
+//                    String resultNumber = secondNumber.toString();
+                    String result = nf.format(secondNumber);
 
                     if (result.endsWith(".0")) {
                         result = result.substring(0, result.length() - 2);
