@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('+');
                     break;
                 case R.id.btPoint:
-                    secondNumberIndex = screenContent.length() + 1;
+//                    secondNumberIndex = screenContent.length() + 1;
                     if (screenContent.isEmpty() || isOpPressed ) {
                         return;
                     }
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     String result = String.format(resultNumber);
 
                     if (result.endsWith(".0")) {
-                        result = result.substring(0, result.length() - 13);
+                        result = result.substring(0, result.length() - 2);
                     }
 
                     calculatorScreen.setText(String.valueOf(result));
@@ -289,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
         if (isOpPressed) {
             return;
         }
-//        screenContent = calculatorScreen.getText().toString();
+        screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
