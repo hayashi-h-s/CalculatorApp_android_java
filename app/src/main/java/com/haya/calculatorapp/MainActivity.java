@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String screenContentFix = calculatorScreen.getText().toString();
-//                if (screenContentFix == zero) {
-//                    Toast.makeText(MainActivity.this, "大吉", Toast.LENGTH_SHORT).show();
-//                }
+                if (screenContentFix == zero) {
+                    isZero = true;
+                }
                 screenContent = screenContentFix.replace(",", "");
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
@@ -85,47 +85,74 @@ public class MainActivity extends AppCompatActivity {
                         isZero = false;
                         isOpPressed = false;
                         calculatorScreen.append("0");
-                    } else {
+                    } else if (!isZero){
                         isZero = true;
                         isOpPressed = false;
                         calculatorScreen.append("0");
                     }
                     break;
                 case R.id.n1:
-                    isOpPressed = false;
-                    calculatorScreen.append("1");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("1");
+                    }
                     break;
                 case R.id.n2:
-                    isOpPressed = false;
-                    calculatorScreen.append("2");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("2");
+                    }
                     break;
                 case R.id.n3:
-                    isOpPressed = false;
-                    calculatorScreen.append("3");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("3");
+                    }
                     break;
                 case R.id.n4:
-                    isOpPressed = false;
-                    calculatorScreen.append("4");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("4");
+                    }
                     break;
                 case R.id.n5:
-                    isOpPressed = false;
-                    calculatorScreen.append("5");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("5");
+                    }
                     break;
                 case R.id.n6:
-                    isOpPressed = false;
-                    calculatorScreen.append("6");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("6");
+                    }
                     break;
                 case R.id.n7:
-                    isOpPressed = false;
-                    calculatorScreen.append("7");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("7");
+                    }
                     break;
                 case R.id.n8:
-                    isOpPressed = false;
-                    calculatorScreen.append("8");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("8");
+                    }
                     break;
                 case R.id.n9:
-                    isOpPressed = false;
-                    calculatorScreen.append("9");
+                    if (!isZero) {
+                        isOpPressed = false;
+                        isZero = false;
+                        calculatorScreen.append("9");
+                    }
                     break;
                 case R.id.btDivide:
                     OpPressed('÷');
