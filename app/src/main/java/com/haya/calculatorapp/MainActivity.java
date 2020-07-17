@@ -3,17 +3,23 @@ package com.haya.calculatorapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private String screenContent;
+
+    private String zero = "0";
 
     private boolean isOpPressed = false;
 
@@ -64,14 +70,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String screenContentFix = calculatorScreen.getText().toString();
+//                if (screenContentFix == zero) {
+//                    Toast.makeText(MainActivity.this, "大吉", Toast.LENGTH_SHORT).show();
+//                }
                 screenContent = screenContentFix.replace(",", "");
-
+                calculatorScreen.setText(screenContent);
                 final int id = view.getId();
 
             switch (id){
                 case R.id.n0:
-                    if ( (isDot = false)  &&  (isZero = true) ) {
+                    if ( isZero && !isDot ) {
                         return;
+                    } else if (isDot){
+                        isZero = false;
+                        isOpPressed = false;
+                        calculatorScreen.append("0");
                     } else {
                         isZero = true;
                         isOpPressed = false;
@@ -142,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                             isOpPressed = false;
                             isDot = false;
                         }
+                        isZero = false;
                         screenContent = screenContent.substring(0,length - 1);
                         calculatorScreen.setText(screenContent);
                     }
@@ -149,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btClear:
                     isOpPressed = false;
                     isDot = false;
+                    isZero = false;
                     calculatorScreen.setText("");
                     btDelete.setVisibility(View.VISIBLE);
                     break;
@@ -184,8 +199,8 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.setText(String.valueOf(result));
 
                     isOpPressed = false;
-
                     isEqual = true;
+                    isZero = false;
 
                     break;
             }
@@ -221,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void OpPressed(char operation) {
+
         if (isOpPressed) {
             return;
         }
@@ -229,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
+            isZero = false;
             currentOp = operation;
         } else if ( screenContent.isEmpty()) {
             return;
@@ -238,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
+            isZero = false;
             currentOp = operation;
         }
     }
