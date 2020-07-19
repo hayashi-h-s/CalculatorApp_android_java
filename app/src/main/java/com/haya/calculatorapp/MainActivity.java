@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private String screenContent;
