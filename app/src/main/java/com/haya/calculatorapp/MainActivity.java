@@ -18,7 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String screenContent;
 
-    private String zero = "0";
+//    private int zero = 0;
+
+    private int test;
 
     private String firstNumberString;
 
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isDot = false;
 
-    private boolean isZero = false;
+//    private boolean isZero = false;
 
     private boolean isEqual = false;
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private BigDecimal secondNumber;
 
     private BigDecimal resultNumber;
+
+    private BigDecimal screenNumber;
 
     private int secondNumberIndex;
 
@@ -79,89 +83,97 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String screenContentFix = calculatorScreen.getText().toString();
-                if (screenContentFix == zero) {
-                    isZero = true;
-                }
                 screenContent = screenContentFix.replace(",", "");
+//                if (screenContentFix == zero) {
+//                    isZero = true;
+//                }
+
+                //指定した文字列が存在するか確認
+
+//                if (!screenContent.endsWith(".") || isOpPressed ) {
+//                    screenNumber = new BigDecimal(screenContent);
+//                    screenContent = screenNumber.toString();
+//                }
+
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
 
             switch (id){
                 case R.id.n0:
-                    if ( isZero && !isDot ) {
-                        return;
-                    } else if (isDot){
-                        isZero = false;
-//                        isOpPressed = false;
+//                    if ( isZero && !isDot ) {
+//                        return;
+//                    } else if (isDot){
+//                        isZero = false;
+////                        isOpPressed = false;
+//                        calculatorScreen.append("0");
+//                    } else if (!isZero){
+//                        isZero = true;
+                        isOpPressed = false;
                         calculatorScreen.append("0");
-                    } else if (!isZero){
-                        isZero = true;
-//                        isOpPressed = false;
-                        calculatorScreen.append("0");
-                    }
+//                    }
                     break;
                 case R.id.n1:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("1");
-                    }
+
                     break;
                 case R.id.n2:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("2");
-                    }
+//                    }
                     break;
                 case R.id.n3:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("3");
-                    }
+//                    }
                     break;
                 case R.id.n4:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("4");
-                    }
+//                    }
                     break;
                 case R.id.n5:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("5");
-                    }
+//                    }
                     break;
                 case R.id.n6:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("6");
-                    }
+//                    }
                     break;
                 case R.id.n7:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("7");
-                    }
+//                    }
                     break;
                 case R.id.n8:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("8");
-                    }
+//                    }
                     break;
                 case R.id.n9:
-                    if (!isZero) {
-//                        isOpPressed = false;
-                        isZero = false;
+//                    if (!isZero) {
+                        isOpPressed = false;
+//                        isZero = false;
                         calculatorScreen.append("9");
-                    }
+//                    }
                     break;
                 case R.id.btDivide:
                     OpPressed('÷');
@@ -176,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('+');
                     break;
                 case R.id.btPoint:
-                    if (screenContent.isEmpty() || isOpPressed ) {
+                    if (screenContent.isEmpty() || isOpPressed) {
                         return;
                     }
                     if (!isDot) {
@@ -189,9 +201,11 @@ public class MainActivity extends AppCompatActivity {
                     if (length > 0 ){
                         if (isOpPressed || isDot) {
                             isOpPressed = false;
-                            isDot = false;
+                            if (screenContent.endsWith(".") ) {
+                                isDot = false;
+                            }
                         }
-                        isZero = false;
+//                        isZero = false;
                         screenContent = screenContent.substring(0,length - 1);
                         calculatorScreen.setText(screenContent);
                     }
@@ -199,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btClear:
                     isOpPressed = false;
                     isDot = false;
-                    isZero = false;
+//                    isZero = false;
                     calculatorScreen.setText("");
                     btDelete.setVisibility(View.VISIBLE);
                     break;
@@ -216,21 +230,28 @@ public class MainActivity extends AppCompatActivity {
             }
 //            文字の幅を自動で変える処理
 
-            screenContent = calculatorScreen.getText().toString();
+                screenContent = calculatorScreen.getText().toString();
+
+                if (!screenContent.contains("+") || !screenContent.contains("-") || !screenContent.contains("×") || !screenContent.contains("÷")) {
+                    firstNumber = new BigDecimal(screenContent);
+                }
+
+
+
+            calculatorScreen.setText(screenContent);
 //
 //            secondNumberIndex = screenContent.length() + 1;
 //            secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
-//            if (!(screenContent.isEmpty()) && !isOpPressed && secondNumberString.isEmpty()) {
-//                firstNumberIndex = screenContent.length();
-//                firstNumberString = screenContent.substring(0,firstNumberIndex);
-//                firstNumber = new BigDecimal(firstNumberString);
-//            }
+            if (!(screenContent.isEmpty()) && !isOpPressed && secondNumberString.isEmpty()) {
+                firstNumberIndex = screenContent.length();
+                firstNumberString = screenContent.substring(0,firstNumberIndex);
+                firstNumber = new BigDecimal(firstNumberString);
+            }
 
 //            secondNumber = new BigDecimal(secondNumberString);
 
 
-                calculatorScreen.setText(screenContent);
 //            Toast.makeText(MainActivity.this, str,Toast.LENGTH_SHORT).show();
             }
         };
@@ -264,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
-            isZero = false;
+//            isZero = false;
             currentOp = operation;
         } else if ( screenContent.isEmpty()) {
             return;
@@ -274,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
-            isZero = false;
+//            isZero = false;
             currentOp = operation;
         }
     }
@@ -282,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     private void Equal(){
         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
-        if (secondNumberString.isEmpty()) {
+        if (secondNumberString == null) {
             return;
         }
 
@@ -300,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
             }
             resultNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
         }
-
+        resultNumber = resultNumber.stripTrailingZeros();
 //                    String resultNumber = secondNumber.toString();
         String result = nf.format(resultNumber);
 
@@ -312,6 +333,6 @@ public class MainActivity extends AppCompatActivity {
 
         isOpPressed = false;
         isEqual = true;
-        isZero = false;
+//        isZero = false;
     }
 }

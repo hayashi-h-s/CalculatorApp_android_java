@@ -11,14 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="55dp" />
+        app:layout_constraintGuide_begin="40dp" />
 
     <TextView
         android:id="@+id/tvFormula"
         android:layout_width="408dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="550dp"
-        android:autoSizeMinTextSize="17dp"
         android:autoSizeTextType="uniform"
         android:gravity="center|end"
         android:maxLines="1"
@@ -26,7 +25,8 @@
         android:text="@string/formula_text"
         android:textColor="@color/colorTextBlack"
         android:textSize="60dp"
-        app:autoSizeMaxTextSize="70dp"
+        android:autoSizeMinTextSize="14dp"
+        app:autoSizeMaxTextSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
