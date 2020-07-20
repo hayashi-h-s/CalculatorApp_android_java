@@ -178,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     if (screenContent.isEmpty() || isOpPressed ) {
                         return;
                     }
+
                     if (!isDot) {
                         calculatorScreen.append(".");
                         isDot = true;
