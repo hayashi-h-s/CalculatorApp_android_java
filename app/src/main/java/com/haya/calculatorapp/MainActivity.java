@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String stringOp;
 
+    private String firstNumberString;
+
     private boolean isOpPressed = false;
 
     private boolean isDot = false;
@@ -188,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                             isOpPressed = false;
                             isDot = false;
                         }
-                        isZero = false;
+//                        isZero = false;
                         screenContent = screenContent.substring(0,length - 1);
                         calculatorScreen.setText(screenContent);
                     }
@@ -253,18 +255,28 @@ public class MainActivity extends AppCompatActivity {
 
                 //            文字の幅を自動で変える処理
             screenContent = calculatorScreen.getText().toString();
-//            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
-////                Log.i("クリックテスト", "出力確認");
-//                screenContent = screenContent.substring(0,secondNumberIndex - 1);
-//                BigDecimal commaNumber = new BigDecimal(screenContent);
-//                screenContent = nf.format(commaNumber);
-//                Log.i("クリックテスト", screenContent);
-//            }
-//            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
-////                Log.i("クリックテスト", "出力確認");
-//            }
 
-//            screenContent =   screenContent +
+
+
+//            screenContent = nf.format(commaNumber);
+            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+//                Log.i("クリックテスト", "出力確認");
+                screenContent = screenContent.substring(0,secondNumberIndex - 1);
+                BigDecimal commaNumber = new BigDecimal(screenContent);
+                firstNumber = commaNumber;
+                firstNumberString = nf.format(firstNumber);
+                Log.i("クリックテスト", screenContent);
+            }
+
+            if (firstNumber == null) {
+                BigDecimal commaNumber = new BigDecimal(screenContent);
+                screenContent = nf.format(commaNumber);
+
+            } else {
+                Log.i("クリックテスト", "出力確認");
+                screenContent = firstNumberString + stringOp;
+            }
+//            BigDecimal commaNumber = new BigDecimal(screenContent);
             calculatorScreen.setText(screenContent);
             }
         };
@@ -304,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
-            firstNumber = new BigDecimal(screenContent);
+//            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
