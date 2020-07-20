@@ -205,43 +205,42 @@ public class MainActivity extends AppCompatActivity {
                     btDelete.setVisibility(View.VISIBLE);
                     break;
                 case R.id.btEqual:
-                    String screenContent = calculatorScreen.getText().toString();
-                    String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    if (secondNumberString.isEmpty()) {
+                    if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
                         return;
                     }
+                    if (isOpPressed) {
+                        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
-                    BigDecimal secondNumber = new BigDecimal(secondNumberString);
+                        BigDecimal secondNumber = new BigDecimal(secondNumberString);
 
-                    if (currentOp == '+'){
-                        secondNumber = secondNumber.add(firstNumber);
-                    } else if (currentOp == '-'){
-                        secondNumber = firstNumber.subtract(secondNumber);
-                    } else if (currentOp == '×') {
-                        secondNumber = firstNumber.multiply(secondNumber);
-                    } else if (currentOp == '÷') {
-                        if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
-                            return;
+                        if (currentOp == '+'){
+                            secondNumber = secondNumber.add(firstNumber);
+                        } else if (currentOp == '-'){
+                            secondNumber = firstNumber.subtract(secondNumber);
+                        } else if (currentOp == '×') {
+                            secondNumber = firstNumber.multiply(secondNumber);
+                        } else if (currentOp == '÷') {
+                            if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
+                                return;
+                            }
+                            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                         }
-                        secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
-                    }
+                        String result = secondNumber.toString();
+                        if (result.endsWith(".0")) {
+                            result = result.substring(0, result.length() - 2);
+                        }
 
-                    String result = secondNumber.toString();
+                        calculatorScreen.setText(String.valueOf(result));
+
+                        isOpPressed = false;
+                        isEqual = true;
+                        isZero = false;
+
+                        break;
+                    }
 //                    long resultNumber = secondNumber.longValue();
 //                    String result = nf.format(secondNumber);
 //                    String result = String.format("%,d",resultNumber);
-
-                    if (result.endsWith(".0")) {
-                        result = result.substring(0, result.length() - 2);
-                    }
-
-                    calculatorScreen.setText(String.valueOf(result));
-
-                    isOpPressed = false;
-                    isEqual = true;
-                    isZero = false;
-
-                    break;
             }
             if (isEqual) {
                 btDelete.setVisibility(View.INVISIBLE);
@@ -249,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 btDelete.setVisibility(View.VISIBLE);
             }
-
 
 //            screenContent = calculatorScreen.getText().toString();
 //            BigDecimal commaNumber = new BigDecimal(screenContent);
