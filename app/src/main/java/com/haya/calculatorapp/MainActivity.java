@@ -274,12 +274,28 @@ public class MainActivity extends AppCompatActivity {
                 test = "1";
 
             if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
-                if (currentOp == '-') {
+                if (currentOp == '+') {
+                    List<String> split = Arrays.asList(screenContent.split("\\+"));
+                    firstNumberString = split.get(0);
+                    secondnumberString = split.get(1);
+                    screenContent = firstNumberString + stringOp + secondnumberString;
+                } else if (currentOp == '-') {
                     List<String> split = Arrays.asList(screenContent.split("\\-"));
                     firstNumberString = split.get(0);
                     secondnumberString = split.get(1);
                     screenContent = firstNumberString + stringOp + secondnumberString;
                 }
+//
+//                }
+//                if () {
+//
+//                }
+//                if (currentOp == '-') {
+//                    List<String> split = Arrays.asList(screenContent.split("\\-"));
+//                    firstNumberString = split.get(0);
+//                    secondnumberString = split.get(1);
+//                    screenContent = firstNumberString + stringOp + secondnumberString;
+//                }
             }
                 test = "1";
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
