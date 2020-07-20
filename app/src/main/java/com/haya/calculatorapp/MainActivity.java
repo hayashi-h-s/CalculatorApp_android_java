@@ -186,11 +186,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btDelete:
                     int length = screenContent.length();
                     if (length > 0 ){
-                        if (isOpPressed || isDot) {
+                        if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
                             isOpPressed = false;
+                        }
+                        if (screenContent.endsWith(".")) {
                             isDot = false;
                         }
-//                        isZero = false;
                         screenContent = screenContent.substring(0,length - 1);
                         calculatorScreen.setText(screenContent);
                     }
