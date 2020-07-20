@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String zero = "0";
 
+    private String stringOp;
+
     private boolean isOpPressed = false;
 
     private boolean isDot = false;
@@ -69,10 +71,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String screenContentFix = calculatorScreen.getText().toString();
-                if (screenContentFix == zero) {
-                    isZero = true;
-                }
+//                if (screenContentFix == zero) {
+//                    isZero = true;
+//                }
                 screenContent = screenContentFix.replace(",", "");
+//                String str = "1111×2222";
+//                List<String> split = Arrays.asList(str.split("×"));
+//                System.out.println(split.get(0));
+//                System.out.println(split.get(1));
+
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
 
@@ -216,7 +223,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 //                    String resultNumber = secondNumber.toString();
-                    String result = nf.format(secondNumber);
+                    long resultNumber = secondNumber.longValue();
+//                    String result = nf.format(secondNumber);
+                    String result = String.format("%,d",resultNumber);
 
                     if (result.endsWith(".0")) {
                         result = result.substring(0, result.length() - 2);
@@ -284,6 +293,8 @@ public class MainActivity extends AppCompatActivity {
             isDot = false;
             isZero = false;
             currentOp = operation;
+            stringOp = String.valueOf(operation);
+            //         // String kakeru_st = String.valueOf(kakeru);
         }
     }
 }
