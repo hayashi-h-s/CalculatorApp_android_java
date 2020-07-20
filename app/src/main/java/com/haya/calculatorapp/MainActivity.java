@@ -13,16 +13,22 @@ import android.widget.Toast;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private String screenContent;
 
-    private String zero = "0";
+    private String resultContent;
+
+    private String test = "0";
 
     private String stringOp;
 
     private String firstNumberString;
+
+    private String secondnumberString;
 
     private boolean isOpPressed = false;
 
@@ -263,20 +269,19 @@ public class MainActivity extends AppCompatActivity {
 //                BigDecimal commaNumber = new BigDecimal(screenContent);
 //                firstNumber = commaNumber;
 //                screenContent = nf.format(commaNumber);
-                Log.i("クリックテスト", screenContent);
+//                Log.i("クリックテスト", screenContent);
             }
-            if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
-//                if (minus == '-') {
-//                    List<String> split = Arrays.asList(resultNumber.split("\\-"));
-//                    firstnumberString = split.get(0);
-//                    secondnumberString = split.get(1);
-//                    System.out.println(firstnumberString);
-//                    System.out.println(secondnumberString);
-//                    screanContent = firstnumberString + stringminus + secondnumberString;
-//                    System.out.println(screanContent);
-//                }
-            }
+                test = "1";
 
+            if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
+                if (currentOp == '-') {
+                    List<String> split = Arrays.asList(screenContent.split("\\-"));
+                    firstNumberString = split.get(0);
+                    secondnumberString = split.get(1);
+                    screenContent = firstNumberString + stringOp + secondnumberString;
+                }
+            }
+                test = "1";
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
                 if (isOpPressed) {
                     screenContent = screenContent + stringOp;
@@ -294,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //            BigDecimal commaNumber = new BigDecimal(screenContent);
 //            calculatorScreen.setText(screenContent);
+                test = "1";
             }
         };
 
@@ -332,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
-            firstNumber = new BigDecimal(screenContent);
+//            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
