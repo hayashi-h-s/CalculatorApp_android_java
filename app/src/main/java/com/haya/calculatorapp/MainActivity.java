@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String firstNumberString;
 
-    private String secondnumberString;
+    private String secondNumberString;
 
     private boolean isOpPressed = false;
 
@@ -208,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btClear:
                     isOpPressed = false;
                     isDot = false;
-                    isZero = false;
                     stringOp = null;
                     currentOp = '\u0000';
                     calculatorScreen.setText("");
@@ -219,7 +218,9 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     if (isOpPressed) {
-                        String secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        test = "1";
+                        screenContent = calculatorScreen.getText().toString();
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
                         BigDecimal secondNumber = new BigDecimal(secondNumberString);
 
@@ -243,8 +244,14 @@ public class MainActivity extends AppCompatActivity {
                         calculatorScreen.setText(String.valueOf(result));
 
                         isOpPressed = false;
+                        stringOp = null;
+                        currentOp = '\u0000';
+                        isDot = false;
+                        if (result.contains(".")) {
+                            isDot = true;
+                        }
+
                         isEqual = true;
-                        isZero = false;
 
                         break;
                     }
@@ -277,25 +284,19 @@ public class MainActivity extends AppCompatActivity {
                 if (currentOp == '+') {
                     List<String> split = Arrays.asList(screenContent.split("\\+"));
                     firstNumberString = split.get(0);
-                    secondnumberString = split.get(1);
-                    screenContent = firstNumberString + stringOp + secondnumberString;
+                    secondNumberString = split.get(1);
+                    screenContent = firstNumberString + stringOp + secondNumberString;
                 } else if (currentOp == '-') {
                     List<String> split = Arrays.asList(screenContent.split("\\-"));
                     firstNumberString = split.get(0);
-                    secondnumberString = split.get(1);
-                    screenContent = firstNumberString + stringOp + secondnumberString;
+                    secondNumberString = split.get(1);
+                    screenContent = firstNumberString + stringOp + secondNumberString;
+                } else if (currentOp == '×' || currentOp == '÷') {
+                    List<String> split = Arrays.asList(screenContent.split(stringOp));
+                    firstNumberString = split.get(0);
+                    secondNumberString = split.get(1);
+                    screenContent = firstNumberString + stringOp + secondNumberString;
                 }
-//
-//                }
-//                if () {
-//
-//                }
-//                if (currentOp == '-') {
-//                    List<String> split = Arrays.asList(screenContent.split("\\-"));
-//                    firstNumberString = split.get(0);
-//                    secondnumberString = split.get(1);
-//                    screenContent = firstNumberString + stringOp + secondnumberString;
-//                }
             }
                 test = "1";
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
@@ -347,18 +348,16 @@ public class MainActivity extends AppCompatActivity {
         if ( screenContent.isEmpty() && operation == '-' ) {
             isOpPressed = true;
             isDot = false;
-            isZero = false;
             calculatorScreen.append(String.valueOf(operation));
             currentOp = operation;
         } else if ( screenContent.isEmpty()) {
             return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
-//            firstNumber = new BigDecimal(screenContent);
+            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
-            isZero = false;
             currentOp = operation;
             stringOp = String.valueOf(operation);
             //         // String kakeru_st = String.valueOf(kakeru);
