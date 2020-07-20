@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.setText(screenContent);
             }
         };
+
         n0.setOnClickListener(calculatorListener);
         n1.setOnClickListener(calculatorListener);
         n2.setOnClickListener(calculatorListener);
@@ -259,8 +260,8 @@ public class MainActivity extends AppCompatActivity {
         btAdd.setOnClickListener(calculatorListener);
         btEqual.setOnClickListener(calculatorListener);
         btPoint.setOnClickListener(calculatorListener);
-
     }
+
     private void OpPressed(char operation) {
 
         if (isOpPressed) {
