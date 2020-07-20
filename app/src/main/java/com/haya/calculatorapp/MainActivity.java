@@ -223,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 //                    String resultNumber = secondNumber.toString();
-                    long resultNumber = secondNumber.longValue();
-//                    String result = nf.format(secondNumber);
-                    String result = String.format("%,d",resultNumber);
+//                    long resultNumber = secondNumber.longValue();
+                    String result = nf.format(secondNumber);
+//                    String result = String.format("%,d",resultNumber);
 
                     if (result.endsWith(".0")) {
                         result = result.substring(0, result.length() - 2);
