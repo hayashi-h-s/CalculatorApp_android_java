@@ -222,9 +222,9 @@ public class MainActivity extends AppCompatActivity {
                         secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                     }
 
-//                    String resultNumber = secondNumber.toString();
+                    String result = secondNumber.toString();
 //                    long resultNumber = secondNumber.longValue();
-                    String result = nf.format(secondNumber);
+//                    String result = nf.format(secondNumber);
 //                    String result = String.format("%,d",resultNumber);
 
                     if (result.endsWith(".0")) {
@@ -245,8 +245,26 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 btDelete.setVisibility(View.VISIBLE);
             }
-//            文字の幅を自動で変える処理
+
+
+//            screenContent = calculatorScreen.getText().toString();
+//            BigDecimal commaNumber = new BigDecimal(screenContent);
+//            screenContent = nf.format(commaNumber);
+
+                //            文字の幅を自動で変える処理
             screenContent = calculatorScreen.getText().toString();
+//            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+////                Log.i("クリックテスト", "出力確認");
+//                screenContent = screenContent.substring(0,secondNumberIndex - 1);
+//                BigDecimal commaNumber = new BigDecimal(screenContent);
+//                screenContent = nf.format(commaNumber);
+//                Log.i("クリックテスト", screenContent);
+//            }
+//            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+////                Log.i("クリックテスト", "出力確認");
+//            }
+
+//            screenContent =   screenContent +
             calculatorScreen.setText(screenContent);
             }
         };
@@ -272,16 +290,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void OpPressed(char operation) {
-
-        if (isOpPressed) {
+        screenContent = calculatorScreen.getText().toString();
+        if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
             return;
         }
-        screenContent = calculatorScreen.getText().toString();
         if ( screenContent.isEmpty() && operation == '-' ) {
-            calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
             isZero = false;
+            calculatorScreen.append(String.valueOf(operation));
             currentOp = operation;
         } else if ( screenContent.isEmpty()) {
             return;
