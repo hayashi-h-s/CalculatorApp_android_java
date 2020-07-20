@@ -263,6 +263,17 @@ public class MainActivity extends AppCompatActivity {
 //                screenContent = nf.format(commaNumber);
                 Log.i("クリックテスト", screenContent);
             }
+            if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
+//                if (minus == '-') {
+//                    List<String> split = Arrays.asList(resultNumber.split("\\-"));
+//                    firstnumberString = split.get(0);
+//                    secondnumberString = split.get(1);
+//                    System.out.println(firstnumberString);
+//                    System.out.println(secondnumberString);
+//                    screanContent = firstnumberString + stringminus + secondnumberString;
+//                    System.out.println(screanContent);
+//                }
+            }
 
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
                 if (isOpPressed) {
