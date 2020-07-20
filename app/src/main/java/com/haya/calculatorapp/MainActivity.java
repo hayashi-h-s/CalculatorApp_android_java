@@ -258,14 +258,13 @@ public class MainActivity extends AppCompatActivity {
             if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
 //                Log.i("クリックテスト", "出力確認");
                 screenContent = screenContent.substring(0,secondNumberIndex - 1);
-                BigDecimal commaNumber = new BigDecimal(screenContent);
+//                BigDecimal commaNumber = new BigDecimal(screenContent);
 //                firstNumber = commaNumber;
-                screenContent = nf.format(commaNumber);
+//                screenContent = nf.format(commaNumber);
                 Log.i("クリックテスト", screenContent);
             }
 
-
-            if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("+")&&!screenContent.contains("+")) {
+            if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
                 if (isOpPressed) {
                     screenContent = screenContent + stringOp;
                 }
