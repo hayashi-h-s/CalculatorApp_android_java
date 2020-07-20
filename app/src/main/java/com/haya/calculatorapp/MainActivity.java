@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
                         if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
                             isOpPressed = false;
                             stringOp = null;
+                            currentOp = '\u0000';
                         }
                         if (screenContent.endsWith(".")) {
                             isDot = false;
@@ -203,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     isDot = false;
                     isZero = false;
                     stringOp = null;
+                    currentOp = '\u0000';
                     calculatorScreen.setText("");
                     btDelete.setVisibility(View.VISIBLE);
                     break;
