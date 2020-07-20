@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("+")&&!screenContent.contains("+")) {
                 if (isOpPressed) {
-
+                    screenContent = screenContent + stringOp;
                 }
                 calculatorScreen.setText(screenContent);
             }
