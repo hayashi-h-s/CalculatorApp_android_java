@@ -84,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
 //                }
                 screenContent = screenContentFix.replace(",", "");
 //                String str = "1111×2222";
-//                List<String> split = Arrays.asList(str.split("×"));
-//                System.out.println(split.get(0));
-//                System.out.println(split.get(1));
+////                List<String> split = Arrays.asList(str.split("×"));
+////                System.out.println(split.get(0));
+////                System.out.println(split.get(1));
 
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
@@ -242,6 +242,10 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         calculatorScreen.setText(String.valueOf(result));
+//
+//                        long resultNumber = secondNumber.longValue();
+////                        String result = nf.format(secondNumber);
+//                        String result = String.format("%,d",resultNumber);
 
                         isOpPressed = false;
                         stringOp = null;
@@ -255,9 +259,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     }
-//                    long resultNumber = secondNumber.longValue();
-//                    String result = nf.format(secondNumber);
-//                    String result = String.format("%,d",resultNumber);
+
             }
             if (isEqual) {
                 btDelete.setVisibility(View.INVISIBLE);
@@ -267,18 +269,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             screenContent = calculatorScreen.getText().toString();
-//            BigDecimal commaNumber = new BigDecimal(screenContent);
-//            screenContent = nf.format(commaNumber);
 
             if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
-//                Log.i("クリックテスト", "出力確認");
+
                 screenContent = screenContent.substring(0,secondNumberIndex - 1);
-//                BigDecimal commaNumber = new BigDecimal(screenContent);
-//                firstNumber = commaNumber;
-//                screenContent = nf.format(commaNumber);
-//                Log.i("クリックテスト", screenContent);
+
             }
-                test = "1";
 
             if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
                 if (currentOp == '+') {
@@ -298,25 +294,14 @@ public class MainActivity extends AppCompatActivity {
                     screenContent = firstNumberString + stringOp + secondNumberString;
                 }
             }
-                test = "1";
+
             if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
                 if (isOpPressed) {
                     screenContent = screenContent + stringOp;
                 }
                 calculatorScreen.setText(screenContent);
             }
-//
-//            if (firstNumber == null) {
-//                BigDecimal commaNumber = new BigDecimal(screenContent);
-//                screenContent = nf.format(commaNumber);
-//
-//            } else {
-//                Log.i("クリックテスト", "出力確認");
-//                screenContent = firstNumberString + stringOp;
-//            }
-//            BigDecimal commaNumber = new BigDecimal(screenContent);
-//            calculatorScreen.setText(screenContent);
-                test = "1";
+
             }
         };
 
