@@ -275,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 btDelete.setVisibility(View.VISIBLE);
             }
             screenContent = calculatorScreen.getText().toString();
+            calculatorScreen.setText(screenContent);
 //            int screenContentLength = screenContent.length();
 //            if (firstminus) {
 //                if (screenContent == firstMinusString ) {
@@ -283,40 +284,40 @@ public class MainActivity extends AppCompatActivity {
 //                    screenContent = screenContent.substring(1,screenContentLength);
 //                }
 //            }
-            test = "1";
-            if (isOpPressed && (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷"))) {
-                screenContent = screenContent.substring(0,secondNumberIndex - 1);
-            }
-                test = "1";
-            if (isOpPressed && (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷"))) {
-                if (currentOp == '+') {
-                    List<String> split = Arrays.asList(screenContent.split("\\+"));
-                    firstNumberString = split.get(0);
-                    secondNumberString = split.get(1);
-                    screenContent = firstNumberString + stringOp + secondNumberString;
-                } else if (currentOp == '-') {
-                    List<String> split = Arrays.asList(screenContent.split("\\-"));
-                    firstNumberString = split.get(0);
-                    secondNumberString = split.get(1);
-                    screenContent = firstNumberString + stringOp + secondNumberString;
-                } else if (currentOp == '×' || currentOp == '÷') {
-                    List<String> split = Arrays.asList(screenContent.split(stringOp));
-                    firstNumberString = split.get(0);
-                    secondNumberString = split.get(1);
-                    screenContent = firstNumberString + stringOp + secondNumberString;
-                }
-            }
-                test = "1";
-            if (firstminus || (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷"))) {
-                if (isOpPressed) {
-                    screenContent = screenContent + stringOp;
-                }
-//                if (firstminus) {
-//                    screenContent = firstMinusString + screenContent;
+//            test = "1";
+//            if (isOpPressed && (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷"))) {
+//                screenContent = screenContent.substring(0,secondNumberIndex - 1);
+//            }
+//                test = "1";
+//            if (isOpPressed && (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷"))) {
+//                if (currentOp == '+') {
+//                    List<String> split = Arrays.asList(screenContent.split("\\+"));
+//                    firstNumberString = split.get(0);
+//                    secondNumberString = split.get(1);
+//                    screenContent = firstNumberString + stringOp + secondNumberString;
+//                } else if (currentOp == '-') {
+//                    List<String> split = Arrays.asList(screenContent.split("\\-"));
+//                    firstNumberString = split.get(0);
+//                    secondNumberString = split.get(1);
+//                    screenContent = firstNumberString + stringOp + secondNumberString;
+//                } else if (currentOp == '×' || currentOp == '÷') {
+//                    List<String> split = Arrays.asList(screenContent.split(stringOp));
+//                    firstNumberString = split.get(0);
+//                    secondNumberString = split.get(1);
+//                    screenContent = firstNumberString + stringOp + secondNumberString;
 //                }
-                calculatorScreen.setText(screenContent);
-            }
-            test = "1";
+//            }
+//                test = "1";
+//            if (firstminus || (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷"))) {
+//                if (isOpPressed) {
+//                    screenContent = screenContent + stringOp;
+//                }
+////                if (firstminus) {
+////                    screenContent = firstMinusString + screenContent;
+////                }
+//                calculatorScreen.setText(screenContent);
+//            }
+//            test = "1";
             }
         };
 
