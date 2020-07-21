@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String test = "0";
 
+    private String zero = "0";
+
     private String stringOp;
 
     private String firstNumberString;
@@ -98,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
 //                    } else if (isDot){
 //                        isZero = false;
 //                        isOpPressed = false;
+                    test = "1";
+//                    if ( ) {
+//                        return;
+//                    }
                         calculatorScreen.append("0");
 //                    } else if (!isZero){
 //                        isZero = true;
@@ -106,81 +112,85 @@ public class MainActivity extends AppCompatActivity {
 //                    }
                     break;
                 case R.id.n1:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("1");
-//                        int screenContentLength = screenContent.length();
-                        screenContent = calculatorScreen.getText().toString();
-
-                        if (isOpPressed) {
-                            secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                        } else {
-                            firstNumberString = calculatorScreen.getText().toString();
-                        }
-                        test = "1";
-//                    }
-//                    if (Op) {
-//                        int screancontentLenge = screancontent.length;
-//                        secondnumberString  = seondnumberindexからの画面の値を取得
-//                    } else {
-//                        firstnumberString = calculatorScreen.getText().toString();
-//                    }
+                    calculatorScreen.append("1");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n2:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("2");
-//                    }
+                    calculatorScreen.append("2");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n3:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("3");
-//                    }
+                    calculatorScreen.append("3");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n4:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("4");
-//                    }
+                    calculatorScreen.append("4");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n5:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("5");
-//                    }
+                    calculatorScreen.append("5");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n6:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("6");
-//                    }
+                    calculatorScreen.append("6");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n7:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("7");
-//                    }
+                    calculatorScreen.append("7");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n8:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-                        calculatorScreen.append("8");
-//                    }
+                    calculatorScreen.append("8");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.n9:
-//                    if (!isZero) {
-//                        isOpPressed = false;
-//                        isZero = false;
-                        calculatorScreen.append("9");
-//                    }
+                    calculatorScreen.append("9");
+                    screenContent = calculatorScreen.getText().toString();
+                    if (isOpPressed) {
+                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                    } else {
+                        firstNumberString = calculatorScreen.getText().toString();
+                    }
                     break;
                 case R.id.btDivide:
                     OpPressed('÷');
@@ -292,7 +302,8 @@ public class MainActivity extends AppCompatActivity {
             }
             screenContent = calculatorScreen.getText().toString();
             calculatorScreen.setText(screenContent);
-//            int screenContentLength = screenContent.length();
+            test = "1";
+            //            int screenContentLength = screenContent.length();
 //            if (firstminus) {
 //                if (screenContent == firstMinusString ) {
 //                    screenContent = calculatorScreen.getText().toString();
@@ -359,13 +370,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         screenContent = calculatorScreen.getText().toString();
-        String minus = "-";
+//        String minus = "-";
         if (isOpPressed ) {
             return;
         }
-        if (screenContent == minus) {
-            return;
-        }
+//        if (screenContent == minus) {
+//            return;
+//        }
         test = "1";
         if ( screenContent.isEmpty() && operation == '-' ) {
 //            isOpPressed = true;
@@ -379,6 +390,9 @@ public class MainActivity extends AppCompatActivity {
 //        } else if (screenContent == "-") {
 //            return;
         } else {
+//            if (screenContent == minus) {
+//                return;
+//            }
             secondNumberIndex = screenContent.length() + 1;
 //            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
