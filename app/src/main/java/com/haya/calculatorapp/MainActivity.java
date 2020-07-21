@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String secondNumberString;
 
-    private String firstMinusString = "-";
-
     private boolean isOpPressed = false;
 
     private boolean isDot = false;
@@ -240,10 +238,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (isOpPressed) {
                         test = "1";
-                        screenContent = calculatorScreen.getText().toString();
+//                        screenContent = calculatorScreen.getText().toString();
 //                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
                         BigDecimal secondNumber = new BigDecimal(secondNumberString);
+                        BigDecimal firstNumber = new BigDecimal(firstNumberString);
 
                         if (currentOp == '+'){
                             secondNumber = secondNumber.add(firstNumber);
@@ -257,12 +256,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                             secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                         }
-                        String result = secondNumber.toString();
-                        if (result.endsWith(".0")) {
-                            result = result.substring(0, result.length() - 2);
+                        screenContent = secondNumber.toString();
+                        if (screenContent.endsWith(".0")) {
+                            screenContent = screenContent.substring(0, screenContent.length() - 2);
                         }
 
-                        calculatorScreen.setText(String.valueOf(result));
+                        calculatorScreen.setText(String.valueOf(screenContent));
+
+                        firstNumberString = calculatorScreen.getText().toString();
 //
 //                        long resultNumber = secondNumber.longValue();
 ////                        String result = nf.format(secondNumber);
@@ -273,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
 //                        firstminus = false;
                         stringOp = null;
                         currentOp = '\u0000';
-                        if (result.contains(".")) {
+                        if (screenContent.contains(".")) {
                             isDot = true;
                         }
 //                        if (result.contains("-")) {
@@ -379,7 +380,7 @@ public class MainActivity extends AppCompatActivity {
 //            return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
-            firstNumber = new BigDecimal(screenContent);
+//            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
             isOpPressed = true;
             isDot = false;
