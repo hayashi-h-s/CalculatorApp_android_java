@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
 //                        isOpPressed = false;
 //                        isZero = false;
                         calculatorScreen.append("1");
+                        firstNumberString = calculatorScreen.getText().toString();
+                        test = "1";
 //                    }
                     break;
                 case R.id.n2:
@@ -226,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                     if (isOpPressed) {
                         test = "1";
                         screenContent = calculatorScreen.getText().toString();
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+//                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
 
                         BigDecimal secondNumber = new BigDecimal(secondNumberString);
 
