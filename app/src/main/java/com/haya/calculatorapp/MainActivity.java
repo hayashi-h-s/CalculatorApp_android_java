@@ -30,13 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     private String secondNumberString;
 
+    private String firstMinusString = "-";
+
     private boolean isOpPressed = false;
 
     private boolean isDot = false;
 
-    private boolean isZero = false;
-
     private boolean isEqual = false;
+
+    private boolean firstminus = false;
 
     private BigDecimal firstNumber;
 
@@ -157,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.n8:
 //                    if (!isZero) {
 //                        isOpPressed = false;
-                        isZero = false;
                         calculatorScreen.append("8");
 //                    }
                     break;
@@ -194,9 +195,13 @@ public class MainActivity extends AppCompatActivity {
                     int length = screenContent.length();
                     if (length > 0 ){
                         if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+                            if (firstminus) {
+                                firstminus = false;
+                            }
                             isOpPressed = false;
                             stringOp = null;
                             currentOp = '\u0000';
+
                         }
                         if (screenContent.endsWith(".")) {
                             isDot = false;
@@ -208,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btClear:
                     isOpPressed = false;
                     isDot = false;
+                    firstminus = false;
                     stringOp = null;
                     currentOp = '\u0000';
                     calculatorScreen.setText("");
@@ -248,18 +254,19 @@ public class MainActivity extends AppCompatActivity {
 //                        String result = String.format("%,d",resultNumber);
 
                         isOpPressed = false;
+                        isDot = false;
+                        firstminus = false;
                         stringOp = null;
                         currentOp = '\u0000';
-                        isDot = false;
                         if (result.contains(".")) {
                             isDot = true;
                         }
-
+                        if (result.contains("-")) {
+                            firstminus = true;
+                        }
                         isEqual = true;
-
                         break;
                     }
-
             }
             if (isEqual) {
                 btDelete.setVisibility(View.INVISIBLE);
@@ -267,16 +274,21 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 btDelete.setVisibility(View.VISIBLE);
             }
-
             screenContent = calculatorScreen.getText().toString();
-
-            if (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
-
+//            int screenContentLength = screenContent.length();
+//            if (firstminus) {
+//                if (screenContent == firstMinusString ) {
+//                    screenContent = calculatorScreen.getText().toString();
+//                } else {
+//                    screenContent = screenContent.substring(1,screenContentLength);
+//                }
+//            }
+            test = "1";
+            if (isOpPressed && (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷"))) {
                 screenContent = screenContent.substring(0,secondNumberIndex - 1);
-
             }
-
-            if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
+                test = "1";
+            if (isOpPressed && (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷"))) {
                 if (currentOp == '+') {
                     List<String> split = Arrays.asList(screenContent.split("\\+"));
                     firstNumberString = split.get(0);
@@ -294,14 +306,17 @@ public class MainActivity extends AppCompatActivity {
                     screenContent = firstNumberString + stringOp + secondNumberString;
                 }
             }
-
-            if (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷")) {
+                test = "1";
+            if (firstminus || (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷"))) {
                 if (isOpPressed) {
                     screenContent = screenContent + stringOp;
                 }
+//                if (firstminus) {
+//                    screenContent = firstMinusString + screenContent;
+//                }
                 calculatorScreen.setText(screenContent);
             }
-
+            test = "1";
             }
         };
 
@@ -327,14 +342,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         screenContent = calculatorScreen.getText().toString();
-        if (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷")) {
+        if (isOpPressed) {
             return;
         }
         if ( screenContent.isEmpty() && operation == '-' ) {
-            isOpPressed = true;
-            isDot = false;
+//            isOpPressed = true;
+//            isDot = false;
+            firstminus = true;
             calculatorScreen.append(String.valueOf(operation));
-            currentOp = operation;
+//            currentOp = operation;
+//            firstminusString = String.valueOf(operation);
         } else if ( screenContent.isEmpty()) {
             return;
         } else {
