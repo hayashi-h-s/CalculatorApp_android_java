@@ -112,8 +112,21 @@ public class MainActivity extends AppCompatActivity {
 //                        isOpPressed = false;
 //                        isZero = false;
                         calculatorScreen.append("1");
-                        firstNumberString = calculatorScreen.getText().toString();
+//                        int screenContentLength = screenContent.length();
+                        screenContent = calculatorScreen.getText().toString();
+
+                        if (isOpPressed) {
+                            secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        } else {
+                            firstNumberString = calculatorScreen.getText().toString();
+                        }
                         test = "1";
+//                    }
+//                    if (Op) {
+//                        int screancontentLenge = screancontent.length;
+//                        secondnumberString  = seondnumberindexからの画面の値を取得
+//                    } else {
+//                        firstnumberString = calculatorScreen.getText().toString();
 //                    }
                     break;
                 case R.id.n2:
@@ -197,9 +210,9 @@ public class MainActivity extends AppCompatActivity {
                     int length = screenContent.length();
                     if (length > 0 ){
                         if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
-                            if (firstminus) {
-                                firstminus = false;
-                            }
+//                            if (firstminus) {
+//                                firstminus = false;
+//                            }
                             isOpPressed = false;
                             stringOp = null;
                             currentOp = '\u0000';
@@ -215,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btClear:
                     isOpPressed = false;
                     isDot = false;
-                    firstminus = false;
+//                    firstminus = false;
                     stringOp = null;
                     currentOp = '\u0000';
                     calculatorScreen.setText("");
@@ -257,15 +270,15 @@ public class MainActivity extends AppCompatActivity {
 
                         isOpPressed = false;
                         isDot = false;
-                        firstminus = false;
+//                        firstminus = false;
                         stringOp = null;
                         currentOp = '\u0000';
                         if (result.contains(".")) {
                             isDot = true;
                         }
-                        if (result.contains("-")) {
-                            firstminus = true;
-                        }
+//                        if (result.contains("-")) {
+//                            firstminus = true;
+//                        }
                         isEqual = true;
                         break;
                     }
@@ -345,9 +358,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         screenContent = calculatorScreen.getText().toString();
-        if (isOpPressed) {
+        String minus = "-";
+        if (isOpPressed ) {
             return;
         }
+        if (screenContent == minus) {
+            return;
+        }
+        test = "1";
         if ( screenContent.isEmpty() && operation == '-' ) {
 //            isOpPressed = true;
 //            isDot = false;
@@ -357,6 +375,8 @@ public class MainActivity extends AppCompatActivity {
 //            firstminusString = String.valueOf(operation);
         } else if ( screenContent.isEmpty()) {
             return;
+//        } else if (screenContent == "-") {
+//            return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
             firstNumber = new BigDecimal(screenContent);
@@ -367,5 +387,6 @@ public class MainActivity extends AppCompatActivity {
             stringOp = String.valueOf(operation);
             //         // String kakeru_st = String.valueOf(kakeru);
         }
+        test = "1";
     }
 }
