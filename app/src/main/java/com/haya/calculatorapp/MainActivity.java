@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     NumberFormat nf = NumberFormat.getNumberInstance();
 
-    NumberFormat mf = NumberFormat.get(10);
+//    NumberFormat mf = NumberFormat.get(10);
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###.##########");
 
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 //                        firstNumberString = nf.format(firstNumber);
 //                        firstNumberString = String.format("%,d",firstNumber);
 //                        DecimalFormat decimalFormat = new DecimalFormat("00,000.00");
-                        secondNumber = secondNumber.stripTrailingZeros();
+                        firstNumber = firstNumber.stripTrailingZeros();
                         firstNumberString = decimalFormat.format(firstNumber);
                     }
 //                    } else if (!isZero){
