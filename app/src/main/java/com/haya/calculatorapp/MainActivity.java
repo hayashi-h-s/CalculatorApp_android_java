@@ -88,11 +88,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                String screenContentFix = calculatorScreen.getText().toString();
+//                String screenContent = calculatorScreen.getText().toString();
+                String screenContentFix = calculatorScreen.getText().toString();
 //                if (screenContentFix == zero) {
 //                    isZero = true;
 //                }
-//                screenContent = screenContentFix.replace(",", "");
+                screenContent = screenContentFix.replace(",", "");
 //                String str = "1111×2222";
 ////                List<String> split = Arrays.asList(str.split("×"));
 ////                System.out.println(split.get(0));
@@ -369,8 +370,9 @@ public class MainActivity extends AppCompatActivity {
 //                                secondNumberString = secondNumber.toString();
                             } else {
                                 firstNumberString = calculatorScreen.getText().toString();
-//                                firstNumber = new BigDecimal(firstNumberString);
-//                                firstNumberString = firstNumber.toString();
+                                firstNumber = new BigDecimal(firstNumberString);
+                                firstNumberString = nf.format(firstNumber);
+                                firstNumberString = firstNumberString + ".";
                             }
                         }
                     test = "1";
@@ -399,9 +401,19 @@ public class MainActivity extends AppCompatActivity {
                                 secondNumberString = null;
                             } else {
                                 secondNumberString = screenContent.substring(secondNumberIndex,screenContentlength - 1);
+                                secondNumber = new BigDecimal(secondNumberString);
+                                secondNumberString = nf.format(secondNumber);
                             }
                         } else {
-                            firstNumberString = screenContent.substring(0,screenContentlength - 1);
+//                            firstNumberString = screenContent.substring(0,screenContentlength - 1);
+                            if (firstNumberString.length() == 1) {
+                                firstNumberString = null;
+                                screenContent = null;
+                            } else {
+                                firstNumberString = screenContent.substring(0,screenContentlength - 1);
+                                firstNumber = new BigDecimal(firstNumberString);
+                                secondNumberString = nf.format(firstNumber);
+                            }
                         }
                     }
                     test = "1";
@@ -443,7 +455,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                             secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
                         }
-                        screenContent = secondNumber.toString();
+//                        screenContent = secondNumber.toString();
+                        screenContent = nf.format(secondNumber);
                         if (screenContent.endsWith(".0")) {
                             screenContent = screenContent.substring(0, screenContent.length() - 2);
                         }
