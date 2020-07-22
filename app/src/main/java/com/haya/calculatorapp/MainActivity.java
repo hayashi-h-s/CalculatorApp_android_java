@@ -560,15 +560,9 @@ public class MainActivity extends AppCompatActivity {
 //        screenContent = calculatorScreen.getText().toString();
         test = "1";
 //        String minus = "-";
-        if (isOpPressed) {
+        if (isOpPressed||"-".equals(screenContent)||screenContent.isEmpty()) {
             return;
         }
-        if ("-".equals(screenContent)) {
-            return;
-        }
-//        if (screenContent == minus) {
-//            return;
-//        }
         test = "1";
         if ( screenContent.isEmpty() && operation == '-' ) {
 //            isOpPressed = true;
@@ -577,10 +571,6 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.append(String.valueOf(operation));
 //            currentOp = operation;
 //            firstminusString = String.valueOf(operation);
-        } else if ( screenContent.isEmpty()) {
-            return;
-//        } else if (screenContent == "-") {
-//            return;
         } else {
             secondNumberIndex = screenContent.length() + 1;
 //            firstNumber = new BigDecimal(screenContent);
