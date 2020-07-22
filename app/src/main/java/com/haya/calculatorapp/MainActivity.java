@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String screenContentFix = calculatorScreen.getText().toString();
+//                String screenContentFix = calculatorScreen.getText().toString();
 //                if (screenContentFix == zero) {
 //                    isZero = true;
 //                }
-                screenContent = screenContentFix.replace(",", "");
+//                screenContent = screenContentFix.replace(",", "");
 //                String str = "1111×2222";
 ////                List<String> split = Arrays.asList(str.split("×"));
 ////                System.out.println(split.get(0));
@@ -122,11 +122,11 @@ public class MainActivity extends AppCompatActivity {
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumberString = nf.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = nf.format(firstNumber);
                     }
 //                    } else if (!isZero){
 //                        isZero = true;
@@ -144,11 +144,11 @@ public class MainActivity extends AppCompatActivity {
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumberString = nf.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = nf.format(firstNumber);
                     }
 //                    } else if (!isZero){
 //                        isZero = true;
@@ -426,7 +426,8 @@ public class MainActivity extends AppCompatActivity {
                         test = "1";
 //                        screenContent = calculatorScreen.getText().toString();
 //                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-
+                        firstNumberString = firstNumberString.replace(",", "");
+                        secondNumberString = secondNumberString.replace(",", "");
                         secondNumber = new BigDecimal(secondNumberString);
                         firstNumber = new BigDecimal(firstNumberString);
 
@@ -453,7 +454,7 @@ public class MainActivity extends AppCompatActivity {
                         secondNumberString = null;
 //
 //                        long resultNumber = secondNumber.longValue();
-////                        String result = nf.format(secondNumber);
+////                      String result = nf.format(secondNumber);
 //                        String result = String.format("%,d",resultNumber);
 
                         isOpPressed = false;
@@ -490,6 +491,9 @@ public class MainActivity extends AppCompatActivity {
                 screenContent = firstNumberString;
             }
             calculatorScreen.setText(screenContent);
+//            long resultNumber = secondNumber.longValue();
+//                        String result = nf.format(secondNumber);
+//            String result = String.format("%,d",resultNumber);
             test = "1";
             //            int screenContentLength = screenContent.length();
 //            if (firstminus) {
