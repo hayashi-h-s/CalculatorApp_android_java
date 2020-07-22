@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String zero = "0";
 
+    private String minus = "-";
+
     private String stringOp;
 
     private String firstNumberString;
@@ -370,8 +372,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         screenContent = calculatorScreen.getText().toString();
+        test = "1";
 //        String minus = "-";
         if (isOpPressed ) {
+            return;
+        }
+        if ("-".equals(screenContent)) {
             return;
         }
 //        if (screenContent == minus) {
@@ -390,9 +396,6 @@ public class MainActivity extends AppCompatActivity {
 //        } else if (screenContent == "-") {
 //            return;
         } else {
-//            if (screenContent == minus) {
-//                return;
-//            }
             secondNumberIndex = screenContent.length() + 1;
 //            firstNumber = new BigDecimal(screenContent);
             calculatorScreen.append(String.valueOf(operation));
