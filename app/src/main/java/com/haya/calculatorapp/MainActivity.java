@@ -356,8 +356,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btDelete:
-                    int length = screenContent.length();
-                    if (length > 0 ){
+                    int screenContentlength = screenContent.length();
+                    if (screenContentlength > 0 ){
                         if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
 //                            if (firstminus) {
 //                                firstminus = false;
@@ -365,14 +365,26 @@ public class MainActivity extends AppCompatActivity {
                             isOpPressed = false;
                             stringOp = null;
                             currentOp = '\u0000';
-
+                            secondNumberIndex = 0;
                         }
                         if (screenContent.endsWith(".")) {
                             isDot = false;
                         }
-                        screenContent = screenContent.substring(0,length - 1);
-                        calculatorScreen.setText(screenContent);
+//                        firstNumberString = screenContent.substring(0,screenContentlength - 1);
+//                        firstNumberString = screenContent
+//                        calculatorScreen.setText(screenContent);
+                        if (isOpPressed && secondNumberString != null) {
+//                            screenContent = firstNumberString + stringOp + secondNumberString;
+                            if (secondNumberString.length() == 1) {
+                                secondNumberString = null;
+                            } else {
+                                secondNumberString = screenContent.substring(secondNumberIndex,screenContentlength - 1);
+                            }
+                        } else {
+                            firstNumberString = screenContent.substring(0,screenContentlength - 1);
+                        }
                     }
+                    test = "1";
                     break;
                 case R.id.btClear:
                     isOpPressed = false;
