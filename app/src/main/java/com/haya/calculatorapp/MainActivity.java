@@ -518,6 +518,11 @@ public class MainActivity extends AppCompatActivity {
 //                null.equals(screenContent)
             if (isOpPressed && secondNumberString != null) {
                 screenContent = firstNumberString + stringOp + secondNumberString;
+//                イコールメソッド()
+//                (メソッド実行)
+//                答えをリザルトスクリーンに出す。
+
+
             } else if (isOpPressed) {
                 screenContent = firstNumberString + stringOp;
             } else {
