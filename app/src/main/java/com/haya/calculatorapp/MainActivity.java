@@ -346,14 +346,34 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('+');
                     break;
                 case R.id.btPoint:
-                    if (screenContent.isEmpty() || isOpPressed ) {
+                    if (screenContent.isEmpty()||screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
                         return;
                     }
-
+                    test = "1";
                     if (!isDot) {
                         calculatorScreen.append(".");
+                        screenContent = calculatorScreen.getText().toString();
                         isDot = true;
-                    }
+//                        if (isOpPressed && secondNumberString != null) {
+////                            screenContent = firstNumberString + stringOp + secondNumberString;
+//                            if (secondNumberString.length() == 1) {
+//                                secondNumberString = null;
+//                            } else {
+//                                secondNumberString = screenContent.substring(secondNumberIndex,screenContentlength - 1);
+//                            }
+//                        } else {
+//                            firstNumberString = screenContent.substring(0,screenContentlength - 1);
+                            if (isOpPressed) {
+                                secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+//                                secondNumber = new BigDecimal(secondNumberString);
+//                                secondNumberString = secondNumber.toString();
+                            } else {
+                                firstNumberString = calculatorScreen.getText().toString();
+//                                firstNumber = new BigDecimal(firstNumberString);
+//                                firstNumberString = firstNumber.toString();
+                            }
+                        }
+                    test = "1";
                     break;
                 case R.id.btDelete:
                     int screenContentlength = screenContent.length();
@@ -399,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                     btDelete.setVisibility(View.VISIBLE);
                     break;
                 case R.id.btEqual:
-                    if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+                    if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
                         return;
                     }
                     if (isOpPressed) {
@@ -540,7 +560,7 @@ public class MainActivity extends AppCompatActivity {
 //        screenContent = calculatorScreen.getText().toString();
         test = "1";
 //        String minus = "-";
-        if (isOpPressed ) {
+        if (isOpPressed) {
             return;
         }
         if ("-".equals(screenContent)) {
