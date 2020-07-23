@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView calculatorScreen;
 
+    private TextView resultScreen;
+
 //    NumberFormat nf2 = NumberFormat.getMaximumFractionDigits();
 
     NumberFormat nf = NumberFormat.getNumberInstance();
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calc);
 
         calculatorScreen = findViewById(R.id.tvFormula);
+        resultScreen = findViewById(R.id.tvResult);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);

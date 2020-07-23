@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,20 +17,38 @@
         android:layout_width="408dp"
         android:layout_height="100dp"
         android:layout_marginBottom="650dp"
+        android:autoSizeMinTextSize="17dp"
         android:autoSizeTextType="uniform"
         android:gravity="center|end"
-        android:paddingRight="25dp"
+        android:maxLines="1"
         android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:text="@string/formula_text"
         android:textColor="@color/colorTextBlack"
         android:textSize="65dp"
-        android:autoSizeMinTextSize="17dp"
         app:autoSizeMaxTextSize="65dp"
-        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:text="TextView"
+        android:gravity="center|end"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:autoSizeMinTextSize="17dp"
+        app:autoSizeMaxTextSize="25dp"
+        android:autoSizeTextType="uniform"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/topBorder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFormula" />
 
     <TextView
         android:id="@+id/topBorder"
@@ -229,6 +246,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <Button
                     android:id="@+id/btClear"
                     style="?android:attr/buttonBarButtonStyle"
@@ -244,9 +262,9 @@
                     android:id="@+id/btDelete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackGround"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_backspace_24"/>
+                    android:background="@color/colorBackGround"
+                    app:srcCompat="@drawable/ic_baseline_backspace_24" />
             </FrameLayout>
 
             <Button
@@ -295,4 +313,5 @@
 
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
