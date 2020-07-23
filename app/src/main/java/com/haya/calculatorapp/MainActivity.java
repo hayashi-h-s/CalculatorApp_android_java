@@ -366,7 +366,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                     break;
                 case R.id.btClear:
                     isOpPressed = false;
@@ -375,9 +374,10 @@ public class MainActivity extends AppCompatActivity {
                     currentOp = '\u0000';
                     firstNumberString = null;
                     secondNumberString = null;
+                    firstNumber = null;
+                    secondNumber = null;
                     calculatorScreen.setText("");
                     screenContent = calculatorScreen.getText().toString();
-                    btDelete.setVisibility(View.VISIBLE);
                     break;
                 case R.id.btEqual:
                     if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
