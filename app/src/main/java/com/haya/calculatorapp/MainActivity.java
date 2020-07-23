@@ -386,53 +386,18 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     if (isOpPressed) {
-                        test = "1";
-//                        screenContent = calculatorScreen.getText().toString();
-//                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                        firstNumberString = firstNumberString.replace(",", "");
-                        secondNumberString = secondNumberString.replace(",", "");
-                        secondNumber = new BigDecimal(secondNumberString);
-                        firstNumber = new BigDecimal(firstNumberString);
-
-                        if (currentOp == '+'){
-                            secondNumber = secondNumber.add(firstNumber);
-                        } else if (currentOp == '-'){
-                            secondNumber = firstNumber.subtract(secondNumber);
-                        } else if (currentOp == '×') {
-                            secondNumber = firstNumber.multiply(secondNumber);
-                        } else if (currentOp == '÷') {
-                            if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
-                                return;
-                            }
-                            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
-                        }
-//                        screenContent = secondNumber.toString();
-                        screenContent = decimalFormat.format(secondNumber);
-//                        screenContent = nf.format(secondNumber);
-                        if (screenContent.endsWith(".0")) {
-                            screenContent = screenContent.substring(0, screenContent.length() - 2);
-                        }
-
-                        calculatorScreen.setText(String.valueOf(screenContent));
+                        Equal();
 
                         firstNumberString = calculatorScreen.getText().toString();
                         secondNumberString = null;
-//
-//                        long resultNumber = secondNumber.longValue();
-////                      String result = nf.format(secondNumber);
-//                        String result = String.format("%,3d",resultNumber);
 
                         isOpPressed = false;
                         isDot = false;
-//                        firstminus = false;
                         stringOp = null;
                         currentOp = '\u0000';
                         if (screenContent.contains(".")) {
                             isDot = true;
                         }
-//                        if (result.contains("-")) {
-//                            firstminus = true;
-//                        }
                         isEqual = true;
                         break;
                     }
@@ -443,16 +408,11 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 btDelete.setVisibility(View.VISIBLE);
             }
-//            screenContent = calculatorScreen.getText().toString();
-//            calculatorScreen.setText(firstNumberString);
-//            calculatorScreen.setText(secondNumberString);
+
             test = "1";
 //                null.equals(screenContent)
             if (isOpPressed && secondNumberString != null) {
                 screenContent = firstNumberString + stringOp + secondNumberString;
-//                イコールメソッド()
-//                (メソッド実行)
-//                答えをリザルトスクリーンに出す。
 
 
             } else if (isOpPressed) {
@@ -465,48 +425,9 @@ public class MainActivity extends AppCompatActivity {
 //                        String result = nf.format(secondNumber);
 //            String result = String.format("%,d",resultNumber);
             test = "1";
-            //            int screenContentLength = screenContent.length();
-//            if (firstminus) {
-//                if (screenContent == firstMinusString ) {
-//                    screenContent = calculatorScreen.getText().toString();
-//                } else {
-//                    screenContent = screenContent.substring(1,screenContentLength);
-//                }
-//            }
-//            test = "1";
-//            if (isOpPressed && (screenContent.endsWith("-")||screenContent.endsWith("+")||screenContent.endsWith("×")||screenContent.endsWith("÷"))) {
-//                screenContent = screenContent.substring(0,secondNumberIndex - 1);
-//            }
-//                test = "1";
-//            if (isOpPressed && (screenContent.contains("+")||screenContent.contains("-")||screenContent.contains("×")||screenContent.contains("÷"))) {
-//                if (currentOp == '+') {
-//                    List<String> split = Arrays.asList(screenContent.split("\\+"));
-//                    firstNumberString = split.get(0);
-//                    secondNumberString = split.get(1);
-//                    screenContent = firstNumberString + stringOp + secondNumberString;
-//                } else if (currentOp == '-') {
-//                    List<String> split = Arrays.asList(screenContent.split("\\-"));
-//                    firstNumberString = split.get(0);
-//                    secondNumberString = split.get(1);
-//                    screenContent = firstNumberString + stringOp + secondNumberString;
-//                } else if (currentOp == '×' || currentOp == '÷') {
-//                    List<String> split = Arrays.asList(screenContent.split(stringOp));
-//                    firstNumberString = split.get(0);
-//                    secondNumberString = split.get(1);
-//                    screenContent = firstNumberString + stringOp + secondNumberString;
-//                }
-//            }
-//                test = "1";
-//            if (firstminus || (!screenContent.contains("+")&&!screenContent.contains("-")&&!screenContent.contains("×")&&!screenContent.contains("÷"))) {
-//                if (isOpPressed) {
-//                    screenContent = screenContent + stringOp;
-//                }
-////                if (firstminus) {
-////                    screenContent = firstMinusString + screenContent;
-////                }
-//                calculatorScreen.setText(screenContent);
-//            }
-//            test = "1";
+
+
+//
             }
         };
 
@@ -557,5 +478,33 @@ public class MainActivity extends AppCompatActivity {
         }
         test = "1";
 //        screenContent = calculatorScreen.getText().toString();
+    }
+    private void Equal() {
+        test = "1";
+
+        firstNumberString = firstNumberString.replace(",", "");
+        secondNumberString = secondNumberString.replace(",", "");
+        secondNumber = new BigDecimal(secondNumberString);
+        firstNumber = new BigDecimal(firstNumberString);
+
+        if (currentOp == '+'){
+            secondNumber = secondNumber.add(firstNumber);
+        } else if (currentOp == '-'){
+            secondNumber = firstNumber.subtract(secondNumber);
+        } else if (currentOp == '×') {
+            secondNumber = firstNumber.multiply(secondNumber);
+        } else if (currentOp == '÷') {
+            if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
+                return;
+            }
+            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+        }
+
+        screenContent = decimalFormat.format(secondNumber);
+
+        if (screenContent.endsWith(".0")) {
+            screenContent = screenContent.substring(0, screenContent.length() - 2);
+        }
+        calculatorScreen.setText(String.valueOf(screenContent));
     }
 }
