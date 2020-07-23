@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     private BigDecimal secondNumber;
 
+    private BigDecimal resultNumber;
+
     private int secondNumberIndex;
 
     private int a = 10;
@@ -387,9 +389,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (isOpPressed) {
                         Equal();
+                        screenContent = decimalFormat.format(resultNumber);
 
+                        calculatorScreen.setText(String.valueOf(screenContent));
                         firstNumberString = calculatorScreen.getText().toString();
                         secondNumberString = null;
+                        secondNumber = null;
 
                         isOpPressed = false;
                         isDot = false;
@@ -399,6 +404,7 @@ public class MainActivity extends AppCompatActivity {
                             isDot = true;
                         }
                         isEqual = true;
+                        resultScreen.setText("");
                         break;
                     }
             }
@@ -410,24 +416,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
             test = "1";
-//                null.equals(screenContent)
+
             if (isOpPressed && secondNumberString != null) {
                 screenContent = firstNumberString + stringOp + secondNumberString;
-
-
+                Equal();
+                resultContent = decimalFormat.format(resultNumber);
+                resultScreen.setText(resultContent);
             } else if (isOpPressed) {
                 screenContent = firstNumberString + stringOp;
+                resultScreen.setText("");
+
             } else {
                 screenContent = firstNumberString;
+                resultScreen.setText("");
             }
             calculatorScreen.setText(screenContent);
-//            long resultNumber = secondNumber.longValue();
-//                        String result = nf.format(secondNumber);
-//            String result = String.format("%,d",resultNumber);
             test = "1";
 
-
-//
             }
         };
 
@@ -488,23 +493,21 @@ public class MainActivity extends AppCompatActivity {
         firstNumber = new BigDecimal(firstNumberString);
 
         if (currentOp == '+'){
-            secondNumber = secondNumber.add(firstNumber);
+            resultNumber = secondNumber.add(firstNumber);
         } else if (currentOp == '-'){
-            secondNumber = firstNumber.subtract(secondNumber);
+            resultNumber = firstNumber.subtract(secondNumber);
         } else if (currentOp == '×') {
-            secondNumber = firstNumber.multiply(secondNumber);
+            resultNumber = firstNumber.multiply(secondNumber);
         } else if (currentOp == '÷') {
             if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
                 return;
             }
-            secondNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
+            resultNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
         }
 
-        screenContent = decimalFormat.format(secondNumber);
+//        if (screenContent.endsWith(".0")) {
+//            screenContent = screenContent.substring(0, screenContent.length() - 2);
+//        }
 
-        if (screenContent.endsWith(".0")) {
-            screenContent = screenContent.substring(0, screenContent.length() - 2);
-        }
-        calculatorScreen.setText(String.valueOf(screenContent));
     }
 }
