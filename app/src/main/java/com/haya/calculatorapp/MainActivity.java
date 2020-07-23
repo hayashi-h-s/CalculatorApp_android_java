@@ -53,9 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     private int secondNumberIndex;
 
+    private int a = 10;
+
     private char currentOp;
 
     private TextView calculatorScreen;
+
+//    NumberFormat nf2 = NumberFormat.getMaximumFractionDigits();
 
     NumberFormat nf = NumberFormat.getNumberInstance();
 
@@ -109,22 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
             switch (id){
                 case R.id.n0:
-//                    if ( isZero && !isDot ) {
-//                        return;
-//                    } else if (isDot){
-//                        isZero = false;
-//                        isOpPressed = false;
-//                    screenContent = calculatorScreen.getText().toString();
-//                    firstNumber = new BigDecimal(screenContent);
-//                    test = "1";
-//                    if ("0".equals(screenContent)) {
-//                        return;
-//                    }
                     calculatorScreen.append("0");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
@@ -135,214 +126,150 @@ public class MainActivity extends AppCompatActivity {
                         firstNumber = new BigDecimal(firstNumberString);
                         firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n1:
                     calculatorScreen.append("1");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-//                        secondNumberString = nf.format(secondNumber);
+                        secondNumber = secondNumber.stripTrailingZeros();
                         secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-//                        firstNumberString = nf.format(firstNumber);
-//                        firstNumberString = String.format("%,d",firstNumber);
-//                        DecimalFormat decimalFormat = new DecimalFormat("00,000.00");
-                        firstNumber = firstNumber.stripTrailingZeros();
                         firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n2:
                     calculatorScreen.append("2");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n3:
                     calculatorScreen.append("3");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n4:
                     calculatorScreen.append("4");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n5:
                     calculatorScreen.append("5");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n6:
                     calculatorScreen.append("6");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n7:
                     calculatorScreen.append("7");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n8:
                     calculatorScreen.append("8");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.n9:
                     calculatorScreen.append("9");
                     screenContent = calculatorScreen.getText().toString();
                     test = "1";
-//                    BigDecimal screenContentNumber = new BigDecimal(screenContent);
-//                    screenContent = screenContentNumber.toString();
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = secondNumber.toString();
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = firstNumber.toString();
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
-//                    } else if (!isZero){
-//                        isZero = true;
-//                        isOpPressed = false;
-//                        calculatorScreen.append("0");
-//                    }
                     test = "1";
                     break;
                 case R.id.btDivide:
