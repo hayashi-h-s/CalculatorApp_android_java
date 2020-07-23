@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
                         firstNumberString = decimalFormat.format(firstNumber);
+//                        int firstNumberint = firstNumber.intValue();
+//                        firstNumberString = firstNumber.toString();
                     }
                     test = "1";
                     break;
