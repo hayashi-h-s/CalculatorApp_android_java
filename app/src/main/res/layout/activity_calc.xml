@@ -36,7 +36,7 @@
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:text="TextView"
+        android:text="@string/formula_text"
         android:gravity="center|end"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
@@ -65,7 +65,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="490dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
