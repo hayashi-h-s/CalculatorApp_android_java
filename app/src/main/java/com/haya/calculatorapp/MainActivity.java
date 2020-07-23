@@ -109,6 +109,18 @@ public class MainActivity extends AppCompatActivity {
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
 
+
+
+//                String[] numbers = {"1","2","3"};
+//
+//                for(String n:numbers) {
+//                    if (nn.getId() == R.id.nn) {
+//                        if (firstNumberString.startsWith("0")) {
+//                            calculatorScreen.append("0");
+//                        }
+//                    }
+//                }
+
             switch (id){
                 case R.id.n0:
                     calculatorScreen.append("0");
@@ -117,14 +129,24 @@ public class MainActivity extends AppCompatActivity {
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                         secondNumber = new BigDecimal(secondNumberString);
-                        secondNumber = secondNumber.stripTrailingZeros();
                         secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
+//                        if (firstNumberString.startsWith("0")&& !isDot ) {
+//                            firstNumberString = screenContent.substring(0,screenContent.length() -1 );
+//                            return;
+//                        }
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = decimalFormat.format(firstNumber);
+//                        firstNumberString = decimalFormat.format(firstNumber);
 //                        int firstNumberint = firstNumber.intValue();
 //                        firstNumberString = firstNumber.toString();
+//                        nf.getMaximumFractionDigits();
+//                        nf.getMinimumFractionDigits();
+                        nf.setMinimumFractionDigits(2);
+                        nf.setMaximumFractionDigits(7);
+
+//                        firstNumberString = decimalFormat.format(firstNumber);
+                        firstNumberString = nf.format(firstNumber);
                     }
 
                     break;
@@ -140,7 +162,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                         firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = decimalFormat.format(firstNumber);
+                        nf.setMaximumFractionDigits(12);
+//                        firstNumberString = decimalFormat.format(firstNumber);
+                        firstNumberString = nf.format(firstNumber);
                     }
 
                     break;
@@ -310,7 +334,6 @@ public class MainActivity extends AppCompatActivity {
                                 firstNumberString = firstNumberString + ".";
                             }
                         }
-
                     break;
                 case R.id.btDelete:
                     int screenContentlength = screenContent.length();
