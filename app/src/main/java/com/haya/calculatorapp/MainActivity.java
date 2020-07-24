@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    NumberFormat mf = NumberFormat.get(10);
 
-    DecimalFormat decimalFormat = new DecimalFormat("#,###.##########");
+    DecimalFormat decimalFormat = new DecimalFormat("#,###.##############");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 String screenContentFix = calculatorScreen.getText().toString();
 
                 screenContent = screenContentFix.replace(",", "");
+                firstNumberString = screenContentFix.replace(",", "");
+                secondNumberString = screenContentFix.replace(",", "");
 
                 calculatorScreen.setText(screenContent);
                 final int id = view.getId();
@@ -251,14 +253,14 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btPoint:
                     if (screenContent.isEmpty()||screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
-                        if (isOpPressed && secondNumberString != null) {
-                            screenContent = firstNumberString + stringOp + secondNumberString;
-                        } else if (isOpPressed) {
-                            screenContent = firstNumberString + stringOp;
-                        } else {
-                            screenContent = firstNumberString;
-                        }
-                        calculatorScreen.setText(screenContent);
+//                        if (isOpPressed && secondNumberString != null) {
+//                            screenContent = firstNumberString + stringOp + secondNumberString;
+//                        } else if (isOpPressed) {
+//                            screenContent = firstNumberString + stringOp;
+//                        } else {
+//                            screenContent = firstNumberString;
+//                        }
+//                        calculatorScreen.setText(screenContent);
                         return;
                     }
 
@@ -267,9 +269,13 @@ public class MainActivity extends AppCompatActivity {
                             if (isOpPressed) {
                                 secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                                 secondNumberString = secondNumberString + ".";
+                                screenContent = firstNumberString + stringOp + secondNumberString;
+                                calculatorScreen.setText(screenContent);
                             } else {
                                 firstNumberString = calculatorScreen.getText().toString();
                                 firstNumberString = firstNumberString + ".";
+                                screenContent = firstNumberString;
+                                calculatorScreen.setText(screenContent);
                             }
                         }
                     return;
@@ -347,11 +353,16 @@ public class MainActivity extends AppCompatActivity {
 
             if (isOpPressed && secondNumberString != null) {
 
-                secondNumber = new BigDecimal(secondNumberString);
-                secondNumberString = decimalFormat.format(secondNumber);
-
                 firstNumber = new BigDecimal(firstNumberString);
                 firstNumberString = decimalFormat.format(firstNumber);
+
+                secondNumber = new BigDecimal(secondNumberString);
+
+                if (isDot && secondNumberString.endsWith("0")) {
+                    secondNumberString = secondNumber.toString();
+                } else {
+                    secondNumberString = decimalFormat.format(secondNumber);
+                }
 
                 screenContent = firstNumberString + stringOp + secondNumberString;
 
@@ -362,13 +373,20 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (isOpPressed) {
 
+                firstNumberString = screenContentFix.replace(",", "");
+                firstNumber = new BigDecimal(firstNumberString);
+                firstNumberString = decimalFormat.format(firstNumber);
                 screenContent = firstNumberString + stringOp;
                 resultScreen.setText("");
 
             } else {
 
                 firstNumber = new BigDecimal(firstNumberString);
-                firstNumberString = nf.format(firstNumber);
+                if (isDot && firstNumberString.endsWith("0")) {
+                    firstNumberString = firstNumber.toString();
+                } else {
+                    firstNumberString = decimalFormat.format(firstNumber);
+                }
                 screenContent = firstNumberString;
                 resultScreen.setText("");
 
@@ -402,19 +420,18 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if ( screenContent.isEmpty() && operation == '-' ) {
+        if (screenContent.isEmpty() && operation == '-') {
             calculatorScreen.append(String.valueOf(operation));
         } else {
-            secondNumberIndex = screenContent.length() + 1;
+            firstNumberString = decimalFormat.format(firstNumber);
+            secondNumberIndex = firstNumberString.length() + 1;
             isOpPressed = true;
             isDot = false;
             currentOp = operation;
             stringOp = String.valueOf(operation);
         }
-
     }
     private void Equal() {
-
 
         firstNumberString = firstNumberString.replace(",", "");
         secondNumberString = secondNumberString.replace(",", "");
@@ -428,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (currentOp == '×') {
             resultNumber = firstNumber.multiply(secondNumber);
         } else if (currentOp == '÷') {
-            if ( secondNumber.compareTo(BigDecimal.ZERO) == 0 ) {
+            if (secondNumber.compareTo(BigDecimal.ZERO) == 0) {
                 return;
             }
             resultNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
