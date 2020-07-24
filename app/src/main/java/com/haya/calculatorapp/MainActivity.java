@@ -308,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
                                 screenContent = calculatorScreen.getText().toString();
                             } else {
                                 firstNumberString = screenContent.substring(0,screenContentlength - 1);
+                                screenContent = firstNumberString;
                                 if (firstNumberString.endsWith(".")) {
                                     BeforeReturn();
                                     firstNumberString = firstNumberString + ".";
@@ -388,7 +389,7 @@ public class MainActivity extends AppCompatActivity {
                 screenContent = firstNumberString + stringOp;
                 resultScreen.setText("");
 
-            } else if (firstNumberString != null){
+            } else if (firstNumberString != null && !(firstNumberString.equals("-"))){
 
                 firstNumber = new BigDecimal(firstNumberString);
                 if (isDot && firstNumberString.endsWith("0")) {
@@ -425,13 +426,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void OpPressed(char operation) {
-        firstNumber = firstNumber.stripTrailingZeros();
-        firstNumberString = firstNumber.toString();
-        secondNumberIndex = firstNumberString.length() + 1;
-        isOpPressed = true;
-        isDot = false;
-        currentOp = operation;
-        stringOp = String.valueOf(operation);
+        if (!isOpPressed) {
+            firstNumber = firstNumber.stripTrailingZeros();
+            firstNumberString = firstNumber.toString();
+            secondNumberIndex = firstNumberString.length() + 1;
+            isOpPressed = true;
+            isDot = false;
+            currentOp = operation;
+            stringOp = String.valueOf(operation);
+        }
     }
 
     private void Equal() {
