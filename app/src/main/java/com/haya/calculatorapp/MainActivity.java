@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 //                }
 
 
-                screenContent = screenContentFix.replace(",", "");
                 calculatorScreen.setText(screenContent);
 
 
@@ -414,7 +413,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
 
-        secondNumberIndex = screenContent.length() + 1;
+
+        firstNumber = firstNumber.stripTrailingZeros();
+        firstNumberString = firstNumber.toString();
+        secondNumberIndex = firstNumberString.length() + 1;
         isOpPressed = true;
         isDot = false;
         currentOp = operation;
