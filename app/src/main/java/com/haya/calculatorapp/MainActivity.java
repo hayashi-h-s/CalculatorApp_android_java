@@ -344,9 +344,6 @@ public class MainActivity extends AppCompatActivity {
                 btDelete.setVisibility(View.VISIBLE);
             }
 
-
-
-
             if (isOpPressed && secondNumberString != null) {
 
                 firstNumber = new BigDecimal(firstNumberString);
@@ -354,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
                 secondNumber = new BigDecimal(secondNumberString);
 
-                if (!(secondNumber.compareTo(BigDecimal.ZERO) == 0)) {
+                if (!(currentOp == '÷' && secondNumber.compareTo(BigDecimal.ZERO) == 0)) {
                     Equal();
                     resultContent = decimalFormat.format(resultNumber);
                     resultScreen.setText(resultContent);
@@ -412,8 +409,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void OpPressed(char operation) {
-
-
         firstNumber = firstNumber.stripTrailingZeros();
         firstNumberString = firstNumber.toString();
         secondNumberIndex = firstNumberString.length() + 1;
