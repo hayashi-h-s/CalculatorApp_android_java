@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 if (firstNumberString != null) {
                     firstNumberString = firstNumberString.replace(",", "");
                 }
+
                 if (secondNumberString != null) {
                     secondNumberString = secondNumberString.replace(",", "");
                 }
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
             switch (id){
                 case R.id.n0:
-
                     calculatorScreen.append("0");
                     screenContent = calculatorScreen.getText().toString();
 
@@ -239,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btDot:
 
                     if (!isDot) {
-
                         isDot = true;
                         AddComma();
                         if (secondNumberString != null) {
