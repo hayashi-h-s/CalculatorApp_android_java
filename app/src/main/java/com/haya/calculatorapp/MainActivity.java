@@ -3,21 +3,15 @@ package com.haya.calculatorapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.lang.Object;
-import java.util.Objects;
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,19 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     private int secondNumberIndex;
 
-    private int a = 10;
-
     private char currentOp;
 
     private TextView calculatorScreen;
 
     private TextView resultScreen;
-
-//    NumberFormat nf2 = NumberFormat.getMaximumFractionDigits();
-
-    NumberFormat nf = NumberFormat.getNumberInstance();
-
-//    NumberFormat mf = NumberFormat.get(10);
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###.##############");
 
@@ -93,14 +79,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String screenContentFix = calculatorScreen.getText().toString();
-
-//                if (.getId() == R.id.n0) {
-////                    calculatorScreen.append("1234");
-//                    return;
-////                    if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")||screenContentFix.isEmpty()) {
-////
-////                    }
-//                }
 
                 screenContent = screenContentFix.replace(",", "");
 
@@ -144,12 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-//      d
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
-//                        nf.setMaximumFractionDigits(12);
-//                        firstNumberString = decimalFormat.format(firstNumber);
-
                     }
 
                     break;
@@ -215,8 +189,6 @@ public class MainActivity extends AppCompatActivity {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
-                        firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
@@ -226,13 +198,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                        secondNumber = new BigDecimal(secondNumberString);
-                        secondNumber = secondNumber.stripTrailingZeros();
-                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
-                        firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
@@ -242,12 +209,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                        secondNumber = new BigDecimal(secondNumberString);
-                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
-                        firstNumber = new BigDecimal(firstNumberString);
-                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
