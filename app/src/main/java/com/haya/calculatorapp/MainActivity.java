@@ -25,14 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String resultContent;
 
-    private String test = "0";
-
-    private String zero = "0";
-
-    private String minus = "-";
-
-    private String empty = null;
-
     private String stringOp;
 
     private String firstNumberString;
@@ -44,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isDot = false;
 
     private boolean isEqual = false;
-
-    private boolean firstminus = false;
 
     private BigDecimal firstNumber;
 
@@ -110,17 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 final int id = view.getId();
 
 
-
-//                String[] numbers = {"1","2","3"};
-//
-//                for(String n:numbers) {
-//                    if (nn.getId() == R.id.nn) {
-//                        if (firstNumberString.startsWith("0")) {
-//                            calculatorScreen.append("0");
-//                        }
-//                    }
-//                }
-
             switch (id){
                 case R.id.n0:
 //                    "0"を連続で打てない処理
@@ -135,11 +114,6 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                     }
-//                     (firstNumberString != null) {
-//                        if ((firstNumberString.startsWith("0") && !isDot)) {
-//                            return;
-//                        }
-//                    }
                     calculatorScreen.append("0");
                     screenContent = calculatorScreen.getText().toString();
 
@@ -147,17 +121,6 @@ public class MainActivity extends AppCompatActivity {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
-
-//                        firstNumberString = decimalFormat.format(firstNumber);
-//                        int firstNumberint = firstNumber.intValue();
-//                        firstNumberString = firstNumber.toString();
-//                        nf.getMaximumFractionDigits();
-//                        nf.getMinimumFractionDigits();
-//                        nf.setMinimumFractionDigits(2);
-//                        nf.setMaximumFractionDigits(7);
-
-//                        firstNumberString = decimalFormat.format(firstNumber);
-
                     }
 
                     break;
@@ -238,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
+                        firstNumber = new BigDecimal(firstNumberString);
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
@@ -247,8 +212,13 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        secondNumber = new BigDecimal(secondNumberString);
+                        secondNumber = secondNumber.stripTrailingZeros();
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
+                        firstNumber = new BigDecimal(firstNumberString);
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
@@ -258,8 +228,12 @@ public class MainActivity extends AppCompatActivity {
 
                     if (isOpPressed) {
                         secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                        secondNumber = new BigDecimal(secondNumberString);
+                        secondNumberString = decimalFormat.format(secondNumber);
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
+                        firstNumber = new BigDecimal(firstNumberString);
+                        firstNumberString = decimalFormat.format(firstNumber);
                     }
 
                     break;
@@ -277,31 +251,27 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btPoint:
                     if (screenContent.isEmpty()||screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
-//                        if (isOpPressed && secondNumberString != null) {
-//                            screenContent = firstNumberString + stringOp + secondNumberString;
-//                        } else if (isOpPressed) {
-//                            screenContent = firstNumberString + stringOp;
-//                        } else {
-//                            screenContent = firstNumberString;
-//                        }
-//                        calculatorScreen.setText(screenContent);
+                        if (isOpPressed && secondNumberString != null) {
+                            screenContent = firstNumberString + stringOp + secondNumberString;
+                        } else if (isOpPressed) {
+                            screenContent = firstNumberString + stringOp;
+                        } else {
+                            screenContent = firstNumberString;
+                        }
+                        calculatorScreen.setText(screenContent);
                         return;
                     }
 
                     if (!isDot) {
                         isDot = true;
                             if (isOpPressed) {
-                                secondNumberString =  secondNumberString + ".";
-                                screenContent = firstNumberString + stringOp + secondNumberString;
-                                calculatorScreen.setText(screenContent);
+                                secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+                                secondNumberString = secondNumberString + ".";
                             } else {
                                 firstNumberString = calculatorScreen.getText().toString();
                                 firstNumberString = firstNumberString + ".";
-                                screenContent = firstNumberString;
-                                calculatorScreen.setText(screenContent);
                             }
                         }
-
                     return;
                 case R.id.btDelete:
                     int screenContentlength = screenContent.length();
@@ -320,9 +290,6 @@ public class MainActivity extends AppCompatActivity {
                                 secondNumberString = null;
                             } else {
                                 secondNumberString = screenContent.substring(secondNumberIndex,screenContentlength - 1);
-                                if (secondNumberString.endsWith(".")) {
-                                    return;
-                                }
                             }
                         } else {
                             if (firstNumberString.length() == 1) {
@@ -330,9 +297,6 @@ public class MainActivity extends AppCompatActivity {
                                 screenContent = null;
                             } else {
                                 firstNumberString = screenContent.substring(0,screenContentlength - 1);
-                                if (firstNumberString.endsWith(".")) {
-                                    return;
-                                }
                             }
                         }
                     }
@@ -348,14 +312,14 @@ public class MainActivity extends AppCompatActivity {
                     secondNumber = null;
                     calculatorScreen.setText("");
                     screenContent = calculatorScreen.getText().toString();
-                    return;
+                    break;
                 case R.id.btEqual:
                     if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
                         return;
                     }
                     if (isOpPressed) {
                         Equal();
-                        screenContent = resultNumber.toString(resultNumber);
+                        screenContent = decimalFormat.format(resultNumber);
 
                         calculatorScreen.setText(String.valueOf(screenContent));
                         firstNumberString = calculatorScreen.getText().toString();
@@ -384,24 +348,30 @@ public class MainActivity extends AppCompatActivity {
             if (isOpPressed && secondNumberString != null) {
 
                 secondNumber = new BigDecimal(secondNumberString);
-                secondNumberString = nf.format(secondNumber);
+                secondNumberString = decimalFormat.format(secondNumber);
 
                 firstNumber = new BigDecimal(firstNumberString);
-                firstNumberString = nf.format(firstNumber);
+                firstNumberString = decimalFormat.format(firstNumber);
 
                 screenContent = firstNumberString + stringOp + secondNumberString;
+
                 Equal();
+
                 resultContent = decimalFormat.format(resultNumber);
                 resultScreen.setText(resultContent);
+
             } else if (isOpPressed) {
+
                 screenContent = firstNumberString + stringOp;
                 resultScreen.setText("");
 
             } else {
+
                 firstNumber = new BigDecimal(firstNumberString);
                 firstNumberString = nf.format(firstNumber);
                 screenContent = firstNumberString;
                 resultScreen.setText("");
+
             }
             calculatorScreen.setText(screenContent);
             }
@@ -433,7 +403,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if ( screenContent.isEmpty() && operation == '-' ) {
-            firstminus = true;
             calculatorScreen.append(String.valueOf(operation));
         } else {
             secondNumberIndex = screenContent.length() + 1;
