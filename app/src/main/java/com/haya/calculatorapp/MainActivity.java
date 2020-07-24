@@ -79,12 +79,20 @@ public class MainActivity extends AppCompatActivity {
 
                 String screenContentFix = calculatorScreen.getText().toString();
 
-                if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot) {
+                if (view.getId() == R.id.btSubtract && screenContentFix.isEmpty()) {
+                    calculatorScreen.append(String.valueOf("-"));
+                    return;
+                }
+
+                // return処理まとめ
+                if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot||screenContentFix.isEmpty()) {
                     if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")) {
-                        if (!(screenContentFix.isEmpty() && view.getId() == R.id.btSubtract)) {
-                            return;
-                        }
+                        return;
                     }
+                }
+
+                if (isDot && view.getId() == R.id.btDot) {
+                    return;
                 }
 
                 if (view.getId() == R.id.btEqual) {
@@ -245,10 +253,10 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('×');
                     break;
                 case R.id.btSubtract:
-                    if (screenContent.isEmpty()) {
-                        calculatorScreen.append(String.valueOf("-"));
-                        return;
-                    }
+//                    if (screenContent.isEmpty()) {
+//                        calculatorScreen.append(String.valueOf("-"));
+//                        return;
+//                    }
                     OpPressed('-');
                     break;
                 case R.id.btAdd:
@@ -263,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
                     if (!isDot) {
 
                         isDot = true;
-                        BeforeReturn();
+                        AddComma();
                         if (secondNumberString != null) {
                             secondNumberString = secondNumberString + ".";
                             screenContent = firstNumberString + stringOp + secondNumberString;
@@ -293,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
                             } else {
                                 secondNumberString = screenContent.substring(secondNumberIndex,screenContentlength - 1);
                                 if (secondNumberString.endsWith(".")) {
-                                    BeforeReturn();
+                                    AddComma();
                                     secondNumberString = secondNumberString + ".";
                                     screenContent = firstNumberString + stringOp + secondNumberString;
                                     calculatorScreen.setText(screenContent);
@@ -310,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
                                 firstNumberString = screenContent.substring(0,screenContentlength - 1);
                                 screenContent = firstNumberString;
                                 if (firstNumberString.endsWith(".")) {
-                                    BeforeReturn();
+                                    AddComma();
                                     firstNumberString = firstNumberString + ".";
                                     screenContent = firstNumberString;
                                     calculatorScreen.setText(screenContent);
@@ -454,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void BeforeReturn() {
+    private void AddComma() {
         if (isOpPressed && secondNumberString != null) {
 
             firstNumber = new BigDecimal(firstNumberString);
