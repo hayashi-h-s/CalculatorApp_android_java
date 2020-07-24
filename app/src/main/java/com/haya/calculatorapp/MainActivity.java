@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-
                 if (view.getId() == R.id.btEqual) {
                     if (secondNumberString.equals("0")) {
                         return;
@@ -113,9 +112,8 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }
 
-
-                calculatorScreen.setText(screenContentFix);
-                screenContent = calculatorScreen.getText().toString();
+                screenContent = screenContentFix.replace(",", "");
+                calculatorScreen.setText(screenContent);
 
                 final int id = view.getId();
 
