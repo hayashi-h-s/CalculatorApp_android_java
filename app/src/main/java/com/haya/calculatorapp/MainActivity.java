@@ -108,18 +108,6 @@ public class MainActivity extends AppCompatActivity {
                     secondNumberString = secondNumberString.replace(",", "");
                 }
 
-//                if (isOpPressed) {
-//                    if (secondNumberString != null) {
-//                        if ((secondNumberString.startsWith("0") && !isDot)) {
-//                            return;
-//                        }
-//                    }
-//                } else if (firstNumberString != null) {
-//                    if ((firstNumberString.startsWith("0") && !isDot)) {
-//                        return;
-//                    }
-//                }
-
                 screenContent = screenContentFix.replace(",", "");
                 calculatorScreen.setText(screenContent);
 
@@ -127,17 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (id){
                 case R.id.n0:
-//                    if (isOpPressed) {
-//                        if (secondNumberString != null) {
-//                            if ((secondNumberString.startsWith("0") && !isDot)) {
-//                                return;
-//                            }
-//                        }
-//                    } else if (firstNumberString != null) {
-//                        if ((firstNumberString.startsWith("0") && !isDot)) {
-//                            return;
-//                        }
-//                    }
+
                     calculatorScreen.append("0");
                     screenContent = calculatorScreen.getText().toString();
 
@@ -253,20 +231,12 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('×');
                     break;
                 case R.id.btSubtract:
-//                    if (screenContent.isEmpty()) {
-//                        calculatorScreen.append(String.valueOf("-"));
-//                        return;
-//                    }
                     OpPressed('-');
                     break;
                 case R.id.btAdd:
                     OpPressed('+');
                     break;
                 case R.id.btDot:
-//                    if (screenContent.isEmpty()||screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")||screenContent.endsWith(".")) {
-//                        BeforeReturn();
-//                        return;
-//                    }
 
                     if (!isDot) {
 
@@ -454,10 +424,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (currentOp == '×') {
             resultNumber = firstNumber.multiply(secondNumber);
         } else if (currentOp == '÷') {
-//            if (secondNumber.compareTo(BigDecimal.ZERO) == 0) {
-//                BeforeReturn();
-//                return;
-//            }
             resultNumber = firstNumber.divide(secondNumber, 14, RoundingMode.HALF_UP);
         }
     }
@@ -469,12 +435,6 @@ public class MainActivity extends AppCompatActivity {
             firstNumberString = decimalFormat.format(firstNumber);
 
             secondNumber = new BigDecimal(secondNumberString);
-
-//            if (!(secondNumber.compareTo(BigDecimal.ZERO) == 0)) {
-//                Equal();
-//                resultContent = decimalFormat.format(resultNumber);
-//                resultScreen.setText(resultContent);
-//            }
 
             if (isDot && secondNumberString.endsWith("0")) {
                 secondNumberString = secondNumber.toString();
