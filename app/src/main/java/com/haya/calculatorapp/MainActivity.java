@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('×');
                     break;
                 case R.id.btSubtract:
-                    if (screenContent == null) {
+                    if (screenContent.isEmpty()) {
                         calculatorScreen.append(String.valueOf("-"));
                         return;
                     }
