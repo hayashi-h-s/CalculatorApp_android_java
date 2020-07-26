@@ -1,13 +1,11 @@
 package com.haya.calculatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -84,32 +82,30 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // return処理まとめ
+                // returnさせる処理まとめ
                 if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot||screenContentFix.isEmpty()) {
                     if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")) {
                         return;
                     }
                 }
-
                 if (isDot && view.getId() == R.id.btDot) {
                     return;
                 }
-
                 if (view.getId() == R.id.btEqual) {
                     if (secondNumberString.equals("0")) {
                         return;
                     }
                 }
 
+                // 文字列のカンマを取り除く処理
                 if (firstNumberString != null) {
                     firstNumberString = firstNumberString.replace(",", "");
                 }
-
                 if (secondNumberString != null) {
                     secondNumberString = secondNumberString.replace(",", "");
                 }
-
                 screenContent = screenContentFix.replace(",", "");
+
                 calculatorScreen.setText(screenContent);
 
                 final int id = view.getId();
@@ -345,16 +341,17 @@ public class MainActivity extends AppCompatActivity {
 
                 secondNumber = new BigDecimal(secondNumberString);
 
-                if (!(currentOp == '÷' && secondNumber.compareTo(BigDecimal.ZERO) == 0)) {
-                    Equal();
-                    resultContent = decimalFormat.format(resultNumber);
-                    resultScreen.setText(resultContent);
-                }
 
                 if (isDot && secondNumberString.endsWith("0")) {
                     secondNumberString = secondNumber.toString();
                 } else {
                     secondNumberString = decimalFormat.format(secondNumber);
+
+                    if (!(currentOp == '÷' && secondNumberString.equals("0"))) {
+                        Equal();
+                        resultContent = decimalFormat.format(resultNumber);
+                        resultScreen.setText(resultContent);
+                    }
                 }
 
                 screenContent = firstNumberString + stringOp + secondNumberString;
