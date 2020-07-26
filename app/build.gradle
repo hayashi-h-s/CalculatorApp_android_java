@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.haya.calculatorapp"
+        applicationId "jp.co.hnut.calculator"
         minSdkVersion 18
         targetSdkVersion 30
         versionCode 1

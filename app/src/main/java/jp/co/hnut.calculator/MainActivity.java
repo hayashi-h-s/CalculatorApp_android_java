@@ -1,4 +1,4 @@
-package com.haya.calculatorapp;
+package jp.co.hnut.calculatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
