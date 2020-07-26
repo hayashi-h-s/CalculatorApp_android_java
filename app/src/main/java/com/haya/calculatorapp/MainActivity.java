@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // returnさせる処理まとめ
                 if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot||screenContentFix.isEmpty()) {
+
                     if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")) {
                         return;
                     }
