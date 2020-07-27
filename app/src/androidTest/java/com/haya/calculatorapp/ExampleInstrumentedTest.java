@@ -1,4 +1,4 @@
-package jp.co.hnutcalculatorapp;
+package jp.co.hnut.calculatorapp;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("jp.co.hnutcalculatorapp", appContext.getPackageName());
+        assertEquals("jp.co.hnut.calculatorapp", appContext.getPackageName());
     }
 }
