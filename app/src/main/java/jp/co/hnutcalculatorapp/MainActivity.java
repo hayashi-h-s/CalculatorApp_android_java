@@ -1,4 +1,4 @@
-package jp.co.hnut.calculatorapp;
+package jp.co.hnutcalculatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

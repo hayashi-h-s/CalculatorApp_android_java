@@ -1,4 +1,4 @@
-package jp.co.hnut.calculatorapp;
+package jp.co.hnutcalculatorapp;
 
 import org.junit.Test;
 
