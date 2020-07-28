@@ -411,11 +411,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         if (!isOpPressed) {
-//            firstNumber = firstNumber.stripTrailingZeros();
-//            firstNumberString = firstNumber.toString();
             firstNumber = new BigDecimal(firstNumberString);
             firstNumberString = DecimalPointFormat.format(firstNumber);
-//            DecimalPointFormat
             secondNumberIndex = firstNumberString.length() + 1;
             isOpPressed = true;
             isDot = false;
