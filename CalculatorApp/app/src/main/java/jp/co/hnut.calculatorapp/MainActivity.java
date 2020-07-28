@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###.##############");
 
+    DecimalFormat DecimalPointFormat = new DecimalFormat("####.##############");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -409,8 +411,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void OpPressed(char operation) {
         if (!isOpPressed) {
-            firstNumber = firstNumber.stripTrailingZeros();
-            firstNumberString = firstNumber.toString();
+//            firstNumber = firstNumber.stripTrailingZeros();
+//            firstNumberString = firstNumber.toString();
+            firstNumber = new BigDecimal(firstNumberString);
+            firstNumberString = DecimalPointFormat.format(firstNumber);
+//            DecimalPointFormat
             secondNumberIndex = firstNumberString.length() + 1;
             isOpPressed = true;
             isDot = false;
