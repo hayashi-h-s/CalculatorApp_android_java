@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">電卓アプリ</string>
+    <string name="formula_text" />
+</resources>
