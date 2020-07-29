@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import android.media.MediaPlayer;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         calculatorScreen = findViewById(R.id.tvFormula);
         resultScreen = findViewById(R.id.tvResult);
+
+        final MediaPlayer pianoSound = MediaPlayer.create(this,R.raw.dice_sound);
+        final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.calculator);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -127,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    pianoSound.start();
                     break;
 
                 case R.id.n1:
@@ -139,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    sampleSound.start();
                     break;
 
                 case R.id.n2:
