@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###.##############");
 
-    DecimalFormat DecimalPointFormat = new DecimalFormat("####.##############");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         calculatorScreen = findViewById(R.id.tvFormula);
         resultScreen = findViewById(R.id.tvResult);
 
-        final MediaPlayer pianoSound = MediaPlayer.create(this,R.raw.dice_sound);
         final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.calculator);
 
         final Button n0 = findViewById(R.id.n0);
@@ -132,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
-                    pianoSound.start();
                     break;
 
                 case R.id.n1:
