@@ -15,8 +15,8 @@
     <TextView
         android:id="@+id/tvFormula"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginBottom="650dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="550dp"
         android:autoSizeMinTextSize="17dp"
         android:autoSizeTextType="uniform"
         android:gravity="center|end"
@@ -24,7 +24,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:text="@string/formula_text"
-        android:textColor="@color/colorTextBlack"
+        android:textColor="@color/colorBlack"
         android:textSize="65dp"
         app:autoSizeMaxTextSize="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,11 +35,12 @@
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/formula_text"
         android:gravity="center|end"
         android:paddingLeft="25dp"
-        android:paddingRight="25dp"
+        android:paddingRight="35dp"
         android:autoSizeMinTextSize="17dp"
         app:autoSizeMaxTextSize="25dp"
         android:autoSizeTextType="uniform"
@@ -53,8 +54,8 @@
     <View
         android:id="@+id/topBorder"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorBorderLine"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -83,9 +84,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="7"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -94,9 +95,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="4"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -105,9 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="1"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -116,12 +117,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="0"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
         </LinearLayout>
+
+        <View
+            android:id="@+id/ruledLine"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -136,9 +143,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="8"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -147,9 +154,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="5"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -158,9 +165,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="2"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -169,12 +176,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="."
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
         </LinearLayout>
+
+        <View
+            android:id="@+id/ruledLine"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -189,9 +202,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="9"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -200,9 +213,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="6"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -211,9 +224,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorBlack"
                 android:text="3"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
             <Button
@@ -222,9 +235,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="="
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
         </LinearLayout>
@@ -232,9 +245,9 @@
 
         <View
             android:id="@+id/ruledLine"
-            android:layout_width="4dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/colorBorderLine" />
+            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -253,9 +266,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorBackGround"
+                    android:background="@color/colorWhite"
                     android:text="C"
-                    android:textColor="@color/colorTextBlue"
+                    android:textColor="@color/colorBlack"
                     android:textSize="30sp" />
 
                 <ImageButton
@@ -263,7 +276,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@color/colorBackGround"
+                    android:background="@color/colorWhite"
                     app:srcCompat="@drawable/ic_baseline_backspace_24" />
             </FrameLayout>
 
@@ -273,9 +286,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="÷"
-                android:textColor="@color/colorTextBlue"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -284,9 +297,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="×"
-                android:textColor="@color/colorTextBlue"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -295,9 +308,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="-"
-                android:textColor="@color/colorTextBlue"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
             <Button
@@ -306,9 +319,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorBackGround"
+                android:background="@color/colorWhite"
                 android:text="+"
-                android:textColor="@color/colorTextBlue"
+                android:textColor="@color/colorBlack"
                 android:textSize="30sp" />
 
         </LinearLayout>
