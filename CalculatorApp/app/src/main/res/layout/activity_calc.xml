@@ -31,6 +31,7 @@
         android:layout_marginBottom="480dp"
         android:autoSizeMinTextSize="17dp"
         android:autoSizeTextType="uniform"
+        android:fontFamily="cursive"
         android:gravity="center|end"
         android:maxLines="1"
         android:paddingLeft="25dp"
@@ -48,15 +49,15 @@
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="0dp"
-        android:text="@string/formula_text"
+        android:autoSizeMinTextSize="17dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="cursive"
         android:gravity="center|end"
         android:paddingLeft="25dp"
         android:paddingRight="35dp"
-        android:autoSizeMinTextSize="17dp"
-        app:autoSizeMaxTextSize="25dp"
-        android:autoSizeTextType="uniform"
+        android:text="@string/formula_text"
         android:textSize="25dp"
+        app:autoSizeMaxTextSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/topBorder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -97,9 +98,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="7"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n4"
@@ -108,9 +111,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="4"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n1"
@@ -119,28 +124,42 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="1"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/n0"
-                style="?android:attr/buttonBarButtonStyle"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorWhite"
-                android:text="0"
-                android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:layout_weight="1">
+
+
+                <Button
+                    android:id="@+id/n0"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    android:fontFamily="cursive"
+                    android:text="0"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+                <View
+                    android:id="@+id/ruledLine"
+                    android:translationZ="2dp"
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorGray" />
+
+
+            </FrameLayout>
 
         </LinearLayout>
-
-        <View
-            android:id="@+id/ruledLine"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,9 +175,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="8"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n5"
@@ -167,9 +188,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="5"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n2"
@@ -178,9 +201,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="2"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btDot"
@@ -189,17 +214,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="."
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
-
-        <View
-            android:id="@+id/ruledLine"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -215,9 +236,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="9"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n6"
@@ -226,9 +249,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="6"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/n3"
@@ -237,29 +262,41 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorBlack"
+                android:fontFamily="cursive"
                 android:text="3"
                 android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btEqual"
-                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorWhite"
-                android:text="="
-                android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btEqual"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    android:fontFamily="cursive"
+                    android:text="="
+                    android:textColor="@color/colorBlack"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/ruledLine"
+                    android:translationZ="2dp"
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorGray" />
+
+
+            </FrameLayout>
 
         </LinearLayout>
-
-
-        <View
-            android:id="@+id/ruledLine"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -279,9 +316,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/colorWhite"
+                    android:fontFamily="cursive"
                     android:text="C"
                     android:textColor="@color/colorBlack"
-                    android:textSize="30sp" />
+                    android:textSize="40sp" />
 
                 <ImageButton
                     android:id="@+id/btDelete"
@@ -299,9 +337,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="÷"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btMultiply"
@@ -310,9 +350,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="×"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btSubtract"
@@ -321,9 +363,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="-"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btAdd"
@@ -332,9 +376,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/colorWhite"
+                android:fontFamily="cursive"
                 android:text="+"
                 android:textColor="@color/colorBlack"
-                android:textSize="30sp" />
+                android:textSize="50sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>
