@@ -12,17 +12,39 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="330dp">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tvFormula"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/guideline"-->
+<!--            tools:srcCompat="@drawable/piano" />-->
+
+<!--    </RelativeLayout>-->
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/tvFormula"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:srcCompat="@drawable/piano" />
+        android:layout_height="78dp"
+        tools:layout_editor_absoluteX="-6dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="412dp"
+            android:layout_height="63dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/piano" />
+
+    </RelativeLayout>
+
+
 
     <TextView
         android:id="@+id/tvFormula"
@@ -79,7 +101,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="460dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
