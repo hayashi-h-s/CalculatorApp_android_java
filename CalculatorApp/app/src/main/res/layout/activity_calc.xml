@@ -133,7 +133,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="0.9">
 
                 <Button
                     android:id="@+id/n0"
@@ -208,7 +208,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.9"
                 android:background="@color/colorWhite"
                 android:fontFamily="cursive"
                 android:text="@string/dot"
@@ -266,7 +266,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="0.9">
 
                 <Button
                     android:id="@+id/btEqual"
