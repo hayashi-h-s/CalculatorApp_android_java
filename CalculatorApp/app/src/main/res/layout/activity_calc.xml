@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_width="399dp"
+        android:layout_height="173dp"
         android:layout_marginBottom="18dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/tvFormula"
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/piano"
         android:contentDescription="@string/headerImage" />
 
@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" tools:targetApi="o"/>
 
     <TextView
         android:id="@+id/tvResult"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFormula" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFormula" tools:targetApi="o"/>
 
     <View
         android:id="@+id/topBorder"
@@ -151,7 +151,7 @@
                     android:layout_width="3dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/colorGray" />
+                    android:background="@color/colorGray" tools:targetApi="lollipop"/>
 
             </FrameLayout>
 
@@ -285,7 +285,7 @@
                     android:layout_width="3dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/colorGray" />
+                    android:background="@color/colorGray" tools:targetApi="lollipop"/>
 
 
             </FrameLayout>
