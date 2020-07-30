@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    sampleSound.start();
                     break;
 
                 case R.id.n1:
