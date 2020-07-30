@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="399dp"
-        android:layout_height="173dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_marginBottom="18dp"
+        android:contentDescription="@string/headerImage"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/tvFormula"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,14 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/piano"
-        android:contentDescription="@string/headerImage" />
+        app:srcCompat="@drawable/piano" />
 
     <TextView
         android:id="@+id/tvFormula"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:layout_marginBottom="564dp"
+        android:layout_marginBottom="556dp"
         android:autoSizeMinTextSize="17dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="cursive"
@@ -40,7 +40,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" tools:targetApi="o"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="o" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -60,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFormula" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvFormula" tools:targetApi="o" />
 
     <View
         android:id="@+id/topBorder"
@@ -151,7 +152,7 @@
                     android:layout_width="3dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/colorGray" tools:targetApi="lollipop"/>
+                    android:background="@color/colorGray" tools:targetApi="lollipop" />
 
             </FrameLayout>
 
@@ -285,7 +286,7 @@
                     android:layout_width="3dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@color/colorGray" tools:targetApi="lollipop"/>
+                    android:background="@color/colorGray" tools:targetApi="lollipop" />
 
 
             </FrameLayout>
