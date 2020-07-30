@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         final Button n8 = findViewById(R.id.n8);
         final Button n9 = findViewById(R.id.n9);
         final Button btClear = findViewById(R.id.btClear);
-        final ImageButton btDelete = findViewById(R.id.btDelete);
+        final Button btDelete = findViewById(R.id.btDelete);
         final Button btDivide = findViewById(R.id.btDivide);
         final Button btMultiply = findViewById(R.id.btMultiply);
         final Button btSubtract = findViewById(R.id.btSubtract);

@@ -12,39 +12,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="0dp" />
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="330dp">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/tvFormula"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/guideline"-->
-<!--            tools:srcCompat="@drawable/piano" />-->
-
-<!--    </RelativeLayout>-->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="78dp"
-        tools:layout_editor_absoluteX="-6dp">
-
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="412dp"
+            android:layout_width="match_parent"
             android:layout_height="63dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/piano" />
-
-    </RelativeLayout>
-
-
 
     <TextView
         android:id="@+id/tvFormula"
@@ -61,6 +34,7 @@
         android:text="@string/formula_text"
         android:textColor="@color/colorBlack"
         android:textSize="65dp"
+        android:textStyle="bold"
         app:autoSizeMaxTextSize="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +53,7 @@
         android:paddingRight="35dp"
         android:text="@string/formula_text"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:autoSizeMaxTextSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/topBorder"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +132,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-
                 <Button
                     android:id="@+id/n0"
                     style="?android:attr/buttonBarButtonStyle"
@@ -178,7 +152,6 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@color/colorGray" />
 
-
             </FrameLayout>
 
         </LinearLayout>
@@ -188,7 +161,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-
 
             <Button
                 android:id="@+id/n8"
@@ -239,7 +211,7 @@
                 android:fontFamily="cursive"
                 android:text="."
                 android:textColor="@color/colorBlack"
-                android:textSize="50sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -304,7 +276,7 @@
                     android:fontFamily="cursive"
                     android:text="="
                     android:textColor="@color/colorBlack"
-                    android:textSize="50sp"
+                    android:textSize="60sp"
                     android:textStyle="bold" />
 
                 <View
@@ -343,13 +315,18 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="40sp" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/btDelete"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/colorWhite"
-                    app:srcCompat="@drawable/ic_baseline_backspace_24" />
+                    android:fontFamily="cursive"
+                    android:text="D"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
             </FrameLayout>
 
             <Button
@@ -362,7 +339,7 @@
                 android:fontFamily="cursive"
                 android:text="÷"
                 android:textColor="@color/colorBlack"
-                android:textSize="50sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
             <Button
@@ -375,7 +352,7 @@
                 android:fontFamily="cursive"
                 android:text="×"
                 android:textColor="@color/colorBlack"
-                android:textSize="50sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
             <Button
@@ -388,7 +365,7 @@
                 android:fontFamily="cursive"
                 android:text="-"
                 android:textColor="@color/colorBlack"
-                android:textSize="50sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
             <Button
@@ -401,7 +378,7 @@
                 android:fontFamily="cursive"
                 android:text="+"
                 android:textColor="@color/colorBlack"
-                android:textSize="50sp"
+                android:textSize="60sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
