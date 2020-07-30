@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.086"
-        app:srcCompat="@drawable/piano" />
+        app:srcCompat="@drawable/piano"
+        android:contentDescription="@string/headerImage" />
 
     <TextView
         android:id="@+id/tvFormula"
@@ -33,14 +34,13 @@
         android:paddingRight="25dp"
         android:text="@string/formula_text"
         android:textColor="@color/colorBlack"
-        android:textSize="65dp"
+        android:textSize="65sp"
         android:textStyle="bold"
         app:autoSizeMaxTextSize="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -51,9 +51,9 @@
         android:fontFamily="cursive"
         android:gravity="center|end"
         android:paddingStart="25dp"
-        android:paddingRight="35dp"
+        android:paddingEnd="35dp"
         android:text="@string/formula_text"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:autoSizeMaxTextSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/topBorder"
@@ -81,7 +81,8 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="match_parent"
