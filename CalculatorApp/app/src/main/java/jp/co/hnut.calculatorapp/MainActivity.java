@@ -274,15 +274,23 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btDivide:
                     OpPressed('÷');
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
                 case R.id.btMultiply:
                     OpPressed('×');
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
                 case R.id.btSubtract:
                     OpPressed('-');
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
                 case R.id.btAdd:
                     OpPressed('+');
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
                 case R.id.btDot:
 
@@ -298,6 +306,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                         calculatorScreen.setText(screenContent);
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
                     return;
 
                 case R.id.btDelete:
@@ -314,6 +324,8 @@ public class MainActivity extends AppCompatActivity {
                             secondNumberIndex = 0;
                             AddComma();
                             calculatorScreen.setText(screenContent);
+                            BackgroundBlack();
+                            BackgroundWhite();
                             return;
                         }
 
@@ -336,6 +348,8 @@ public class MainActivity extends AppCompatActivity {
                                     secondNumberString = secondNumberString + ".";
                                     screenContent = firstNumberString + stringOp + secondNumberString;
                                     calculatorScreen.setText(screenContent);
+                                    BackgroundBlack();
+                                    BackgroundWhite();
                                     return;
                                 }
                             }
@@ -354,6 +368,8 @@ public class MainActivity extends AppCompatActivity {
                                     firstNumberString = firstNumberString + ".";
                                     screenContent = firstNumberString;
                                     calculatorScreen.setText(screenContent);
+                                    BackgroundBlack();
+                                    BackgroundWhite();
                                     return;
                                 }
                             }
@@ -374,6 +390,8 @@ public class MainActivity extends AppCompatActivity {
                     screenContent = null;
                     calculatorScreen.setText("");
                     screenContent = calculatorScreen.getText().toString();
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
 
                 case R.id.btEqual:
@@ -397,6 +415,8 @@ public class MainActivity extends AppCompatActivity {
 
                         isEqual = true;
                         resultScreen.setText("");
+                        BackgroundBlack();
+                        BackgroundWhite();
                         break;
                     }
             }
