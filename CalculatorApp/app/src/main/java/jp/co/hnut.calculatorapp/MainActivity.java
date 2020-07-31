@@ -123,153 +123,83 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.n0:
 
                     calculatorScreen.append("0");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n0.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     sampleSound.start();
+
                     break;
 
                 case R.id.n1:
 
                     calculatorScreen.append("1");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n1.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     sampleSound.start();
+
                     break;
 
                 case R.id.n2:
 
                     calculatorScreen.append("2");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n2.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n3:
 
                     calculatorScreen.append("3");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n3.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n4:
 
                     calculatorScreen.append("4");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n4.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n5:
 
                     calculatorScreen.append("5");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n5.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n6:
 
                     calculatorScreen.append("6");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n6.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n7:
 
                     calculatorScreen.append("7");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n7.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n8:
 
                     calculatorScreen.append("8");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n8.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.n9:
 
                     calculatorScreen.append("9");
-                    screenContent = calculatorScreen.getText().toString();
-
-                    if (isOpPressed) {
-                        secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
-                    } else {
-                        firstNumberString = calculatorScreen.getText().toString();
-                    }
-                    BackgroundBlack();
-                    BackgroundWhite();
+                    ButtonFunc();
                     n9.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+
                     break;
 
                 case R.id.btDivide:
@@ -375,6 +305,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
                     break;
 
                 case R.id.btClear:
@@ -556,6 +488,20 @@ public class MainActivity extends AppCompatActivity {
         n2.setBackgroundResource(R.color.colorWhite);
         n5.setBackgroundResource(R.color.colorWhite);
         n8.setBackgroundResource(R.color.colorWhite);
+
+    }
+
+    private void ButtonFunc() {
+
+        screenContent = calculatorScreen.getText().toString();
+
+        if (isOpPressed) {
+            secondNumberString = screenContent.substring(secondNumberIndex,screenContent.length());
+        } else {
+            firstNumberString = calculatorScreen.getText().toString();
+        }
+        BackgroundBlack();
+        BackgroundWhite();
 
     }
 }
