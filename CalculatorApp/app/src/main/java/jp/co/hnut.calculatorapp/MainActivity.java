@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         calculatorScreen = findViewById(R.id.tvFormula);
         resultScreen = findViewById(R.id.tvResult);
 
+        // 音源の定数を定義
         final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.calculator);
 
         final Button n0 = findViewById(R.id.n0);
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n0.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     sampleSound.start();
                     break;
 
@@ -142,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n1.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     sampleSound.start();
                     break;
 
@@ -155,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n2.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n3:
@@ -167,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n3.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n4:
@@ -179,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n4.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n5:
@@ -191,6 +207,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n5.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n6:
@@ -203,6 +222,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n6.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n7:
@@ -215,6 +237,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n7.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n8:
@@ -227,6 +252,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n8.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.n9:
@@ -239,6 +267,9 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         firstNumberString = calculatorScreen.getText().toString();
                     }
+                    BackgroundBlack();
+                    BackgroundWhite();
+                    n9.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
                     break;
 
                 case R.id.btDivide:
@@ -411,6 +442,7 @@ public class MainActivity extends AppCompatActivity {
         btAdd.setOnClickListener(calculatorListener);
         btEqual.setOnClickListener(calculatorListener);
         btDot.setOnClickListener(calculatorListener);
+
     }
 
     private void OpPressed(char operation) {
@@ -473,5 +505,37 @@ public class MainActivity extends AppCompatActivity {
             screenContent = firstNumberString;
             resultScreen.setText("");
         }
+    }
+
+    private void BackgroundBlack() {
+
+        final Button n1 = findViewById(R.id.n1);
+        final Button n3 = findViewById(R.id.n3);
+        final Button n4 = findViewById(R.id.n4);
+        final Button n6 = findViewById(R.id.n6);
+        final Button n7 = findViewById(R.id.n7);
+        final Button n9 = findViewById(R.id.n9);
+
+        n1.setBackgroundResource(R.color.colorBlack);
+        n3.setBackgroundResource(R.color.colorBlack);
+        n4.setBackgroundResource(R.color.colorBlack);
+        n6.setBackgroundResource(R.color.colorBlack);
+        n7.setBackgroundResource(R.color.colorBlack);
+        n9.setBackgroundResource(R.color.colorBlack);
+
+    }
+
+    private void BackgroundWhite() {
+
+        final Button n0 = findViewById(R.id.n0);
+        final Button n2 = findViewById(R.id.n2);
+        final Button n5 = findViewById(R.id.n5);
+        final Button n8 = findViewById(R.id.n8);
+
+        n0.setBackgroundResource(R.color.colorWhite);
+        n2.setBackgroundResource(R.color.colorWhite);
+        n5.setBackgroundResource(R.color.colorWhite);
+        n8.setBackgroundResource(R.color.colorWhite);
+
     }
 }
