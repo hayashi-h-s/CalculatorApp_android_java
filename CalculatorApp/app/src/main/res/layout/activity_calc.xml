@@ -102,7 +102,8 @@
                 android:text="@string/n7"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/n4"
@@ -115,7 +116,8 @@
                 android:text="@string/n4"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false"/>
 
             <Button
                 android:id="@+id/n1"
@@ -128,7 +130,8 @@
                 android:text="@string/n1"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -145,7 +148,8 @@
                     android:text="@string/n0"
                     android:textColor="@color/colorBlack"
                     android:textSize="50sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:soundEffectsEnabled="false"/>
                 <View
                     android:id="@+id/verticalLine1"
                     android:translationZ="2dp"
@@ -175,7 +179,8 @@
                 android:text="@string/n8"
                 android:textColor="@color/colorBlack"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/n5"
@@ -188,7 +193,8 @@
                 android:text="@string/n5"
                 android:textColor="@color/colorBlack"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/n2"
@@ -201,7 +207,8 @@
                 android:text="@string/n2"
                 android:textColor="@color/colorBlack"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/btDot"
@@ -214,7 +221,8 @@
                 android:text="@string/dot"
                 android:textColor="@color/colorBlack"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
         </LinearLayout>
 
@@ -236,7 +244,8 @@
                 android:text="@string/n9"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/n6"
@@ -249,7 +258,8 @@
                 android:text="@string/n6"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/n3"
@@ -262,7 +272,9 @@
                 android:text="@string/n3"
                 android:textColor="@color/colorWhite"
                 android:textSize="50sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -278,7 +290,8 @@
                     android:text="@string/equal"
                     android:textColor="@color/colorBlack"
                     android:textSize="60sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:soundEffectsEnabled="false" />
 
                 <View
                     android:id="@+id/verticalLine2"
@@ -313,7 +326,8 @@
                     android:fontFamily="cursive"
                     android:text="@string/clear"
                     android:textColor="@color/colorBlack"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:soundEffectsEnabled="false" />
 
                 <Button
                     android:id="@+id/btDelete"
@@ -325,7 +339,9 @@
                     android:text="@string/delete"
                     android:textColor="@color/colorBlack"
                     android:textSize="50sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:soundEffectsEnabled="false"/>
+
             </FrameLayout>
 
             <Button
@@ -339,7 +355,8 @@
                 android:text="@string/divide"
                 android:textColor="@color/colorBlack"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/btMultiply"
@@ -352,7 +369,8 @@
                 android:text="@string/multiply"
                 android:textColor="@color/colorBlack"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/btSubtract"
@@ -365,7 +383,8 @@
                 android:text="@string/subtract"
                 android:textColor="@color/colorBlack"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
             <Button
                 android:id="@+id/btAdd"
@@ -378,7 +397,8 @@
                 android:text="@string/add"
                 android:textColor="@color/colorBlack"
                 android:textSize="60sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:soundEffectsEnabled="false" />
 
         </LinearLayout>
     </LinearLayout>

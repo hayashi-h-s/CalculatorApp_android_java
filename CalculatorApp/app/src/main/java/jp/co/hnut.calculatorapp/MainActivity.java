@@ -10,9 +10,13 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import android.media.MediaPlayer;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private int test = 0;
 
     private String screenContent;
 
@@ -46,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     DecimalFormat decimalFormat = new DecimalFormat("#,###.##############");
 
+    private SoundPool soundPool;
+
+    // ピアノ音源変数
+    private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_e_high,
+                del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +64,39 @@ public class MainActivity extends AppCompatActivity {
         calculatorScreen = findViewById(R.id.tvFormula);
         resultScreen = findViewById(R.id.tvResult);
 
-        // 音源の定数を定義
-        final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.pisno_c);
+        //属性の定義
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                .build();
+
+        // SoundPoolの作成
+        soundPool = new SoundPool.Builder()
+                .setAudioAttributes(audioAttributes)
+                // ストリーム数に応じて
+                .setMaxStreams(10)
+                .build();
+
+        // 0~9のピアノ音源読み込み
+        piano_c = soundPool.load(this, R.raw.piano_c, 1);
+        piano_d = soundPool.load(this, R.raw.piano_d, 1);
+        piano_e = soundPool.load(this, R.raw.piano_e, 1);
+        piano_f = soundPool.load(this, R.raw.piano_f, 1);
+        piano_g = soundPool.load(this, R.raw.piano_g, 1);
+        piano_a = soundPool.load(this, R.raw.piano_a, 1);
+        piano_b = soundPool.load(this, R.raw.piano_b, 1);
+        piano_c_high = soundPool.load(this, R.raw.piano_c_high, 1);
+        piano_d_high = soundPool.load(this, R.raw.piano_d_high, 1);
+        piano_e_high = soundPool.load(this, R.raw.piano_e_high, 1);
+        // 0~9以外のピアノ音源読み込み
+        del_piano = soundPool.load(this, R.raw.del_piano, 1);
+        clear_piano = soundPool.load(this, R.raw.clear_piano, 1);
+        divide_piano = soundPool.load(this, R.raw.divide_piano, 1);
+        multiply_piano = soundPool.load(this, R.raw.multiply_piano, 1);
+        minus_piano = soundPool.load(this, R.raw.minus_piano, 1);
+        plus_piano = soundPool.load(this, R.raw.plus_piano, 1);
+        equal_piano = soundPool.load(this, R.raw.equal_piano, 1);
+        dot_piano = soundPool.load(this, R.raw.dot_piano, 1);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -84,24 +125,38 @@ public class MainActivity extends AppCompatActivity {
 
                 // 画面が空の時にマイナスを入力する処理
                 if (view.getId() == R.id.btSubtract && screenContentFix.isEmpty()) {
+                    soundPool.play(divide_piano, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append(String.valueOf("-"));
+                    screenContent = calculatorScreen.getText().toString();
                     return;
                 }
 
-                // 不適切な入力時にreturnさせる処理
+                // 不適切な入力時にreturn
                 if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot) {
                     if (screenContentFix.isEmpty()) {
+                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                     if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")) {
+                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                 }
+                // ドットが押されている状態で、ドットを押した時にreturn
                 if (isDot && view.getId() == R.id.btDot) {
+                    soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
                     return;
                 }
+
+                // イコールを押した時、２項目がなければreturn
                 if (view.getId() == R.id.btEqual) {
-                    if (secondNumberString == null || secondNumberString.equals("0")) {
+                    if (secondNumberString == null) {
+                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                        return;
+                    }
+                    // イコールを押した時、割り算で２項目が0ならreturn
+                    if (currentOp == '÷' || secondNumberString.equals("0")) {
+                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                 }
@@ -125,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("0");
                     ButtonFunc();
                     n0.setBackgroundResource(R.drawable.whitenote);
-                    sampleSound.start();
+                    soundPool.play(piano_e_high, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -134,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("1");
                     ButtonFunc();
                     n1.setBackgroundResource(R.drawable.blacknote);
-                    sampleSound.start();
+                    soundPool.play(piano_c, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -143,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("2");
                     ButtonFunc();
                     n2.setBackgroundResource(R.drawable.whitenote);
+                    soundPool.play(piano_d, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -151,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("3");
                     ButtonFunc();
                     n3.setBackgroundResource(R.drawable.blacknote);
+                    soundPool.play(piano_e, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -159,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("4");
                     ButtonFunc();
                     n4.setBackgroundResource(R.drawable.blacknote);
+                    soundPool.play(piano_f, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -167,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("5");
                     ButtonFunc();
                     n5.setBackgroundResource(R.drawable.whitenote);
+                    soundPool.play(piano_g, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -175,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("6");
                     ButtonFunc();
                     n6.setBackgroundResource(R.drawable.blacknote);
+                    soundPool.play(piano_a, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -183,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("7");
                     ButtonFunc();
                     n7.setBackgroundResource(R.drawable.blacknote);
+                    soundPool.play(piano_b, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -191,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("8");
                     ButtonFunc();
                     n8.setBackgroundResource(R.drawable.whitenote);
+                    soundPool.play(piano_c_high, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -199,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
                     calculatorScreen.append("9");
                     ButtonFunc();
                     n9.setBackgroundResource(R.drawable.blacknote);
+                    soundPool.play(piano_d_high, 1.0f, 1.0f, 0, 0, 1);
 
                     break;
 
@@ -206,24 +269,29 @@ public class MainActivity extends AppCompatActivity {
                     OpPressed('÷');
                     BackgroundBlack();
                     BackgroundWhite();
+                    soundPool.play(divide_piano, 1.0f, 1.0f, 0, 0, 1);
                     break;
                 case R.id.btMultiply:
                     OpPressed('×');
                     BackgroundBlack();
                     BackgroundWhite();
+                    soundPool.play(multiply_piano, 1.0f, 1.0f, 0, 0, 1);
                     break;
                 case R.id.btSubtract:
                     OpPressed('-');
                     BackgroundBlack();
                     BackgroundWhite();
+                    soundPool.play(minus_piano, 1.0f, 1.0f, 0, 0, 1);
                     break;
                 case R.id.btAdd:
                     OpPressed('+');
                     BackgroundBlack();
                     BackgroundWhite();
+                    soundPool.play(plus_piano, 1.0f, 1.0f, 0, 0, 1);
                     break;
                 case R.id.btDot:
 
+                    soundPool.play(dot_piano, 1.0f, 1.0f, 0, 0, 1);
                     if (!isDot) {
                         isDot = true;
                         AddComma();
@@ -242,12 +310,19 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btDelete:
 
+                    soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
                     int screenContentlength = screenContent.length();
 
                     if (screenContentlength > 0 ){
 
-                        //最後の文字が +,-,×,÷だった時の処理
+                        // 最後の文字が +,-,×,÷だった時の処理
                         if (screenContent.endsWith("+")||screenContent.endsWith("-")||screenContent.endsWith("×")||screenContent.endsWith("÷")) {
+                            // 画面が - だけだった時は、画面をリセットする
+                            if (screenContent.equals("-")) {
+                                calculatorScreen.setText("");
+                                screenContent = calculatorScreen.getText().toString();
+                                return;
+                            }
                             isOpPressed = false;
                             stringOp = null;
                             currentOp = '\u0000';
@@ -311,6 +386,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btClear:
 
+                    soundPool.play(clear_piano, 1.0f, 1.0f, 0, 0, 1);
                     isOpPressed = false;
                     isDot = false;
                     stringOp = null;
@@ -328,6 +404,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btEqual:
 
+                    soundPool.play(equal_piano, 1.0f, 1.0f, 0, 0, 1);
                     if (isOpPressed) {
                         Equal();
 
