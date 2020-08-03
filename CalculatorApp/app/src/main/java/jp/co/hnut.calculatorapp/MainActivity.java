@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         resultScreen = findViewById(R.id.tvResult);
 
         // 音源の定数を定義
-        final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.calculator);
+        final MediaPlayer sampleSound = MediaPlayer.create(this,R.raw.pisno_c);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("0");
                     ButtonFunc();
-                    n0.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n0.setBackgroundResource(R.drawable.whitenote);
                     sampleSound.start();
 
                     break;
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("1");
                     ButtonFunc();
-                    n1.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n1.setBackgroundResource(R.drawable.blacknote);
                     sampleSound.start();
 
                     break;
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("2");
                     ButtonFunc();
-                    n2.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n2.setBackgroundResource(R.drawable.whitenote);
 
                     break;
 
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("3");
                     ButtonFunc();
-                    n3.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n3.setBackgroundResource(R.drawable.blacknote);
 
                     break;
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("4");
                     ButtonFunc();
-                    n4.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n4.setBackgroundResource(R.drawable.blacknote);
 
                     break;
 
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("5");
                     ButtonFunc();
-                    n5.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n5.setBackgroundResource(R.drawable.whitenote);
 
                     break;
 
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("6");
                     ButtonFunc();
-                    n6.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n6.setBackgroundResource(R.drawable.blacknote);
 
                     break;
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("7");
                     ButtonFunc();
-                    n7.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n7.setBackgroundResource(R.drawable.blacknote);
 
                     break;
 
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("8");
                     ButtonFunc();
-                    n8.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n8.setBackgroundResource(R.drawable.whitenote);
 
                     break;
 
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
                     calculatorScreen.append("9");
                     ButtonFunc();
-                    n9.setBackgroundResource(R.drawable.ic_baseline_music_note_gray_24);
+                    n9.setBackgroundResource(R.drawable.blacknote);
 
                     break;
 
