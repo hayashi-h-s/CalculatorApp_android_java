@@ -57,9 +57,15 @@ public class MainActivity extends AppCompatActivity {
     private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_e_high,
                 del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano, failure_piano;
 
-    private Button[] n;
+//    private Button[] n;
 
-    int[] ids = new int[] {
+//    private Button[] buttons = {
+//                n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
+//                btDivide, btMultiply, btSubtract, btAdd,
+//                btClear, btDelete, btEqual, btDot
+//    };
+
+    private int[] ids = new int[] {
             R.id.n0, R.id.n1, R.id.n2, R.id.n3, R.id.n4, R.id.n5, R.id.n6, R.id.n7, R.id.n8, R.id.n9,
     };
 
@@ -106,12 +112,22 @@ public class MainActivity extends AppCompatActivity {
         dot_piano = soundPool.load(this, R.raw.dot_piano, 1);
         failure_piano = soundPool.load(this, R.raw.failure_piano, 1);
 
-        n = new Button[9];
+//        n = new Button[9];
+//
+//        for (int i = 0; i<9; i++) {
+//            n[i] = findViewById(ids[i]);
+//        }
 
-        for (int i = 0; i<9; i++) {
-            n[i] = findViewById(ids[i]);
+        Button[] defBt = {
+                n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
+                btDivide, btMultiply, btSubtract, btAdd,
+                btClear, btDelete, btEqual, btDot
+        };
+
+        for (int i = 0; i < defBt.length; i++){
+            defBt[i] = findViewById(ids[i]);
         }
-
+//
 //        n0 = findViewById(R.id.n0);
 //        n1 = findViewById(R.id.n1);
 //        n2 = findViewById(R.id.n2);
@@ -122,14 +138,14 @@ public class MainActivity extends AppCompatActivity {
 //        n7 = findViewById(R.id.n7);
 //        n8 = findViewById(R.id.n8);
 //        n9 = findViewById(R.id.n9);
-        btClear = findViewById(R.id.btClear);
-        btDelete = findViewById(R.id.btDelete);
-        btDivide = findViewById(R.id.btDivide);
-        btMultiply = findViewById(R.id.btMultiply);
-        btSubtract = findViewById(R.id.btSubtract);
-        btAdd = findViewById(R.id.btAdd);
-        btEqual = findViewById(R.id.btEqual);
-        btDot = findViewById(R.id.btDot);
+//        btClear = findViewById(R.id.btClear);
+//        btDelete = findViewById(R.id.btDelete);
+//        btDivide = findViewById(R.id.btDivide);
+//        btMultiply = findViewById(R.id.btMultiply);
+//        btSubtract = findViewById(R.id.btSubtract);
+//        btAdd = findViewById(R.id.btAdd);
+//        btEqual = findViewById(R.id.btEqual);
+//        btDot = findViewById(R.id.btDot);
 
         final View.OnClickListener calculatorListener = new View.OnClickListener() {
             @Override
@@ -502,24 +518,16 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        n0.setOnClickListener(calculatorListener);
-        n1.setOnClickListener(calculatorListener);
-        n2.setOnClickListener(calculatorListener);
-        n3.setOnClickListener(calculatorListener);
-        n4.setOnClickListener(calculatorListener);
-        n5.setOnClickListener(calculatorListener);
-        n6.setOnClickListener(calculatorListener);
-        n7.setOnClickListener(calculatorListener);
-        n8.setOnClickListener(calculatorListener);
-        n9.setOnClickListener(calculatorListener);
-        btClear.setOnClickListener(calculatorListener);
-        btDelete.setOnClickListener(calculatorListener);
-        btDivide.setOnClickListener(calculatorListener);
-        btMultiply.setOnClickListener(calculatorListener);
-        btSubtract.setOnClickListener(calculatorListener);
-        btAdd.setOnClickListener(calculatorListener);
-        btEqual.setOnClickListener(calculatorListener);
-        btDot.setOnClickListener(calculatorListener);
+        Button[] buttons = {
+                n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
+                btDivide, btMultiply, btSubtract, btAdd,
+                btClear, btDelete, btEqual, btDot
+        };
+
+        //ボタンにクリック処理を追加
+        for (int i = 0; i < buttons.length; i++){
+            buttons[i].setOnClickListener(calculatorListener);
+        }
 
     }
 
