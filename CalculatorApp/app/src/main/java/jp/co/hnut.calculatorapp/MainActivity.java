@@ -13,10 +13,7 @@ import android.media.MediaPlayer;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 
-
 public class MainActivity extends AppCompatActivity {
-
-    private int test = 0;
 
     private String screenContent;
 
@@ -52,10 +49,19 @@ public class MainActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
 
+    private Button n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
+                   btClear, btDelete, btDivide, btMultiply,
+                   btSubtract, btAdd, btEqual, btDot;
+
     // ピアノ音源変数
     private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_e_high,
                 del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano, failure_piano;
 
+//    private Button[] n;
+//
+//    int[] ids = new int[] {
+//            R.id.n0, R.id.n1, R.id.n2, R.id.n3, R.id.n4, R.id.n5, R.id.n6, R.id.n7, R.id.n8, R.id.n9,
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         calculatorScreen = findViewById(R.id.tvFormula);
         resultScreen = findViewById(R.id.tvResult);
 
-        //属性の定義
+        //オーディオの属性の定義
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_GAME)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
@@ -100,24 +106,30 @@ public class MainActivity extends AppCompatActivity {
         dot_piano = soundPool.load(this, R.raw.dot_piano, 1);
         failure_piano = soundPool.load(this, R.raw.failure_piano, 1);
 
-        final Button n0 = findViewById(R.id.n0);
-        final Button n1 = findViewById(R.id.n1);
-        final Button n2 = findViewById(R.id.n2);
-        final Button n3 = findViewById(R.id.n3);
-        final Button n4 = findViewById(R.id.n4);
-        final Button n5 = findViewById(R.id.n5);
-        final Button n6 = findViewById(R.id.n6);
-        final Button n7 = findViewById(R.id.n7);
-        final Button n8 = findViewById(R.id.n8);
-        final Button n9 = findViewById(R.id.n9);
-        final Button btClear = findViewById(R.id.btClear);
-        final Button btDelete = findViewById(R.id.btDelete);
-        final Button btDivide = findViewById(R.id.btDivide);
-        final Button btMultiply = findViewById(R.id.btMultiply);
-        final Button btSubtract = findViewById(R.id.btSubtract);
-        final Button btAdd = findViewById(R.id.btAdd);
-        final Button btEqual = findViewById(R.id.btEqual);
-        final Button btDot = findViewById(R.id.btDot);
+//        n = new Button[9];
+//
+//        for (int i = 0; i<9; i++) {
+//            n[i] = findViewById(n[i]);
+//        }
+
+        n0 = findViewById(R.id.n0);
+        n1 = findViewById(R.id.n1);
+        n2 = findViewById(R.id.n2);
+        n3 = findViewById(R.id.n3);
+        n4 = findViewById(R.id.n4);
+        n5 = findViewById(R.id.n5);
+        n6 = findViewById(R.id.n6);
+        n7 = findViewById(R.id.n7);
+        n8 = findViewById(R.id.n8);
+        n9 = findViewById(R.id.n9);
+        btClear = findViewById(R.id.btClear);
+        btDelete = findViewById(R.id.btDelete);
+        btDivide = findViewById(R.id.btDivide);
+        btMultiply = findViewById(R.id.btMultiply);
+        btSubtract = findViewById(R.id.btSubtract);
+        btAdd = findViewById(R.id.btAdd);
+        btEqual = findViewById(R.id.btEqual);
+        btDot = findViewById(R.id.btDot);
 
         final View.OnClickListener calculatorListener = new View.OnClickListener() {
             @Override
@@ -164,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     // イコールを押した時、割り算で２項目が0ならreturn
-                    if (currentOp == '÷' || secondNumberString.equals("0")) {
+                    if (currentOp == '÷' && secondNumberString.equals("0")) {
                         soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
@@ -420,7 +432,6 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btClear:
 
-                    btClear.setBackgroundResource(R.drawable.eighth_rest);
                     soundPool.play(clear_piano, 1.0f, 1.0f, 0, 0, 1);
 
                     isOpPressed = false;
@@ -576,50 +587,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void BackgroundBlack() {
 
-        final Button n1 = findViewById(R.id.n1);
-        final Button n3 = findViewById(R.id.n3);
-        final Button n4 = findViewById(R.id.n4);
-        final Button n6 = findViewById(R.id.n6);
-        final Button n7 = findViewById(R.id.n7);
-        final Button n9 = findViewById(R.id.n9);
+        Button[] buttons = {n1, n3, n4, n6, n7, n9};
 
-        n1.setBackgroundResource(R.color.colorBlack);
-        n3.setBackgroundResource(R.color.colorBlack);
-        n4.setBackgroundResource(R.color.colorBlack);
-        n6.setBackgroundResource(R.color.colorBlack);
-        n7.setBackgroundResource(R.color.colorBlack);
-        n9.setBackgroundResource(R.color.colorBlack);
+        for (int i = 0; i < buttons.length; i++){
+            buttons[i].setBackgroundResource(R.color.colorBlack);
+        }
 
     }
 
     private void BackgroundWhite() {
 
-        final Button n0 = findViewById(R.id.n0);
-        final Button n2 = findViewById(R.id.n2);
-        final Button n5 = findViewById(R.id.n5);
-        final Button n8 = findViewById(R.id.n8);
-        final Button btClear = findViewById(R.id.btClear);
-        final Button btDelete = findViewById(R.id.btDelete);
-        final Button btDivide = findViewById(R.id.btDivide);
-        final Button btMultiply = findViewById(R.id.btMultiply);
-        final Button btSubtract = findViewById(R.id.btSubtract);
-        final Button btAdd = findViewById(R.id.btAdd);
-        final Button btEqual = findViewById(R.id.btEqual);
-        final Button btDot = findViewById(R.id.btDot);
+          Button[] buttons = {
+                  n0, n2, n5, n8,
+                  btClear, btDelete, btEqual, btDot,
+                  btDivide, btMultiply, btSubtract, btAdd
+          };
 
-        n0.setBackgroundResource(R.color.colorWhite);
-        n2.setBackgroundResource(R.color.colorWhite);
-        n5.setBackgroundResource(R.color.colorWhite);
-        n8.setBackgroundResource(R.color.colorWhite);
-
-        btClear.setBackgroundResource(R.color.colorWhite);
-        btDelete.setBackgroundResource(R.color.colorWhite);
-        btDivide.setBackgroundResource(R.color.colorWhite);
-        btMultiply.setBackgroundResource(R.color.colorWhite);
-        btSubtract.setBackgroundResource(R.color.colorWhite);
-        btAdd.setBackgroundResource(R.color.colorWhite);
-        btEqual.setBackgroundResource(R.color.colorWhite);
-        btDot.setBackgroundResource(R.color.colorWhite);
+          for (int i = 0; i < buttons.length; i++){
+              buttons[i].setBackgroundResource(R.color.colorWhite);
+          }
 
     }
 
