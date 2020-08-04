@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     // ピアノ音源変数
     private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_e_high,
-                del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano;
+                del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano, failure_piano;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         plus_piano = soundPool.load(this, R.raw.plus_piano, 1);
         equal_piano = soundPool.load(this, R.raw.equal_piano, 1);
         dot_piano = soundPool.load(this, R.raw.dot_piano, 1);
+        failure_piano = soundPool.load(this, R.raw.failure_piano, 1);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -134,29 +136,36 @@ public class MainActivity extends AppCompatActivity {
                 // 不適切な入力時にreturn
                 if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd||view.getId() == R.id.btEqual||view.getId() == R.id.btDot) {
                     if (screenContentFix.isEmpty()) {
-                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                        soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                     if (screenContentFix.endsWith("+")||screenContentFix.endsWith("-")||screenContentFix.endsWith("×")||screenContentFix.endsWith("÷")||screenContentFix.endsWith(".")) {
-                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                        soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                 }
+
                 // ドットが押されている状態で、ドットを押した時にreturn
                 if (isDot && view.getId() == R.id.btDot) {
-                    soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                    soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                     return;
                 }
-
+                // isOpPressedがtrueの時に、+,-,×,÷ のどれを押すとreturn
+                if (view.getId() == R.id.btDivide||view.getId() == R.id.btMultiply||view.getId() == R.id.btSubtract||view.getId() == R.id.btAdd) {
+                    if (isOpPressed) {
+                        soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
+                        return;
+                    }
+                }
                 // イコールを押した時、２項目がなければreturn
                 if (view.getId() == R.id.btEqual) {
                     if (secondNumberString == null) {
-                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                        soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                     // イコールを押した時、割り算で２項目が0ならreturn
                     if (currentOp == '÷' || secondNumberString.equals("0")) {
-                        soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+                        soundPool.play(failure_piano, 1.0f, 1.0f, 0, 0, 1);
                         return;
                     }
                 }
@@ -177,121 +186,138 @@ public class MainActivity extends AppCompatActivity {
             switch (id){
                 case R.id.n0:
 
+                    soundPool.play(piano_e_high, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("0");
                     ButtonFunc();
-                    n0.setBackgroundResource(R.drawable.whitenote);
-                    soundPool.play(piano_e_high, 1.0f, 1.0f, 0, 0, 1);
+                    n0.setBackgroundResource(R.drawable.double_note);
 
                     break;
 
                 case R.id.n1:
 
+                    soundPool.play(piano_c, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("1");
                     ButtonFunc();
-                    n1.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_c, 1.0f, 1.0f, 0, 0, 1);
+                    n1.setBackgroundResource(R.drawable.black_eighth_note);
 
                     break;
 
                 case R.id.n2:
 
+                    soundPool.play(piano_d, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("2");
                     ButtonFunc();
-                    n2.setBackgroundResource(R.drawable.whitenote);
-                    soundPool.play(piano_d, 1.0f, 1.0f, 0, 0, 1);
+                    n2.setBackgroundResource(R.drawable.double_note);
 
                     break;
 
                 case R.id.n3:
 
+                    soundPool.play(piano_e, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("3");
                     ButtonFunc();
-                    n3.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_e, 1.0f, 1.0f, 0, 0, 1);
+                    n3.setBackgroundResource(R.drawable.black_eighth_note);
 
                     break;
 
                 case R.id.n4:
 
+                    soundPool.play(piano_f, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("4");
                     ButtonFunc();
-                    n4.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_f, 1.0f, 1.0f, 0, 0, 1);
+                    n4.setBackgroundResource(R.drawable.black_double_note);
 
                     break;
 
                 case R.id.n5:
 
+                    soundPool.play(piano_g, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("5");
                     ButtonFunc();
-                    n5.setBackgroundResource(R.drawable.whitenote);
-                    soundPool.play(piano_g, 1.0f, 1.0f, 0, 0, 1);
+                    n5.setBackgroundResource(R.drawable.quarter_note);
 
                     break;
 
                 case R.id.n6:
 
+                    soundPool.play(piano_a, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("6");
                     ButtonFunc();
-                    n6.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_a, 1.0f, 1.0f, 0, 0, 1);
+                    n6.setBackgroundResource(R.drawable.black_double_note);
 
                     break;
 
                 case R.id.n7:
 
+                    soundPool.play(piano_b, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("7");
                     ButtonFunc();
-                    n7.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_b, 1.0f, 1.0f, 0, 0, 1);
+                    n7.setBackgroundResource(R.drawable.black_eighth_note);
 
                     break;
 
                 case R.id.n8:
 
+                    soundPool.play(piano_c_high, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("8");
                     ButtonFunc();
-                    n8.setBackgroundResource(R.drawable.whitenote);
-                    soundPool.play(piano_c_high, 1.0f, 1.0f, 0, 0, 1);
+                    n8.setBackgroundResource(R.drawable.double_note);
 
                     break;
 
                 case R.id.n9:
 
+                    soundPool.play(piano_d_high, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("9");
                     ButtonFunc();
-                    n9.setBackgroundResource(R.drawable.blacknote);
-                    soundPool.play(piano_d_high, 1.0f, 1.0f, 0, 0, 1);
+                    n9.setBackgroundResource(R.drawable.black_eighth_note);
 
                     break;
 
                 case R.id.btDivide:
+
+                    soundPool.play(divide_piano, 1.0f, 1.0f, 0, 0, 1);
                     OpPressed('÷');
                     BackgroundBlack();
                     BackgroundWhite();
-                    soundPool.play(divide_piano, 1.0f, 1.0f, 0, 0, 1);
+                    btDivide.setBackgroundResource(R.drawable.flat);
+
                     break;
+
                 case R.id.btMultiply:
+
+                    soundPool.play(multiply_piano, 1.0f, 1.0f, 0, 0, 1);
                     OpPressed('×');
                     BackgroundBlack();
                     BackgroundWhite();
-                    soundPool.play(multiply_piano, 1.0f, 1.0f, 0, 0, 1);
+                    btMultiply.setBackgroundResource(R.drawable.treble_clef);
+
                     break;
+
                 case R.id.btSubtract:
+
+                    soundPool.play(minus_piano, 1.0f, 1.0f, 0, 0, 1);
                     OpPressed('-');
                     BackgroundBlack();
                     BackgroundWhite();
-                    soundPool.play(minus_piano, 1.0f, 1.0f, 0, 0, 1);
+                    btSubtract.setBackgroundResource(R.drawable.reverse_half_note);
+
                     break;
+
                 case R.id.btAdd:
+
+                    soundPool.play(plus_piano, 1.0f, 1.0f, 0, 0, 1);
                     OpPressed('+');
                     BackgroundBlack();
                     BackgroundWhite();
-                    soundPool.play(plus_piano, 1.0f, 1.0f, 0, 0, 1);
+                    btAdd.setBackgroundResource(R.drawable.reverse_quarter_note);
+
                     break;
+
                 case R.id.btDot:
 
                     soundPool.play(dot_piano, 1.0f, 1.0f, 0, 0, 1);
+
                     if (!isDot) {
                         isDot = true;
                         AddComma();
@@ -306,11 +332,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     BackgroundBlack();
                     BackgroundWhite();
+                    btDot.setBackgroundResource(R.drawable.half_note);
+
                     return;
 
                 case R.id.btDelete:
 
                     soundPool.play(del_piano, 1.0f, 1.0f, 0, 0, 1);
+
                     int screenContentlength = screenContent.length();
 
                     if (screenContentlength > 0 ){
@@ -321,6 +350,7 @@ public class MainActivity extends AppCompatActivity {
                             if (screenContent.equals("-")) {
                                 calculatorScreen.setText("");
                                 screenContent = calculatorScreen.getText().toString();
+                                btDelete.setBackgroundResource(R.drawable.eighth_rest);
                                 return;
                             }
                             isOpPressed = false;
@@ -331,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
                             calculatorScreen.setText(screenContent);
                             BackgroundBlack();
                             BackgroundWhite();
+                            btDelete.setBackgroundResource(R.drawable.eighth_rest);
                             return;
                         }
 
@@ -355,6 +386,7 @@ public class MainActivity extends AppCompatActivity {
                                     calculatorScreen.setText(screenContent);
                                     BackgroundBlack();
                                     BackgroundWhite();
+                                    btDelete.setBackgroundResource(R.drawable.eighth_rest);
                                     return;
                                 }
                             }
@@ -375,6 +407,7 @@ public class MainActivity extends AppCompatActivity {
                                     calculatorScreen.setText(screenContent);
                                     BackgroundBlack();
                                     BackgroundWhite();
+                                    btDelete.setBackgroundResource(R.drawable.eighth_rest);
                                     return;
                                 }
                             }
@@ -382,11 +415,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     BackgroundBlack();
                     BackgroundWhite();
+                    btDelete.setBackgroundResource(R.drawable.eighth_rest);
                     break;
 
                 case R.id.btClear:
 
+                    btClear.setBackgroundResource(R.drawable.eighth_rest);
                     soundPool.play(clear_piano, 1.0f, 1.0f, 0, 0, 1);
+
                     isOpPressed = false;
                     isDot = false;
                     stringOp = null;
@@ -405,6 +441,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btEqual:
 
                     soundPool.play(equal_piano, 1.0f, 1.0f, 0, 0, 1);
+
                     if (isOpPressed) {
                         Equal();
 
@@ -426,6 +463,7 @@ public class MainActivity extends AppCompatActivity {
                         resultScreen.setText("");
                         BackgroundBlack();
                         BackgroundWhite();
+                        btEqual.setBackgroundResource(R.drawable.notation);
                         break;
                     }
             }
@@ -560,11 +598,28 @@ public class MainActivity extends AppCompatActivity {
         final Button n2 = findViewById(R.id.n2);
         final Button n5 = findViewById(R.id.n5);
         final Button n8 = findViewById(R.id.n8);
+        final Button btClear = findViewById(R.id.btClear);
+        final Button btDelete = findViewById(R.id.btDelete);
+        final Button btDivide = findViewById(R.id.btDivide);
+        final Button btMultiply = findViewById(R.id.btMultiply);
+        final Button btSubtract = findViewById(R.id.btSubtract);
+        final Button btAdd = findViewById(R.id.btAdd);
+        final Button btEqual = findViewById(R.id.btEqual);
+        final Button btDot = findViewById(R.id.btDot);
 
         n0.setBackgroundResource(R.color.colorWhite);
         n2.setBackgroundResource(R.color.colorWhite);
         n5.setBackgroundResource(R.color.colorWhite);
         n8.setBackgroundResource(R.color.colorWhite);
+
+        btClear.setBackgroundResource(R.color.colorWhite);
+        btDelete.setBackgroundResource(R.color.colorWhite);
+        btDivide.setBackgroundResource(R.color.colorWhite);
+        btMultiply.setBackgroundResource(R.color.colorWhite);
+        btSubtract.setBackgroundResource(R.color.colorWhite);
+        btAdd.setBackgroundResource(R.color.colorWhite);
+        btEqual.setBackgroundResource(R.color.colorWhite);
+        btDot.setBackgroundResource(R.color.colorWhite);
 
     }
 
