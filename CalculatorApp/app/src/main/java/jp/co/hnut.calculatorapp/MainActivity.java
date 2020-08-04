@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int[] ids = new int[] {
             R.id.n0, R.id.n1, R.id.n2, R.id.n3, R.id.n4, R.id.n5, R.id.n6, R.id.n7, R.id.n8, R.id.n9,
+            R.id.btClear, R.id.btDelete, R.id.btDivide, R.id.btMultiply,
+            R.id.btSubtract, R.id.btAdd, R.id.btEqual, R.id.btDot
     };
 
     @Override
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < defBt.length; i++){
             defBt[i] = findViewById(ids[i]);
         }
-//
+
 //        n0 = findViewById(R.id.n0);
 //        n1 = findViewById(R.id.n1);
 //        n2 = findViewById(R.id.n2);
@@ -150,6 +152,11 @@ public class MainActivity extends AppCompatActivity {
         final View.OnClickListener calculatorListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
+
 
                 String screenContentFix = calculatorScreen.getText().toString();
 
@@ -517,6 +524,7 @@ public class MainActivity extends AppCompatActivity {
             calculatorScreen.setText(screenContent);
             }
         };
+
 
         Button[] buttons = {
                 n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
