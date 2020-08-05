@@ -54,14 +54,8 @@ public class MainActivity extends AppCompatActivity {
                    btSubtract, btAdd, btEqual, btDot;
 
     // ピアノ音源変数
-    private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_e_high,
+    private int piano_c, piano_d, piano_e, piano_f, piano_g, piano_a, piano_b, piano_c_high, piano_d_high, piano_b_low,
                 del_piano, clear_piano, divide_piano, multiply_piano, minus_piano, plus_piano, equal_piano, dot_piano, failure_piano;
-
-//    private Button[] n;
-//
-//    int[] ids = new int[] {
-//            R.id.n0, R.id.n1, R.id.n2, R.id.n3, R.id.n4, R.id.n5, R.id.n6, R.id.n7, R.id.n8, R.id.n9,
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         piano_b = soundPool.load(this, R.raw.piano_b, 1);
         piano_c_high = soundPool.load(this, R.raw.piano_c_high, 1);
         piano_d_high = soundPool.load(this, R.raw.piano_d_high, 1);
-        piano_e_high = soundPool.load(this, R.raw.piano_e_high, 1);
+        piano_b_low = soundPool.load(this, R.raw.piano_b_low, 1);
         // 0~9以外のピアノ音源読み込み
         del_piano = soundPool.load(this, R.raw.del_piano, 1);
         clear_piano = soundPool.load(this, R.raw.clear_piano, 1);
@@ -105,12 +99,6 @@ public class MainActivity extends AppCompatActivity {
         equal_piano = soundPool.load(this, R.raw.equal_piano, 1);
         dot_piano = soundPool.load(this, R.raw.dot_piano, 1);
         failure_piano = soundPool.load(this, R.raw.failure_piano, 1);
-
-//        n = new Button[9];
-//
-//        for (int i = 0; i<9; i++) {
-//            n[i] = findViewById(n[i]);
-//        }
 
         n0 = findViewById(R.id.n0);
         n1 = findViewById(R.id.n1);
@@ -198,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             switch (id){
                 case R.id.n0:
 
-                    soundPool.play(piano_e_high, 1.0f, 1.0f, 0, 0, 1);
+                    soundPool.play(piano_b_low, 1.0f, 1.0f, 0, 0, 1);
                     calculatorScreen.append("0");
                     ButtonFunc();
                     n0.setBackgroundResource(R.drawable.double_note);
@@ -502,24 +490,17 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        n0.setOnClickListener(calculatorListener);
-        n1.setOnClickListener(calculatorListener);
-        n2.setOnClickListener(calculatorListener);
-        n3.setOnClickListener(calculatorListener);
-        n4.setOnClickListener(calculatorListener);
-        n5.setOnClickListener(calculatorListener);
-        n6.setOnClickListener(calculatorListener);
-        n7.setOnClickListener(calculatorListener);
-        n8.setOnClickListener(calculatorListener);
-        n9.setOnClickListener(calculatorListener);
-        btClear.setOnClickListener(calculatorListener);
-        btDelete.setOnClickListener(calculatorListener);
-        btDivide.setOnClickListener(calculatorListener);
-        btMultiply.setOnClickListener(calculatorListener);
-        btSubtract.setOnClickListener(calculatorListener);
-        btAdd.setOnClickListener(calculatorListener);
-        btEqual.setOnClickListener(calculatorListener);
-        btDot.setOnClickListener(calculatorListener);
+
+        Button[] buttons = {
+                n0, n1, n2, n3, n4, n5, n6, n7, n8, n9,
+                btDivide, btMultiply, btSubtract, btAdd,
+                btClear, btDelete, btEqual, btDot
+        };
+
+        //ボタン全てにクリック処理を追加
+        for (int i = 0; i < buttons.length; i++){
+            buttons[i].setOnClickListener(calculatorListener);
+        }
 
     }
 
