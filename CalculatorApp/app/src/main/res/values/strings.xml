@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">電卓アプリ</string>
+
+    <string name="app_name">ピアノ電卓</string>
+
     // 電卓のリザルト画面とボタンの文字
     <string name="formula_text"/>
     <string name="n0">0</string>
@@ -20,6 +22,8 @@
     <string name="subtract">-</string>
     <string name="multiply">×</string>
     <string name="divide">÷</string>
+
     // ヘッダー画像のラベル
     <string name="headerImage">÷headerImage</string>
+
 </resources>
